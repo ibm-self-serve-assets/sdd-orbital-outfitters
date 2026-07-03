@@ -53,7 +53,7 @@ The following data schema should be sufficient to power the Orbital Supplier's w
 | | `product_id` | `varchar` | NOT NULL |
 | | `review` | `text` | NOT NULL |
 | | `score` | `smallint` | NOT NULL |
-| | `reviewer_initials` | `char` | nullable |
+| | `reviewer_initials` | `char(2)` | nullable |
 | | `user_id` | `integer` | nullable |
 | | `created_at` | `timestamptz` | nullable |
 | **`users`** | `user_id` | `integer` | PK, auto |

@@ -2,10 +2,9 @@
 The following specification outlines the steps required to build the frontend (UI) for the Orbital Suppliers website.
 
 ## Prerequisites
+1. Ensure you have access to the `website-screenshot-capture` tool, then ask the user to install the [@just-every/mcp-screenshot-website-fast](https://github.com/just-every/mcp-screenshot-website-fast) screenshot tool.  Without this tool, you will be unable to accurately assess the quality of the website UI. 
 
-Load the following skills plus any others that seem relevant — new ones may be added over time:
-- `designer` — UX/UI implementation against design comps, component specs, accessibility
-- `carbon-mcp` — IBM Carbon Design System components, icons, and accessibility docs
+2. Load any skills that seem relevant.
 
 ## Step 1: Review Backend APIs
 Review the swagger document to understand how to call the backend API endpoints.  Some design comps may functionality for which a backend api endpoint can't yet be built.  For these elements, display "Functionality under development" when clicked.  For example:

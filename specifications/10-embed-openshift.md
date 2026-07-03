@@ -3,9 +3,8 @@
 Run the existing `vector-db/embed.js` script inside the cluster as a Kubernetes **Job**, populating ChromaDB with product embeddings from IBM Cloud PostgreSQL. Runs after Specs 8 and 9 are complete and all pods are `Ready`.
 
 ## Prerequisites
-
 Load the following skills plus any others that seem relevant — new ones may be added over time:
-- `ibm-cloud` — `oc apply`, `oc logs`, `oc exec` for Job lifecycle management
+- `ibm-cloud` — Learn how to interest with the IBM Cloud using the `ibmcloud` CLI. 
 
 ## Why a Job
 

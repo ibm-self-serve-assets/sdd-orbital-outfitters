@@ -2,6 +2,7 @@
 Use these `Specifications` to perform `Spec-Driven Development` and build a comprehensive retail website using [IBM Bob](https://bob.ibm.com/) and the [IBM Building Blocks](https://ibm-self-serve-assets.github.io/building-blocks-docs).  
 
 **Start by visiting the** [Orbital Suppliers website](https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud)
+You can use the autocomplete button on the Login popup to auto-populate a random user email/password and access full customer ordering functionality.
 
 <img width="768" src="https://github.com/user-attachments/assets/42203ac6-afdb-40f6-a5ad-31e43338db7e" />
 

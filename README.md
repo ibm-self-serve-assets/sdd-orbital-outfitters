@@ -3,7 +3,7 @@ Use these `Specifications` to perform `Spec-Driven Development` and build a comp
 
 ## Start by [visiting the Orbital Suppliers website](https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud)
 
-Use the **Autocomplete with random user** button on the Login popup to access full customer ordering functionality.
+**NOTE:** Use the **Autocomplete with random user** button on the Login popup to access full customer ordering functionality.
 
 <a href="https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud"><img width="768" src="https://github.com/user-attachments/assets/42203ac6-afdb-40f6-a5ad-31e43338db7e" /></a>
 

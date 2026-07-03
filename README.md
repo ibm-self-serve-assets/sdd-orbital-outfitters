@@ -8,7 +8,7 @@ Use these `Specifications` to perform `Spec-Driven Development` and build a comp
 <a href="https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud"><img width="768" src="https://github.com/user-attachments/assets/42203ac6-afdb-40f6-a5ad-31e43338db7e" /></a>
 
 ## Get Started.  Provide the Specifications to Bob to recreate the website for youself
-**A.** Update the [.env_template](.env_template) with the require variables then rename to `.env`.
+**A.** Update [.env_template](.env_template) with required variables then rename to `.env`.
 
 **B.** Add the [Building Blocks Skills](https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/) to your global `~\.bob` folder.
 
@@ -16,7 +16,7 @@ Use these `Specifications` to perform `Spec-Driven Development` and build a comp
 ```
 Follow the instructions in @specifications/0-team-manager-ibm-building-blocks
 ```
-Bob will proceed to read all the specifications then [spawn a team of subagents](https://bob.ibm.com/docs/ide/features/subagents) to build the website. Bob will request security approvals to execute several commands over **~30 mins**.
+Bob will [spawn a team of subagents](https://bob.ibm.com/docs/ide/features/subagents) to convert these Specifications into the website (~30 mins).
 - [Spec 0:](specifications/0-team-manager-ibm-building-blocks.md) Teach Bob 2.0 to spawn a subagent team
 - [Spec 1:](specifications/1-generate-dataset.md) Expand the initial product and user dataset
 - [Spec 2:](specifications/2-rag-opensearch.md) Embed product data in an OpenSearch vector DB

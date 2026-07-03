@@ -16,7 +16,11 @@ Use these `Specifications` to perform `Spec-Driven Development` and build a comp
 ```
 Follow the instructions in @specifications/0-team-manager-ibm-building-blocks
 ```
-Bob will [spawn a team of subagents](https://bob.ibm.com/docs/ide/features/subagents) to convert these Specifications into the website (~30 mins).
+Bob will [spawn a team of subagents](https://bob.ibm.com/docs/ide/features/subagents) to convert these [Specifications](specifications) into the website (~30 mins).
+
+<img width="1024" src="https://github.com/user-attachments/assets/2fed1c9e-345e-4666-93ab-2800da784e5b" />
+
+
 - [Spec 0:](specifications/0-team-manager-ibm-building-blocks.md) Teach Bob 2.0 to spawn a subagent team
 - [Spec 1:](specifications/1-generate-dataset.md) Expand the initial product and user dataset
 - [Spec 2:](specifications/2-rag-opensearch.md) Embed product data in an OpenSearch vector DB

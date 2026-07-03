@@ -1,11 +1,14 @@
 # Spec-Driven Retail Order Fulfillment
 Use these `Specifications` to perform `Spec-Driven Development` and build a comprehensive retail website using [IBM Bob](https://bob.ibm.com/) and the [IBM Building Blocks](https://ibm-self-serve-assets.github.io/building-blocks-docs).  
 
-**0. View the functional website**
+**Start by visiting the** [Orbital Suppliers website](https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud)
 
-[Visit the Orbital Ssuppliers website](https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud)
+<img width="768" src="https://github.com/user-attachments/assets/42203ac6-afdb-40f6-a5ad-31e43338db7e" />
 
-**1. Get started by asking Bob to:**
+### Provide the Specifications to Bob to recreate the website for youself:**
+**A.** Update the [.env_template](.env_template) with the require variables then rename to `.env`.
+
+**B.** Ask Bob to:
 ```
 Follow the instructions in @specifications/0-team-manager-ibm-building-blocks
 ```
@@ -18,16 +21,20 @@ Follow the instructions in @specifications/0-team-manager-ibm-building-blocks
 - [Spec 5:](specifications/5-agentic-product-search.md) Deploy a product agent to watsonx Orchestrate for multi-turn product search
 - [Spec 6:](specifications/6-quality-assurance.md) QA final solution
 
-**2. Local Development**
+Bob will ask for multiple security approvals to execute several commands for **~30 mins** then you'll have this website.  You can greatly reduce clicking approvals by adding this [list of approved execute commands](specifications/extras/approved_execute_commands.json) to your `~/.bob/settings/settings.json`.  
+
+If you experience bugs, send them to [@anthony.stevens](https://ibm.enterprise.slack.com/team/W4B3Y14Q1)
+
+### C.Deploy to Rancher for local development
 - [Spec 7:](specifications/7-containerize-rancher.md) Containerize all services for local development
 
-**3. Cloud Deployment**
+### D. Or deploy to IBM Cloud
 - [Spec 8:](specifications/8-terraform-openshift-cluster.md) Containerize all services then deploy to Red Hat OpenShift on IBM CLoud
 - [Spec 9:](specifications/9-containerize-openshift.md) Containerize all services then deploy to Red Hat OpenShift on IBM CLoud
 - [Spec 10:](specifications/10-embed-openshift.md) Push product embeddings to OpenSearch running in cluster on RHOS
 
 **4. Bob 2.0 will require multiple security approvals**
-After Bob asks approval to execute several commands over ~30 mins, you'll have this website.  You can greatly reduce clicking approvals by adding this [list of approved execute commands](specifications/extras/approved_execute_commands.json) to your `~/.bob/settings/settings.json`.
+
 
 <img width="750" src="https://github.com/user-attachments/assets/42203ac6-afdb-40f6-a5ad-31e43338db7e" />
 

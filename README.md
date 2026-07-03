@@ -3,7 +3,7 @@ Use these `Specifications` to perform `Spec-Driven Development` and build a comp
 
 **0. View the functional website**
 
-[Visit the Orbital Ssuppliers website](https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud/checkout)
+[Visit the Orbital Ssuppliers website](https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud)
 
 **1. Get started by asking Bob to:**
 ```

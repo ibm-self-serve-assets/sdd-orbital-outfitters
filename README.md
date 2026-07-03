@@ -19,7 +19,7 @@ Follow the instructions in @specifications/0-team-manager-ibm-building-blocks
 - [Spec 6:](specifications/6-quality-assurance.md) QA final solution
 
 **2. Local Development**
-- [Spec 7:](specifications/7-containerization-rancher.md) Containerize all services for local development
+- [Spec 7:](specifications/7-containerize-rancher.md) Containerize all services for local development
 
 **3. Cloud Deployment**
 - [Spec 8:](specifications/8-terraform-openshift-cluster.md) Containerize all services then deploy to Red Hat OpenShift on IBM CLoud

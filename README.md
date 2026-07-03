@@ -1,21 +1,33 @@
 # Spec-Driven Retail Order Fulfillment
 Use these `Specifications` to perform `Spec-Driven Development` and build a comprehensive retail website using [IBM Bob](https://bob.ibm.com/) and the [IBM Building Blocks](https://ibm-self-serve-assets.github.io/building-blocks-docs).  
 
-Get started by asking Bob to:
+**0. View the functional website**
+
+[Visit the Orbital Ssuppliers website](https://orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud/checkout)
+
+**1. Get started by asking Bob to:**
 ```
 Follow the instructions in @specifications/0-team-manager-ibm-building-blocks
 ```
 
-Bob 2.0 will read [0-team-manager-ibm-building-blocks](specifications/0-team-manager-ibm-building-blocks.md) then spawn a team of subagents and delegate tasks so they rapidly and concurrently:
+- [Spec 0:](specifications/0-team-manager-ibm-building-blocks.md) Teaches Bob 2.0 to spawn a subagent team then delegate tasks so they rapidly and concurrently turn the specs into solutions.
 - [Spec 1:](specifications/1-generate-dataset.md) Expand the initial product and user dataset
-- [Spec 2:](specifications/2-rag-chromadb.md) Embed product data and deploy to a vector DB
+- [Spec 2:](specifications/2-rag-opensearch.md) Embed product data and deploy to a vector DB (OpenSearch)
 - [Spec 3:](specifications/3-backend-apis.md) Architect and build all backend API endpoints
 - [Spec 4:](specifications/4-frontend-ui.md) Write all frontend code for Product Info, Shopping Cart, Account, Orders and Checkout
 - [Spec 5:](specifications/5-agentic-product-search.md) Deploy a product agent to watsonx Orchestrate for multi-turn product search
-- [Spec 6:](specifications/6-containerization-rancher.md) Containerize all services
-- [Spec 7:](specifications/7-quality-assurance.md) QA final solution
+- [Spec 6:](specifications/6-quality-assurance.md) QA final solution
 
-After Bob ask approval to execute several commands over ~30 mins, you'll have this website.  You can greatly reduce clicking approvals by adding this [list of approved execute commands](specifications/extras/approved_execute_commands.json) to your `~/.bob/settings/settings.json`.
+**2. Local Development**
+- [Spec 7:](specifications/7-containerization-rancher.md) Containerize all services for local development
+
+**3. Cloud Deployment**
+- [Spec 8:](specifications/8-terraform-openshift-cluster.md) Containerize all services then deploy to Red Hat OpenShift on IBM CLoud
+- [Spec 9:](specifications/9-containerize-openshift.md) Containerize all services then deploy to Red Hat OpenShift on IBM CLoud
+- [Spec 10:](specifications/10-embed-openshift.md) Push product embeddings to OpenSearch running in cluster on RHOS
+
+**4. Bob 2.0 will require multiple security approvals**
+After Bob asks approval to execute several commands over ~30 mins, you'll have this website.  You can greatly reduce clicking approvals by adding this [list of approved execute commands](specifications/extras/approved_execute_commands.json) to your `~/.bob/settings/settings.json`.
 
 <img width="750" src="https://github.com/user-attachments/assets/42203ac6-afdb-40f6-a5ad-31e43338db7e" />
 

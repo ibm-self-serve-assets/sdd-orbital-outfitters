@@ -12,7 +12,7 @@ Check each CLI tool before proceeding. If `ibmcloud` is missing, **stop and tell
 |------|------------|-------------------|
 | `ibmcloud` CLI | any | ❌ User must install manually (requires `sudo`) |
 | `terraform` | ≥ 1.5 | `brew install terraform` |
-| `oc` (OpenShift client) | ≥ 4.16 | `brew install openshift-cli` |
+| `oc` (OpenShift client) | ≥ 4.21 | `brew install openshift-cli` |
 | IBM Cloud provider | ~> 1.67 | pulled automatically by `terraform init` |
 
 **Required `ibmcloud` plugins** — install if missing:
@@ -58,8 +58,8 @@ Validate this variables are present in @.env with valid values.
 | Variable | Purpose |
 |----------|---------|
 | `IBMCLOUD_API_KEY` | IBM Cloud provider auth |
+| `IBM_CLOUD_RESOURCE_GROUP` | IBM Cloud resource group |
 | `ROKS_REGION` | Region for all resources |
-| `ROKS_RESOURCE_GROUP` | IBM Cloud resource group |
 | `ROKS_CLUSTER_NAME` | ROKS cluster name |
 | `ROKS_WORKER_FLAVOR` | Worker node type (`cxf.8x16`) |
 | `ROKS_WORKER_COUNT` | Workers per zone (2) |
@@ -107,7 +107,7 @@ If the VPC, subnets, cluster, or ICR namespace were provisioned outside Terrafor
 
 ```bash
 # Gather IDs first
-ibmcloud target -g $ROKS_RESOURCE_GROUP
+ibmcloud target -g $IBM_CLOUD_RESOURCE_GROUP
 ibmcloud oc clusters                          # → cluster ID
 ibmcloud is vpcs                              # → VPC ID  (requires vpc-infrastructure plugin)
 ibmcloud is subnets                           # → subnet IDs
@@ -141,7 +141,7 @@ terraform apply cluster.tfplan
 Authenticate `oc` using the cluster ID from Terraform output, verify nodes are `Ready`, then write the ingress hostname to `.env`:
 
 ```bash
-ibmcloud target -g $ROKS_RESOURCE_GROUP
+ibmcloud target -g $IBM_CLOUD_RESOURCE_GROUP
 ibmcloud oc cluster config --cluster $(terraform output -raw cluster_id) --admin
 oc get nodes
 ```
@@ -163,7 +163,7 @@ for i in json.load(sys.stdin):
 "
 
 # Worker security group is named kube-<cluster-id>
-ibmcloud is security-groups --resource-group-name $ROKS_RESOURCE_GROUP 2>&1 | grep kube-
+ibmcloud is security-groups --resource-group-name $IBM_CLOUD_RESOURCE_GROUP 2>&1 | grep kube-
 ```
 
 **Create the VPE:**
@@ -175,7 +175,7 @@ ibmcloud is endpoint-gateway-create \
   --new-reserved-ip '{"subnet":{"id":"<subnet-zone1-id>"}}' \
   --new-reserved-ip '{"subnet":{"id":"<subnet-zone2-id>"}}' \
   --sg <cluster-worker-sg-id> \
-  --resource-group-name $ROKS_RESOURCE_GROUP
+  --resource-group-name $IBM_CLOUD_RESOURCE_GROUP
 ```
 
 The output includes a **Service Endpoints** field — the private hostname follows the pattern:

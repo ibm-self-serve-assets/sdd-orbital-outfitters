@@ -24,6 +24,7 @@ Validate each web page's UI implementation against the design comps in @specific
   - **Absolute directory path:** The `website-screenshot-capture` requires an absolute directory path for where store its files.
   - **Unique path per page:** Create a unique @frontend/qa-screenshots/<web_page> for each <web_page> to prevent conflicts between pages.  
 2. Ensure UI based elements/flows function properly: product ordering, login, add to cart, check out, view orders, ....
+3.  Ensure that Unicode emoji icons were not used.  If any Unicode emoji icons were used, replace them with the correct icons provided for each page: @specifications/frontend/design-mockups/<web_page>/icons.
 
 ## 3. Test agentic search
 Test these questions using the agentic search solution. The agent should reply with answers unique to the input question and detailed about why these products are a good fit:

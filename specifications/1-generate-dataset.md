@@ -31,7 +31,7 @@ The dataset must be comprehensive to support a feature-rich website:
 
 ## Step 6: Import data into Postgres database schema
 Load data into the provided Postgres data with name = DB_NAME by creating a new schema as DB_SCHEMA=ai_retail_########, with a random generated 8 digit numbers. 
-* Store DB_SCHEMA in @.env
+* Store DB_SCHEMA in @.env then export for access via the CLI
 * Do not change existing data stored in other schemas.
 * Ensure your new schema does not interfere with any existing schemas.
 

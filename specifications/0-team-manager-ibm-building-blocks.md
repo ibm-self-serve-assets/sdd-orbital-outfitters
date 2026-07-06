@@ -15,7 +15,18 @@ To maximize concurrent work, spawn multiple subagents using the `spawn_subagent`
   * Blocking: cd backend && node index.js & sleep 4 echo "Backend started"
   * Non-blocking: cd backend && nohup node index.js > ../backend.log 2>&1 & sleep 4 && echo "Backend started" 
 
-## Step 1: Generate a team plan for writing requirements
+## Step 1: Convert .env to environment variables
+The @.env variables should be securly exported for access using local environment access commands.  Then these vars should only be accessed via these vars.  Ensure your subagents understand to:
+- Only use exported environment vars
+- Only open @.env if adding new vars.
+- Always export any added vars after adding to @.env
+
+Execute this command:
+```bash
+set -a && source .env && set +a
+```
+
+## Step 2: Generate a team plan for writing requirements
 Read the @specification/ to understand your team's mission, but do not read related sub-files or images yourself. To maximize efficiency, you should generate a plan for how to spawn your subagent team so they work concurrently to convert @specifications/ into technical @requirement/
 
 ### Convert specifications into concurrent requirements
@@ -26,13 +37,13 @@ Balance concurrency with conflict avoidance while converting specifications into
 ### Ensure skills are re-read by each subagent
 Everytime you launch a subagent, it begin with a blank context.  This means the subagent must re-load all required skills.  When generating requirements, ensure that skills mentioned in teh specs or otherwise found to be useful are mentioned in the requirements as ones to reload.
 
-## Step 2: Concurrently execute requirements
+## Step 3: Concurrently execute requirements
 As with converting @specifications/ into @requirements/, spawn a team of well-defined specialists to concurrently build your application according to the technical requirement.
 
-## Step 3: Concurrently QA and close open @issues/
+## Step 4: Concurrently QA and close open @issues/
 You should create specialized QA subagents to validate completed requirements and resolve open @issues/ prior to starting the next set of requirements. For example, QA backend functionality prior to building frontend components connecting to those backend endpoints. QA engineer agent should file @issues for resolution.
 
-## Step 4: Wrapping up
+## Step 5: Wrapping up
 - Summarize what was built.
 - Make recommendations on where confusion about the @specifications/ could be improved for faster execution.
 - Provide steps on how to start the application.

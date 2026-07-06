@@ -9,7 +9,7 @@ No specific skills are required for this specification. Load any skills that see
 The following guidelines must be followed when building the backend API endpoints:
 * Use Vite as a lightweight local development server and asset bundler. 
 * Use axios for external HTTP calls (e.g. watsonx Orchestrate). Use the chromadb npm client for network calls to ChromaDB.
-* All environment variables must be read from @.env and not included in code
+* All environment variables must be read from exported environment vars and not included in code
 * Create all new files and folders under [./backend](./backend).
 * Use JWT to maintain sessions.  
 * Use snake_case variables in JSON for accepting/sending data to/from the server endpoints

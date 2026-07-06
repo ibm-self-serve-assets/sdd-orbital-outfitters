@@ -52,8 +52,8 @@ This spec provisions **infrastructure only**. Kubernetes workloads are handled i
 | Image builds and `docker push` | — | ✅ |
 | Frontend image with `VITE_BACKEND_URL` build arg | — | ✅ (needs `OCP_APP_HOSTNAME` from this spec) |
 
-## Required @.env variables
-Validate this variables are present in @.env with valid values.
+## Required Environment vars
+Validate these are present with valid values.
 
 | Variable | Purpose |
 |----------|---------|
@@ -217,8 +217,7 @@ CLUSTER_DB_PASSWORD=<secure-password>
 ```
 
 ## Output @.env variables
-
-Add `OCP_APP_HOSTNAME` to @.env. Required for downstream Specifications (e.g. when deploying containers to OpenShift).
+Add `OCP_APP_HOSTNAME` to @.env then export for access via the CLI. Required for downstream Specifications (e.g. when deploying containers to OpenShift).
 
 ```bash
 echo "OCP_APP_HOSTNAME=$(terraform output -raw cluster_ingress_hostname)" >> ../../.env

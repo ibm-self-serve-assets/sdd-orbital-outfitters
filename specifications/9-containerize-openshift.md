@@ -3,7 +3,7 @@ Deploy the Orbital Suppliers application to the ROKS cluster provisioned earlier
 
 ## Prerequisites
 Check each prerequisite before writing any code. Stop and tell the user if any are missing.
-- Ensure `OCP_APP_HOSTNAME` is in @.env before proceeding.
+- Ensure `OCP_APP_HOSTNAME` is available as a previously exported environment var before proceeding.
 
 Load the following skills plus any others that seem relevant — new ones may be added over time:
 - `ibm-cloud` — `ibmcloud` CLI commands, ICR login, `oc` cluster targeting

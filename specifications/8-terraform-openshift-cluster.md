@@ -48,12 +48,12 @@ This spec provisions **infrastructure only**. Kubernetes workloads are handled i
 | COS remote state bucket | ✅ | — |
 | K8s Namespace, Deployments, Services, Routes | — | ✅ |
 | Secrets (`DB_PASSWORD`, `JWT_SECRET`, `WO_API_KEY`) | — | ✅ |
-| PVC for ChromaDB | — | ✅ |
+| PVC for OpenSearch | — | ✅ |
 | Image builds and `docker push` | — | ✅ |
 | Frontend image with `VITE_BACKEND_URL` build arg | — | ✅ (needs `OCP_APP_HOSTNAME` from this spec) |
 
-## Required Environment vars
-Validate these are present with valid values.
+## Required @.env variables
+Validate this variables are present in @.env with valid values.
 
 | Variable | Purpose |
 |----------|---------|
@@ -65,7 +65,6 @@ Validate these are present with valid values.
 | `ROKS_WORKER_COUNT` | Workers per zone (2) |
 | `ROKS_OCP_VERSION` | OCP version (`4.16_openshift`) |
 | `ICR_NAMESPACE` | Container registry namespace |
-
 
 ## Requirements
 
@@ -191,33 +190,18 @@ DB_HOST_PRIVATE=<private-hostname-from-vpe-output>
 
 > **Which DB instance?** The `<db-guid>` in your `DB_HOST` is the first segment of the hostname (e.g. `fa089a8d` from `fa089a8d-c3ba-....databases.appdomain.cloud`). Match that to the instance GUID in the listing above — there may be multiple PostgreSQL instances in the account.
 
-**Create a dedicated cluster DB user** (run once, as your DB admin):
+No dedicated cluster DB user is required. The same `DB_USER` / `DB_PASSWORD` credentials from your IBM Cloud PostgreSQL instance work over the VPE private connection. No schema grants need to be run.
+
+Once the VPE is created, add `DB_HOST_PRIVATE` to `.env` using the actual private hostname:
 ```bash
-# IBM CDB password rules: min 15 chars, upper+lower+digit, only - and _ special chars
-ibmcloud cdb deployment-user-create "<db-instance-name>" \
-  "orbital_app" "<secure-password>"
+DB_HOST_PRIVATE=fa089a8d-c3ba-41a6-b09e-744439606f53.bn2a2uid0up8mv7mv2ig.private.databases.appdomain.cloud
 ```
 
-Then connect as admin and grant schema access:
-```sql
-GRANT USAGE ON SCHEMA ai_retail_83032671 TO orbital_app;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES
-  IN SCHEMA ai_retail_83032671 TO orbital_app;
-GRANT USAGE, SELECT ON ALL SEQUENCES
-  IN SCHEMA ai_retail_83032671 TO orbital_app;
-ALTER DEFAULT PRIVILEGES IN SCHEMA ai_retail_83032671
-  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO orbital_app;
-ALTER DATABASE ibmclouddb SET search_path TO ai_retail_83032671, public;
-```
-
-Add the cluster credentials to `.env` (separate from the local-dev IAM credential):
-```bash
-CLUSTER_DB_USER=orbital_app
-CLUSTER_DB_PASSWORD=<secure-password>
-```
+> **Note:** `DB_USER` and `DB_PASSWORD` are unchanged — the same credentials used to seed the database work over the VPE private connection.
 
 ## Output @.env variables
-Add `OCP_APP_HOSTNAME` to @.env then export for access via the CLI. Required for downstream Specifications (e.g. when deploying containers to OpenShift).
+
+Add `OCP_APP_HOSTNAME` to @.env. Required for downstream Specifications (e.g. when deploying containers to OpenShift).
 
 ```bash
 echo "OCP_APP_HOSTNAME=$(terraform output -raw cluster_ingress_hostname)" >> ../../.env

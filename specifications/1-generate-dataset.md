@@ -2,7 +2,8 @@
 Starting from an initial draft of the product dataset for Orbital Suppliers' space-related accessories, you need to generate the remaining data.
 
 ## Prerequisites
-Review available skills and load any that seem relevant — new ones may be added over time.
+
+No specific skills are required for this specification. Load any skills that seem relevant — new ones may be added over time.
 
 ## Step 1: Review the initial dataset provided
 A partial dataset has been provided in @specifications/data.  
@@ -31,7 +32,7 @@ The dataset must be comprehensive to support a feature-rich website:
 
 ## Step 6: Import data into Postgres database schema
 Load data into the provided Postgres data with name = DB_NAME by creating a new schema as DB_SCHEMA=ai_retail_########, with a random generated 8 digit numbers. 
-* Store DB_SCHEMA in @.env then export for access via the CLI
+* Store DB_SCHEMA in @.env
 * Do not change existing data stored in other schemas.
 * Ensure your new schema does not interfere with any existing schemas.
 

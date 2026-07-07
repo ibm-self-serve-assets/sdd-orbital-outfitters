@@ -1,5 +1,5 @@
-# Quality Assurance
-The following specification outlines the key functionality that must be validated for functionality prior to release.
+# Quality Assurance of Backend API Endpoints and Frontend UI
+The following specification outlines the key functionality that must be QA prior to release.
 
 ## Prerequisites
 1. Ensure you have access to the `website-screenshot-capture` tool, then ask the user to install the [@just-every/mcp-screenshot-website-fast](https://github.com/just-every/mcp-screenshot-website-fast) screenshot tool.  Without this tool, you will be unable to accurately assess the quality of the website UI. 
@@ -25,6 +25,7 @@ Validate each web page's UI implementation against the design comps in @specific
   - **Unique path per page:** Create a unique @frontend/qa-screenshots/<web_page> for each <web_page> to prevent conflicts between pages.  
 2. Ensure UI based elements/flows function properly: product ordering, login, add to cart, check out, view orders, ....
 3.  Ensure that Unicode emoji icons were not used.  If any Unicode emoji icons were used, replace them with the correct icons provided for each page: @specifications/frontend/design-mockups/<web_page>/icons.
+
 
 ## 3. Test agentic search
 Test these questions using the agentic search solution. The agent should reply with answers unique to the input question and detailed about why these products are a good fit:

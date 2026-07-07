@@ -3,7 +3,7 @@ Deploy the Orbital Suppliers application to the ROKS cluster provisioned earlier
 
 ## Prerequisites
 Check each prerequisite before writing any code. Stop and tell the user if any are missing.
-- Ensure `OCP_APP_HOSTNAME` is available as a previously exported environment var before proceeding.
+- Ensure `OCP_APP_HOSTNAME` is in @.env before proceeding.
 
 Load the following skills plus any others that seem relevant — new ones may be added over time:
 - `ibm-cloud` — `ibmcloud` CLI commands, ICR login, `oc` cluster targeting
@@ -39,7 +39,7 @@ If neither is available, **stop and tell the user** — image builds cannot proc
 |---------|---------|-------|
 | `frontend` | Nginx serving React SPA | `VITE_BACKEND_URL` must be **empty** on OpenShift — browser uses relative URLs proxied by nginx to the backend Service |
 | `backend` | Node.js / Express | Loads `all-MiniLM-L6-v2` ONNX model on first request. Model must be pre-fetched into the image — no internet egress from cluster. |
-| `chromadb` | ChromaDB (Python) | Needs a PVC — vector segments must survive pod restarts |
+| `opensearch` | OpenSearch 2.13.0 | Needs a PVC — index segments must survive pod restarts. **Must be pushed to ICR** — the cluster has no internet egress and cannot pull from Docker Hub directly. Build via `Dockerfile.vector-db` and push to ICR before deploying. |
 | Database | External | IBM Cloud PostgreSQL — accessed via **private VPE endpoint** (see Spec 8 Step 4). The public hostname is unreachable from inside the cluster. |
 | WO Agent | External | watsonx Orchestrate — use the **private endpoint**: `https://api.private.<region>.watson-orchestrate.cloud.ibm.com`. The public `api.<region>.watson-orchestrate.cloud.ibm.com` is unreachable from the cluster. |
 
@@ -53,7 +53,7 @@ If neither is available, **stop and tell the user** — image builds cannot proc
 |-----|---------|-------|
 | `frontend` | 64 MB | 128 MB |
 | `backend` | 512 MB | 768 MB |
-| `chromadb` | 256 MB | 512 MB |
+| `opensearch` | 768 MB | 1 GB |
 
 ## Required `Dockerfile.*` files
 
@@ -68,6 +68,7 @@ Generate these files:
 
 **`Dockerfile.backend`**
 - Use `FROM node:20` (Debian-based) — **not** `node:20-alpine`. The `onnxruntime-node` package bundles glibc-linked native binaries that are incompatible with Alpine's musl libc.
+- Before writing the `CMD`, check `backend/package.json` for the `"main"` field and use that value as the entry point. Do not assume a filename.
 
 **`Dockerfile.frontend`**
 - Use `FROM --platform=$BUILDPLATFORM node:20-alpine AS builder` for the build stage. This runs `vite build` on the native host architecture, avoiding a fatal Go runtime (esbuild) QEMU crash when cross-compiling to `linux/amd64` on Apple Silicon.
@@ -77,7 +78,15 @@ Generate these files:
 - Add `absolute_redirect off;` inside the nginx `server` block. The OpenShift Route terminates TLS externally — nginx sees only plain HTTP on port 8080 and will emit `http://hostname:8080` absolute `Location` headers on any trailing-slash redirect (e.g. `/products` → `/products/`) unless this directive is set. The browser blocks those redirects as mixed content.
 
 **`Dockerfile.vector-db`**
-- Standard `python:3.11-slim` — no special requirements.
+- Use `FROM opensearchproject/opensearch:2.13.0` as the base image. Pull it locally (`docker pull opensearchproject/opensearch:2.13.0`) and push it to ICR under `vector-db:latest` — **do not** reference Docker Hub in any pod spec; the cluster has no internet egress.
+- Set the required env vars in the Dockerfile (`discovery.type=single-node`, `DISABLE_SECURITY_PLUGIN=true`, `DISABLE_INSTALL_DEMO_CONFIG=true`, `OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m`) and expose ports `9200` and `9300`.
+- Add `imagePullPolicy: Always` to the StatefulSet container spec so the node always pulls the latest ICR image rather than using a stale local cache.
+- **OpenShift SCC:** OpenSearch runs as UID 1000, which falls outside ROKS's `restricted-v2` UID range (`1000640000+`). Grant `anyuid` to the namespace's `default` service account before deploying:
+  ```bash
+  oc adm policy add-scc-to-user anyuid system:serviceaccount:orbital-suppliers:default
+  ```
+  Do **not** add `runAsNonRoot: true`, `capabilities.drop`, or `seccompProfile` constraints to the pod spec — they conflict with `anyuid` and will prevent OpenSearch from starting.
+- **PVC permissions:** Set `securityContext.fsGroup: 1000` on the StatefulSet pod spec. Without it, a freshly provisioned RWO block volume on ROKS is root-owned and OpenSearch (UID 1000) cannot write to it, causing `AccessDeniedException: /usr/share/opensearch/data/nodes` on startup.
 
 ## Requirements
 
@@ -97,15 +106,15 @@ Generate these files:
 
   `ibmcloud cr login` prints the correct hostname on login (`The registry is 'us.icr.io'`) — use that value, not the region string.
 - Use `kustomize` overlays for dev/prod differences. Store base manifests under `openshift/manifests/base/` and overlays under `openshift/manifests/overlays/`.
-- Namespace: `orbital-suppliers`. Resources: `Deployment` (frontend, backend), `StatefulSet` (chromadb), `Service` (ClusterIP for each), `Route` (TLS edge → frontend), `ConfigMap` (`app-config`), `Secret` (`app-secrets`), PVC (`chromadb-data`, 5 GB RWO block).
+- Namespace: `orbital-suppliers`. Resources: `Deployment` (frontend, backend), `StatefulSet` (opensearch), `Service` (ClusterIP for each), `Route` (TLS edge → frontend), `ConfigMap` (`app-config`), `Secret` (`app-secrets`), PVC (`opensearch-data`, 5 GB RWO block).
 - Split `.env` into:
-  - **`ConfigMap` `app-config`** — non-sensitive: `BACKEND_PORT`, `CHROMA_HOST`, `CHROMA_PORT`, `CHROMA_COLLECTION_NAME`, `DB_HOST` (**use `DB_HOST_PRIVATE` from `.env`** — not `DB_HOST`; the public hostname is unreachable from inside the cluster), `DB_PORT`, `DB_NAME`, `DB_SCHEMA`, `DB_SSL`
-  - **`Secret` `app-secrets`** — sensitive: `DB_USER` (**use `CLUSTER_DB_USER`**), `DB_PASSWORD` (**use `CLUSTER_DB_PASSWORD`**), `JWT_SECRET`, `PASSWORD_HASH_SECRET`, `SESSION_SECRET`, `WO_API_KEY`, `WO_INSTANCE_URL`, `WO_AGENT_ID`, `WO_ENVIRONMENT_ID`
-- `CLUSTER_DB_USER` / `CLUSTER_DB_PASSWORD` are the dedicated least-privilege cluster credentials created in Spec 8 Step 4. The `DB_USER` / `DB_PASSWORD` in `.env` are IAM service credentials that only work on the public endpoint — never put them in `app-secrets`.
+  - **`ConfigMap` `app-config`** — non-sensitive: `BACKEND_PORT`, `OPENSEARCH_HOST`, `OPENSEARCH_PORT`, `OPENSEARCH_INDEX`, `DB_HOST` (**use `DB_HOST_PRIVATE` from `.env`** — not `DB_HOST`; the public hostname is unreachable from inside the cluster), `DB_PORT`, `DB_NAME`, `DB_SCHEMA`, `DB_SSL`
+  - **`Secret` `app-secrets`** — sensitive: `DB_USER`, `DB_PASSWORD`, `JWT_SECRET`, `PASSWORD_HASH_SECRET`, `SESSION_SECRET`, `WO_API_KEY`, `WO_INSTANCE_URL`, `WO_AGENT_ID`, `WO_ENVIRONMENT_ID`
+- `DB_USER` / `DB_PASSWORD` are the same IBM Cloud IAM credentials used to seed the database — they work over the VPE private connection. No separate cluster credentials are needed.
 - Secrets must be created via `oc create secret` — never committed to git.
 - TLS on the Route uses OpenShift edge termination — no cert management inside pods.
 - `deploy.sh` must be made executable and committed with the correct mode: `git update-index --chmod=+x openshift/deploy.sh`.
-- `deploy.sh` secret creation must use `CLUSTER_DB_USER` / `CLUSTER_DB_PASSWORD`, not `DB_USER` / `DB_PASSWORD`.
+- `deploy.sh` secret creation uses `DB_USER` / `DB_PASSWORD` — the same credentials from `.env`.
 - **Image registry restriction:** The cluster pulls images only from ICR (via VPE). Do not reference Docker Hub, quay.io, Red Hat registry, or any other public registry in any container spec — including init containers and sidecars. All images must be pushed to ICR, or reuse an app image that already contains the needed tooling.
 - Write simple docs under `openshift/docs/` (`setup.md` and `configuration.md`, ≤ 3 pages each).
 

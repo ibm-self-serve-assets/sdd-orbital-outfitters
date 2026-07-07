@@ -109,8 +109,9 @@ Generate these files:
 - Namespace: `orbital-suppliers`. Resources: `Deployment` (frontend, backend), `StatefulSet` (opensearch), `Service` (ClusterIP for each), `Route` (TLS edge → frontend), `ConfigMap` (`app-config`), `Secret` (`app-secrets`), PVC (`opensearch-data`, 5 GB RWO block).
 - Split `.env` into:
   - **`ConfigMap` `app-config`** — non-sensitive: `BACKEND_PORT`, `OPENSEARCH_HOST`, `OPENSEARCH_PORT`, `OPENSEARCH_INDEX`, `DB_HOST` (**use `DB_HOST_PRIVATE` from `.env`** — not `DB_HOST`; the public hostname is unreachable from inside the cluster), `DB_PORT`, `DB_NAME`, `DB_SCHEMA`, `DB_SSL`
-  - **`Secret` `app-secrets`** — sensitive: `DB_USER`, `DB_PASSWORD`, `JWT_SECRET`, `PASSWORD_HASH_SECRET`, `SESSION_SECRET`, `WO_API_KEY`, `WO_INSTANCE_URL`, `WO_AGENT_ID`, `WO_ENVIRONMENT_ID`
+  - **`Secret` `app-secrets`** — sensitive: `DB_USER`, `DB_PASSWORD`, `JWT_SECRET`, `PASSWORD_HASH_SECRET`, `SESSION_SECRET`, `USER_PASSWORD`, `WO_API_KEY`, `WO_INSTANCE_URL`, `WO_AGENT_ID`, `WO_ENVIRONMENT_ID`
 - `DB_USER` / `DB_PASSWORD` are the same IBM Cloud IAM credentials used to seed the database — they work over the VPE private connection. No separate cluster credentials are needed.
+- For `WO_INSTANCE_URL` in `app-secrets`, use `WO_INSTANCE_URL_PRIVATE` from `.env` — the public `WO_INSTANCE_URL` is unreachable from cluster pods. `deploy.sh` handles this automatically with `${WO_INSTANCE_URL_PRIVATE:-$WO_INSTANCE_URL}`.
 - Secrets must be created via `oc create secret` — never committed to git.
 - TLS on the Route uses OpenShift edge termination — no cert management inside pods.
 - `deploy.sh` must be made executable and committed with the correct mode: `git update-index --chmod=+x openshift/deploy.sh`.
@@ -135,6 +136,50 @@ oc secrets link default all-icr-io --for=pull -n orbital-suppliers
 ```
 
 Pods will hit `ImagePullBackOff` without this step.
+
+## nginx proxy
+
+The frontend uses `VITE_BACKEND_URL=""` so all API calls go to the same origin — nginx must proxy them to the backend Service. Without this, nginx returns the React SPA (`index.html`) for every API path, causing `405 Method Not Allowed` on POST requests and empty responses on GET requests (including `product_image_url` fields never reaching the browser).
+
+All API calls from the frontend must use the `/api/` prefix so nginx can distinguish them from SPA routes. Set the axios `baseURL` to `/api` (or `VITE_BACKEND_URL` when set for local dev):
+
+```js
+// frontend/src/api/axiosClient.js
+baseURL: import.meta.env.VITE_BACKEND_URL ? import.meta.env.VITE_BACKEND_URL : '/api',
+```
+
+Then proxy `/api/` to the backend in `openshift/nginx.conf`, stripping the prefix:
+
+```nginx
+location /api/ {
+    proxy_pass http://backend:3001/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+> **Do not** proxy individual route names like `/orders` or `/products` directly — these are also React SPA routes and nginx will intercept browser navigations to those pages, returning `{"error":"No token provided"}` instead of `index.html`.
+
+Rebuild and push the frontend image after any change to `nginx.conf` or `axiosClient.js`.
+
+Also set cache headers to prevent stale JS bundles after redeployment:
+
+```nginx
+# Hashed static assets — safe to cache for 1 year (Vite fingerprints filenames)
+location /assets/ {
+    expires 1y;
+    add_header Cache-Control "public, immutable";
+}
+
+# index.html — never cache; ensures browsers always load the latest JS bundle
+location = /index.html {
+    add_header Cache-Control "no-store";
+}
+```
+
+Without `no-store` on `index.html`, browsers cache the old entry point and continue loading a stale JS bundle after deploys — users see the old version until they clear their cache.
 
 ## Kustomize gotchas
 

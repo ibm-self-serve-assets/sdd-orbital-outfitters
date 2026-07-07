@@ -29,7 +29,7 @@ Validate each web page's UI implementation against the design comps in @specific
 
 ## 3. Test agentic search
 Test these questions using the agentic search solution. The agent should reply with answers unique to the input question and detailed about why these products are a good fit:
-1. What products do you recommend for entertaining my dog during the at trip?
+1. What products do you recommend for entertaining my dog during a trip?
 2. What healthcare products are available for young adults?
 3. Are their special communication devices for people with hearing loss?
 

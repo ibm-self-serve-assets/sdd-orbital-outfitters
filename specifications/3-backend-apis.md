@@ -7,8 +7,9 @@ No specific skills are required for this specification. Load any skills that see
 
 ## Requirements to follow
 The following guidelines must be followed when building the backend API endpoints:
-* Use Vite as a lightweight local development server and asset bundler. 
-* Use axios for external HTTP calls (e.g. watsonx Orchestrate). Use the chromadb npm client for network calls to ChromaDB.
+* Use Vite as a lightweight local development server and asset bundler.
+* Use axios for external HTTP calls (e.g. watsonx Orchestrate). Use the `@opensearch-project/opensearch` npm client for network calls to OpenSearch (see Spec 2.1).
+* When calling the IBM IAM token endpoint (`/identity/token`) from within an OpenShift cluster, use the private endpoint `https://private.iam.cloud.ibm.com` — the public `https://iam.cloud.ibm.com` is not reachable from ROKS pods (no internet egress).
 * All environment variables must be read from @.env and not included in code
 * Create all new files and folders under [./backend](./backend).
 * Use JWT to maintain sessions.  

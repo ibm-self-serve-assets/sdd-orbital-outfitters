@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+</head>
+<body>
+
+  <div class="site-layout-wrapper">
+    <!-- Shared Sidebar component across all pages -->
+    {{ partial "sidebar.html" . }}
+    
+    <main class="main-content-window">
+      <!-- Unique page layouts inject their custom code blocks here -->
+      {{ block "main" . }}{{ end }}
+    </main>
+  </div>
+
+  <script src="{{ "js/filter.js" | relURL }}"></script>
+</body>
+</html>

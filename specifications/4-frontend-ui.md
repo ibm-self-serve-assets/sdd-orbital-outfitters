@@ -54,7 +54,7 @@ The following guidelines must be followed when building the frontend:
 |---|---|---|
 | **Local (native)** | `http://localhost:3001` | Browser calls backend directly — correct since both run on localhost |
 | **Rancher (containers)** | `http://localhost:3001` | Browser calls backend via the published Docker port — correct since ports are mapped to localhost |
-| **OpenShift** | `""` (empty string) | Browser uses relative URLs (`/api/...`) which nginx proxies to the `backend` Service internally. **Never set this to the OpenShift hostname** — the browser would bypass nginx and hit the backend directly over an internal port, causing a mixed-content error. |
+| **OpenShift** | `""` (empty string) | `axiosClient.js` converts `""` to `/api` as the actual `baseURL`. All API calls become `/api/<route>`, which nginx proxies to the `backend` Service stripping the prefix. **Never set this to the OpenShift hostname** — the browser would bypass nginx and hit the backend directly over an internal port, causing a mixed-content error. |
  
 ## Cleanup
 - Write documentation but keep it super simple and non-verbose.  Max of 3-4 pages per .md file.  Place these into [frontend/docs](frontend/docs).

@@ -23,12 +23,21 @@ The endpoints to build are documented in @specifications/backend/api_endpoints.m
   * Orders are accessible if logged-in.
 
 ## Step 2: Add /agentSearch endpoint
-Create an `/agentSearch` endpoint that:  
+Create an `/agentSearch` endpoint that:
 1. Accepts a user's natural language search query
 2. Embed the user's query to search the vector DB for the top 4 results including metadata
 3. Passes the user query plus vector DB results to a `product_search` agent using watsonx Orchestrate's REST API
 4. The agent replies in natural language describing the products.
 5. Return the agent's natural language response plus the matching product results as `{agent_response, products[]}`.
+
+**IAM token endpoint — use the right URL for each environment:**
+
+| Environment | IAM endpoint | Notes |
+|---|---|---|
+| Local / Rancher | `https://iam.cloud.ibm.com/identity/token` | Public internet — reachable from your machine |
+| OpenShift (ROKS) | `https://private.iam.cloud.ibm.com/identity/token` | Private IBM Cloud network — the public endpoint times out from cluster pods |
+
+Use `WO_INSTANCE_URL_PRIVATE` (from `.env`) as the watsonx Orchestrate base URL when running in-cluster. The public `WO_INSTANCE_URL` is also unreachable from ROKS pods.
 
 ## Cleaning up
 * Write documentation but keep it super simple and non-verbose.  Max of 3-4 pages per .md file. Place these into /backend/docs.

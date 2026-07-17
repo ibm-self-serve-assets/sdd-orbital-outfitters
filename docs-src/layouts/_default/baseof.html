@@ -7,6 +7,8 @@
 </head>
 <body>
 
+  {{ partial "global-header.html" (dict "showBack" false) }}
+
   <div class="site-layout-wrapper">
     <!-- Shared Sidebar component across all pages -->
     {{ partial "sidebar.html" . }}
@@ -17,6 +19,7 @@
     </main>
   </div>
 
+  <script>window.DEMOS_URL = "{{ "data/demos.json" | relURL }}";</script>
   <script src="{{ "js/filter.js" | relURL }}"></script>
 </body>
 </html>

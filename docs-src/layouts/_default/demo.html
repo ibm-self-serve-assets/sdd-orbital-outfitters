@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+</head>
+<body>
+
+  {{ partial "global-header.html" (dict "showBack" true) }}
+
+  <!-- ==================== DEMO DETAIL CONTENT ==================== -->
+  <main class="demo-detail-page">
+    <div class="demo-detail-content" id="demoDetailContent">
+      <!-- populated by JS -->
+    </div>
+  </main>
+
+  <script>window.DEMOS_URL = "{{ "data/demos.json" | relURL }}";</script>
+  <script src="{{ "js/filter.js" | relURL }}"></script>
+</body>
+</html>

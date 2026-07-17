@@ -165,12 +165,12 @@ details[open] .accordion-header::after {
 }
 
 /* Content Grid Layout Arrangement */
-.cards-header {
-  font-size: 18px;
+.demo-cards-header {
+  font-size: 22px;
   margin-bottom: 24px;
 }
 
-.cards-wrapper {
+.demo-cards-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
@@ -225,3 +225,303 @@ details[open] .accordion-header::after {
   text-transform: capitalize;
   white-space: nowrap;
 }
+
+/* ==================== GLOBAL HEADER ==================== */
+.global-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #161616;
+  color: #ffffff;
+  padding: 0 24px;
+  height: 48px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.global-header-title {
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-right: auto;
+}
+
+.global-header-title strong {
+  font-weight: 600;
+}
+
+.contact-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 4px 0;
+  letter-spacing: 0.01em;
+}
+
+.contact-btn:hover {
+  text-decoration: underline;
+}
+
+/* ==================== CONTACT DRAWER ==================== */
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+}
+
+.drawer-overlay.is-open {
+  display: block;
+}
+
+.contact-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 480px;
+  max-width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.contact-drawer.is-open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.drawer-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #161616;
+}
+
+.drawer-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #525252;
+  line-height: 1;
+  padding: 4px;
+}
+
+.drawer-close:hover {
+  color: #161616;
+}
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 24px;
+}
+
+.drawer-section {
+  padding: 24px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.drawer-section:last-child {
+  border-bottom: none;
+}
+
+.drawer-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #161616;
+  margin: 0 0 20px 0;
+}
+
+.drawer-label {
+  display: block;
+  font-size: 12px;
+  color: #525252;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+.drawer-label:first-of-type {
+  margin-top: 0;
+}
+
+.required {
+  color: #da1e28;
+}
+
+.drawer-select,
+.drawer-input,
+.drawer-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: #f4f4f4;
+  border: none;
+  border-bottom: 1px solid #8d8d8d;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #161616;
+  outline: none;
+}
+
+.drawer-select:focus,
+.drawer-input:focus,
+.drawer-textarea:focus {
+  border-bottom-color: #0f62fe;
+  outline: 2px solid #0f62fe;
+  outline-offset: -2px;
+}
+
+.drawer-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23525252' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  cursor: pointer;
+}
+
+.drawer-textarea {
+  resize: none;
+  height: 96px;
+}
+
+.drawer-row {
+  display: flex;
+  gap: 16px;
+}
+
+.drawer-row .drawer-field {
+  flex: 1;
+}
+
+.drawer-field .drawer-label {
+  margin-top: 16px;
+}
+
+.drawer-privacy {
+  font-size: 12px;
+  color: #525252;
+  line-height: 1.5;
+  margin: 20px 0 0;
+}
+
+.drawer-link {
+  color: #0f62fe;
+  text-decoration: none;
+}
+
+.drawer-link:hover {
+  text-decoration: underline;
+}
+
+.drawer-footer {
+  display: flex;
+  flex-shrink: 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.drawer-btn-cancel,
+.drawer-btn-submit {
+  flex: 1;
+  padding: 16px;
+  font-size: 14px;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.drawer-btn-cancel {
+  background: #393939;
+  color: #ffffff;
+}
+
+.drawer-btn-cancel:hover {
+  background: #474747;
+}
+
+.drawer-btn-submit {
+  background: #0f62fe;
+  color: #ffffff;
+}
+
+.drawer-btn-submit:hover {
+  background: #0353e9;
+}
+
+
+/* ==================== CARD AS LINK ==================== */
+a.card-item {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+}
+
+/* ==================== DEMO DETAIL PAGE ==================== */
+.demo-detail-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.demo-detail-content .pill-container {
+  margin-bottom: 20px;
+}
+
+.demo-detail-title {
+  font-size: 36px;
+  font-weight: 400;
+  color: #161616;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+}
+
+.demo-detail-summary {
+  font-size: 18px;
+  color: #525252;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0;
+}
+
+.demo-detail-missing {
+  color: #525252;
+  font-size: 16px;
+}
+
+/* Back link in header */
+.global-header-back {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: inherit;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.global-header-back:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+

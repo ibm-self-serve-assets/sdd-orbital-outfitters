@@ -1,18 +1,5 @@
 {{ define "main" }}
   <!-- Layout for the Homepage Explorer containing all filterable cards -->
-  <div class="cards-header">Explore interactive use cases below and access sample code to get started quickly.</div>
-  <div class="cards-wrapper">
-
-    {{ range .Site.RegularPages }}
-      <div class="card-item" data-tags="{{ delimit .Params.tags " " | lower }}">
-        <div class="pill-container">
-          {{ range .Params.tags }}
-            <span class="pill-tag">{{ . }}</span>
-          {{ end }}
-        </div>
-        <h4>{{ .Title }}</h4>
-        <p>{{ .Summary }}</p>
-      </div>
-    {{ end }}
-  </div>
+  <div class="demo-cards-header">Explore interactive use cases below and access sample code to get started quickly.</div>
+  <div id="demo-cards-wrapper" class="demo-cards-wrapper"></div>
 {{ end }}

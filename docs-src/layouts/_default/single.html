@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Static left nav component template block inserted from partials -->
+    {{ partial "sidebar.html" . }}
+    
+    <!-- Main Right Content Window Grid -->
+    <main class="content-grid">
+      <h2>Explore Architecture Building Blocks</h2>
+      <div class="cards-wrapper">
+        
+        <!-- Loop through all documentation pages found inside /content -->
+        {{ range .Site.RegularPages }}
+          <div class="card-item" data-tags="{{ delimit .Params.tags " " | lower }}">
+            <div class="pill-container">
+              <!-- Render visual keyword pills over the text card summary layout -->
+              {{ range .Params.tags }}
+                <span class="pill-tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            <h4>{{ .Title }}</h4>
+            <p>{{ .Summary }}</p>
+          </div>
+        {{ range }}
+
+      </div>
+    </main>
+  </div>
+
+  <script src="{{ "js/filter.js" | relURL }}"></script>
+</body>
+</html>

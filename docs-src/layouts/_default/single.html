@@ -7,20 +7,40 @@
 </head>
 <body>
 
-  <div class="container">
-    <!-- Static left nav component template block inserted from partials -->
+  <!-- 1. Global Page Layout Wrapper Container -->
+  <div class="site-layout-wrapper">
+    
+    <!-- Left Sidebar Column Component -->
     {{ partial "sidebar.html" . }}
     
-    <!-- Main Right Content Window Grid -->
-    <main class="content-grid">
-      <h2>Explore Architecture Building Blocks</h2>
+    <!-- 2. Right Main Content Column Component -->
+    <main class="main-content-window">
+      
+      <!-- Top Introduction Banner Area -->
+      <section class="intro-banner">
+        <h1>Building Blocks</h1>
+        <p class="lead-text">IBM Technology Building Blocks are pre-built, embeddable capabilities spanning AI, Data, and Automation — designed to help teams rapidly infuse advanced capabilities into their applications.</p>
+        <a href="#" class="inline-link">Learn more about the Building Blocks →</a>
+      </section>
+
+      <!-- Interactive Helper Profile Block Layout -->
+      <div class="partner-card">
+        <div class="avatar-block">
+          <!-- Replace with actual Bob avatar asset path later -->
+          <span class="avatar-placeholder">🤖</span> 
+        </div>
+        <div class="partner-text">
+          <h3>Bob — Your Build Partner</h3>
+          <p>IBM's AI-first development partner for the entire software lifecycle. Explore Building Blocks use cases below, and leverage Bob—your dedicated build partner—to tailor solutions and put these capabilities into action.</p>
+          <a href="#" class="cta-link">Try Bob →</a>
+        </div>
+      </div>
+
+      <!-- Content Tiles Filtering Target Area Grid -->
       <div class="cards-wrapper">
-        
-        <!-- Loop through all documentation pages found inside /content -->
         {{ range .Site.RegularPages }}
           <div class="card-item" data-tags="{{ delimit .Params.tags " " | lower }}">
             <div class="pill-container">
-              <!-- Render visual keyword pills over the text card summary layout -->
               {{ range .Params.tags }}
                 <span class="pill-tag">{{ . }}</span>
               {{ end }}
@@ -29,8 +49,8 @@
             <p>{{ .Summary }}</p>
           </div>
         {{ end }}
-
       </div>
+
     </main>
   </div>
 

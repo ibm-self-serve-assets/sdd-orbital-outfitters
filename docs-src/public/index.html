@@ -1,4 +1,16 @@
-<aside class="sidebar-nav">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.164.0"><script src="/sdd-orbital-outfitters/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=sdd-orbital-outfitters/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <title>DSCE 2.0: Enterprise demos built using the IBM Building Blocks</title>
+  <link rel="stylesheet" href="/sdd-orbital-outfitters/css/styles.css">
+</head>
+<body>
+
+  <div class="site-layout-wrapper">
+    
+    <aside class="sidebar-nav">
   
   <section class="intro-banner">
     <h1>Building Blocks</h1>
@@ -17,7 +29,7 @@
     </div>
   </div>
 
-  <!-- ==================== SECTION: AI ==================== -->
+  
   <div class="nav-section">
     <h3 class="section-title">AI</h3>
     
@@ -41,7 +53,7 @@
     </details>
   </div>
 
-  <!-- ==================== SECTION: DATA ==================== -->
+  
   <div class="nav-section">
     <h3 class="section-title">DATA</h3>
     
@@ -72,7 +84,7 @@
     </details>
   </div>
 
-  <!-- ==================== SECTION: AUTOMATION ==================== -->
+  
   <div class="nav-section">
     <h3 class="section-title">AUTOMATION</h3>
     
@@ -86,3 +98,56 @@
   </div>
 
 </aside>
+
+    
+    <main class="main-content-window">
+      
+      
+  
+  <div class="cards-header">Explore interactive use cases below and access sample code to get started quickly.</div>
+  <div class="cards-wrapper" id="cards-wrapper"></div>
+
+  <script>
+    (function () {
+      fetch('/data/demos.json')
+        .then(function (res) { return res.json(); })
+        .then(function (demos) {
+          var wrapper = document.getElementById('cards-wrapper');
+
+          demos.forEach(function (demo) {
+            var tags = Array.isArray(demo.tags) ? demo.tags : [];
+
+            
+            var pillsHtml = tags
+              .map(function (t) { return '<span class="pill-tag">' + t + '</span>'; })
+              .join('');
+
+            
+            var card = document.createElement('div');
+            card.className = 'card-item';
+            card.setAttribute('data-tags', tags.join(' ').toLowerCase());
+            card.innerHTML =
+              '<div class="pill-container">' + pillsHtml + '</div>' +
+              '<h4>' + demo.title + '</h4>' +
+              '<p>' + demo.summary + '</p>';
+
+            wrapper.appendChild(card);
+          });
+
+          
+          if (typeof applyFilters === 'function') {
+            applyFilters();
+          }
+        })
+        .catch(function (err) {
+          console.error('Failed to load demos.json:', err);
+        });
+    })();
+  </script>
+
+    </main>
+  </div>
+
+  <script src="/sdd-orbital-outfitters/js/filter.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Automated Governance & Model Evaluation",
+    "summary": "A security framework designed to continuously intercept production LLM tokens, assessing safety criteria against live compliance rule sets.",
+    "tags": ["ai-compliance", "model-evaluation", "real-time-guardrails"]
+  },
+  {
+    "title": "Federated Enterprise Vector Architecture",
+    "summary": "A pre-packaged Infrastructure as Code template that provisions globally distributed vector collections hooked into traditional relational nodes.",
+    "tags": ["federated-search", "vector-search", "quality-lineage", "infrastructure-as-code"]
+  },
+  {
+    "title": "Transforming Retail with AI",
+    "summary": "A modern retail application built with a microservices architecture using RAG patterns.",
+    "tags": ["agent-builder", "ai-generated-data-pipeline"]
+  },
+  {
+    "title": "Transforming Retail with Smart Agents",
+    "summary": "An edge-computing deployment pattern that leverages autonomous agents to track shelf inventory while updating processing nodes via localized streaming pipes.",
+    "tags": ["agent-builder", "ai-generated-data-pipeline", "data-streaming"]
+  }
+]

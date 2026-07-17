@@ -57,3 +57,4 @@ openshift/terraform/terraform.tfstate.backup
 openshift/.env.*
 kubeconfig
 *.kubeconfig
+docs-src/.hugo_build.lock

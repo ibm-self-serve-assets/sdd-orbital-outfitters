@@ -3,10 +3,10 @@ name: Deploy Hugo Docs with Filtering
 on:
   push:
     branches:
-      - main  # Set this to master if your repo uses master
+      - main  # Change to master if your default repo branch uses master
 
 permissions:
-  contents: write # Allows pushing the public output back to the gh-pages branch
+  contents: write  # Allows pushing the public output back to the gh-pages branch
 
 jobs:
   deploy:
@@ -21,10 +21,10 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
-          extended: true    # Compiles custom SCSS styling stylesheets if your theme uses them
+          extended: true    # Compiles custom styles if your theme uses them
 
       - name: Build Hugo Site
-        working-directory: ./docs-src  # Diverts commands directly inside your folder
+        working-directory: ./docs-src  # Runs Hugo inside your target subfolder
         run: hugo --gc --minify
 
       - name: Deploy Static Build to GitHub Pages
@@ -32,3 +32,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs-src/public  # Grabs compiled HTML assets from subfolder
+          enable_jekyll: false            # ⚠️ FIXES 404: Tells GitHub to stop stripping Hugo files

@@ -170,6 +170,12 @@ details[open] .accordion-header::after {
   margin-bottom: 24px;
 }
 
+.cards-empty-state {
+  font-size: 14px;
+  color: #525252;
+  margin-top: 24px;
+}
+
 .demo-cards-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -518,6 +524,7 @@ a.card-item {
   font-family: inherit;
   opacity: 0.8;
   white-space: nowrap;
+  margin-right: 30px;
 }
 
 .global-header-back:hover {

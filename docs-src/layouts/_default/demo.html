@@ -16,7 +16,8 @@
     </div>
   </main>
 
-  <script>window.DEMOS_URL = "{{ "data/demos.json" | relURL }}";</script>
-  <script src="{{ "js/filter.js" | relURL }}"></script>
+  <script>window.DEMOS_URL = "{{ "data/demos.json" | relURL }}?v={{ now.Unix }}";</script>
+  {{ $js := resources.Get "js/filter.js" | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
 </body>
 </html>

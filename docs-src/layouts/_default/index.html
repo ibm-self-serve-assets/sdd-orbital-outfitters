@@ -1,43 +1,18 @@
 {{ define "main" }}
-  <!-- Layout for the Homepage Explorer — cards loaded from /data/demos.json -->
+  <!-- Layout for the Homepage Explorer containing all filterable cards -->
   <div class="cards-header">Explore interactive use cases below and access sample code to get started quickly.</div>
-  <div class="cards-wrapper" id="cards-wrapper"></div>
+  <div class="cards-wrapper">
 
-  <script>
-    (function () {
-      fetch('/data/demos.json')
-        .then(function (res) { return res.json(); })
-        .then(function (demos) {
-          var wrapper = document.getElementById('cards-wrapper');
-
-          demos.forEach(function (demo) {
-            var tags = Array.isArray(demo.tags) ? demo.tags : [];
-
-            // Build pill HTML
-            var pillsHtml = tags
-              .map(function (t) { return '<span class="pill-tag">' + t + '</span>'; })
-              .join('');
-
-            // Card element
-            var card = document.createElement('div');
-            card.className = 'card-item';
-            card.setAttribute('data-tags', tags.join(' ').toLowerCase());
-            card.innerHTML =
-              '<div class="pill-container">' + pillsHtml + '</div>' +
-              '<h4>' + demo.title + '</h4>' +
-              '<p>' + demo.summary + '</p>';
-
-            wrapper.appendChild(card);
-          });
-
-          // Re-apply any active filters after cards are rendered
-          if (typeof applyFilters === 'function') {
-            applyFilters();
-          }
-        })
-        .catch(function (err) {
-          console.error('Failed to load demos.json:', err);
-        });
-    })();
-  </script>
+    {{ range .Site.RegularPages }}
+      <div class="card-item" data-tags="{{ delimit .Params.tags " " | lower }}">
+        <div class="pill-container">
+          {{ range .Params.tags }}
+            <span class="pill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+        <h4>{{ .Title }}</h4>
+        <p>{{ .Summary }}</p>
+      </div>
+    {{ end }}
+  </div>
 {{ end }}

@@ -7,20 +7,13 @@
 </head>
 <body>
 
-  {{ partial "global-header.html" (dict "showBack" false) }}
+  {{ partial "global-header.html" (dict "showBack" (.Params.showBack | default false)) }}
 
-  <div class="site-layout-wrapper">
-    <!-- Shared Sidebar component across all pages -->
-    {{ partial "sidebar.html" . }}
-    
-    <main class="main-content-window">
-      <!-- Unique page layouts inject their custom code blocks here -->
-      {{ block "main" . }}{{ end }}
-    </main>
-  </div>
+  {{ block "main" . }}{{ end }}
 
-  <script>window.DEMOS_URL = "{{ "data/demos.json" | relURL }}?v={{ now.Unix }}";</script>
-  {{ $js := resources.Get "js/filter.js" | fingerprint }}
-  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+  {{ $drawer := resources.Get "js/drawer.js" | fingerprint }}
+  <script src="{{ $drawer.RelPermalink }}" type="module" integrity="{{ $drawer.Data.Integrity }}" crossorigin="anonymous"></script>
+  {{ $slideshow := resources.Get "js/slideshow.js" | fingerprint }}
+  <script src="{{ $slideshow.RelPermalink }}" defer integrity="{{ $slideshow.Data.Integrity }}" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -55,8 +55,8 @@
       }
     },
     {
-      "name": "Maritime Situational Awareness",
-      "slug": "maritime-situational-awareness",
+      "name": "Counter-UAS in Modern Warfare",
+      "slug": "counter-uas-in-modern-warfare",
       "tags": ["agent-builder", "infrastructure-as-code", "data-streaming"],
       "products": ["IBM watsonx Orchestrate", "IBM watsonx.ai", "IBM Event Streams"],
       "skills": ["agent-builder", "infrastructure-as-code", "data-streaming"],

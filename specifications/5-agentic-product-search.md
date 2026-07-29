@@ -2,7 +2,6 @@
 The following specification outlines the steps required to build an agentic chat interface that provides interactive product searching.
 
 ## Prerequisites
-
 Load the following skills plus any others that seem relevant — new ones may be added over time:
 - `agent-builder` — building and deploying agents and tools via the ADK
 - `agent-multi-orchestration` — Build multi-agent systems with watsonx Orchestrate
@@ -20,25 +19,27 @@ The following guidelines must be followed when building the backend API endpoint
 
 ## Step 1: Use watsonx Orchestrate Agent Developers Kit (ADK)
 Deploy and test your agents using the [watsonx Orchestrate ADK](https://developer.watson-orchestrate.ibm.com).
-1. Use the Skill tool to read the watsonx Orchestrate ADK skill.
-2. Pip install the ADK into a python virtual environment: @venv/.
-3. Create an ADK environment called "ibm_cloud" using WO_INSTANCE_URL and WO_API_KEY provided in [.env](.env).
+1. Pip install the ADK into a python virtual environment: @venv/.
+2. Create an ADK environment called "ibm_cloud" using WO_INSTANCE_URL and WO_API_KEY provided in [.env](.env).
 
 ## Step 2: Implement agentic search
 The user's search results will display in an agentic chat web page.  Design a `product_search` agent then deploy to watsonX Orchestrate (wxo).  Refer to the design comps in @specifications/frontend/design-mockups/agentic-search/ for exactly how the agent response should look.
 
-The backend server will provide an `/search` endpoint that:
+### 2.1 The backend server will provide an `/search` endpoint that:
 1. Accepts the user's product query from the UI
 2. Queries the vector database to retrieve the top 4 products matching this query
 3. Sends the user query plus these products to the `product_search` agent in Orchestrate. 
 4. The `/search` endpoint will then return the agents natural language response plus the 4 matching products.
 5. The frontend UI should package the agent's response plus product results into HTML for presentation in the Agent's word bubble as in @specifications/frontend/design-mockups/agentic-search/agentic_search.png.
 
-The `product_search` agent hosted in Orchestrate should:
+### 2.2 The `product_search` agent hosted in Orchestrate should:
 1. Accept both the user's query plus products search results
 2. Review the products in the context of the user's search and consider. 
 3. Return an interesting but succinct reply that summarizes the products results in 2-3 natural language sentences that does not simply restate the product names or description.
   * NOTE: Do not create any tools for the agent.   
+
+### 2.3 Build and deploy the `produt_search` agent
+Using the ADK, deploy the `produt_search` agent to WO_INSTANCE_URL.  After deployment, obtain agent's ID and store in @.env as WO_AGENT_ID.  Also obtain the agent's environment ID and store in WO_ENVIRONMENT_ID.
 
 ## Step 3: QA agentic search
 Test these questions using the agentic search solution. The agent should reply with answers unique to the input question and detailed about why these products are a good fit:

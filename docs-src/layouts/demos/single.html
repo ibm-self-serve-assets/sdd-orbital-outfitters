@@ -20,8 +20,8 @@
               <img src="{{ $dlIcon.RelPermalink }}" alt="" class="demo-btn-icon" />
               Download Building Blocks
             </a>
-            {{ if $demo.githubRepo }}
-              <a href="{{ $demo.githubRepo }}" target="_blank" rel="noopener" class="demo-btn demo-btn--outline">
+            {{ if and $demo.codeRepo (gt (len $demo.codeRepo) 0) }}
+              <a href="{{ $demo.codeRepo }}" target="_blank" rel="noopener" class="demo-btn demo-btn--outline">
                 <img src="{{ $ghIcon.RelPermalink }}" alt="" class="demo-btn-icon" />
                 Access GitHub Repo
               </a>

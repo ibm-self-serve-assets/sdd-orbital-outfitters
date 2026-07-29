@@ -6,14 +6,16 @@ on:
       - main  # Change to master if your default repo branch uses master
 
 permissions:
-  contents: write  # Allows pushing the public output back to the gh-pages branch
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: true  # Required if your Hugo template utilizes submodules
 
@@ -27,9 +29,10 @@ jobs:
         working-directory: ./docs-src  # Runs Hugo inside your target subfolder
         run: hugo --gc --minify
 
-      - name: Deploy Static Build to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs-src/public  # Grabs compiled HTML assets from subfolder
-          enable_jekyll: false            # ⚠️ FIXES 404: Tells GitHub to stop stripping Hugo files
+          path: ./docs-src/public  # Grabs compiled HTML assets from subfolder
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v5

@@ -15,12 +15,10 @@ body {
 
 /* Master Nav Sections (Building Blocks / Skills) */
 .master-nav-section {
-  border-top: 2px solid #e0e0e0;
+  border-bottom: 2px solid #e0e0e0;
   margin-bottom: 4px;
 }
-.master-nav-section:last-of-type {
-  border-bottom: 2px solid #e0e0e0;
-}
+
 .master-nav-header {
   list-style: none;
   display: flex;
@@ -266,13 +264,16 @@ details[open] .accordion-header::after {
 .asset-type-filter {
   margin: 12px 0px;
   padding-top: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   border-top: 2px solid #e0e0e0;
 }
 
-.asset-type-filter h3 {
+.asset-type-filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.asset-type-filter-header h3 {
   margin: 5px 0 0 0;
 }
 .clear-all-btn {

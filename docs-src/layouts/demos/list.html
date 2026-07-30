@@ -210,17 +210,17 @@
              data-tags="{{ delimit $demo.buildingBlocks " " | lower }}"
              data-asset-types="{{ delimit $assetTypes " " }}">
             <img src="{{ $cardImg.RelPermalink }}" alt="{{ $demo.name }}" />
-            <div class="card-item-description">
-              <div>{{ $demo.name }}</div>
-              <p>{{ $demo.card.descriptionShort1 }}</p>
-            </div>
             <div class="pill-container">
               {{ if $hasSpec }}{{ $spec := resources.Get "images/paper_stack.svg" | fingerprint }}<span class="pill-tag-specifications"><img src="{{ $spec.RelPermalink }}"> specifications</span>{{ end }}
               {{ if $hasCode }}{{ $spec := resources.Get "images/code_file.svg" | fingerprint }}<span class="pill-tag-code"><img src="{{ $spec.RelPermalink }}"> source code</span>{{ end }}
               {{ if $isConceptual }}<span class="pill-tag-conceptual">&#x26A0; conceptual</span>{{ end }}
             </div>
+            <div class="card-item-description">
+              <div>{{ $demo.name }}</div>
+              <p>{{ $demo.card.descriptionShort1 }}</p>
+            </div>
             <div class="pill-container">
-              {{ range $demo.buildingBlocks }}{{ $spec := resources.Get "images/cube.png" | fingerprint }}<span class="pill-tag-building-blocks"><img src="{{ $spec.RelPermalink }}"> {{ . }}</span>{{ end }}
+              {{ partial "building-blocks-pill.html" $demo.buildingBlocks }}
             </div>
             <div class="explore-demo">Explore use case →</div>
           </a>

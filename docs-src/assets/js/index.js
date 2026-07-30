@@ -20,10 +20,10 @@ function applyFilter() {
   let anyVisible = false;
 
   allCards.forEach(card => {
-    const cardTags = (card.dataset.tags || '').split(' ');
+    const cardBuildingBlocks = (card.dataset.buildingBlocks || '').split(' ');
     const cardAssetTypes = (card.dataset.assetTypes || '').split(' ');
 
-    const tagsMatch = activeTags.length === 0 || activeTags.every(f => cardTags.includes(f));
+    const tagsMatch = activeTags.length === 0 || activeTags.every(f => cardBuildingBlocks.includes(f));
     const assetMatch = activeAssetTypes.length === 0 || activeAssetTypes.some(f => cardAssetTypes.includes(f));
 
     const visible = tagsMatch && assetMatch;

@@ -5,7 +5,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(225deg, #E0F0FF 0%, #E0F0FF 5%, #ffffff 25%);
+  background: linear-gradient(225deg, #E0F0FF 0%, #E0F0FF 25%, #ffffff 45%);
   background-attachment: fixed;
 }
 
@@ -67,9 +67,9 @@ body {
   padding: 10px 25px;
 }
 .site-header {
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 .site-subheader {
   font-size: 16px;
@@ -119,20 +119,36 @@ details[open] .accordion-header::after {
   padding: 4px 8px 16px 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .checkbox-label {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;
+  gap: 6px;
   font-size: 14px;
   color: #393939;
   cursor: pointer;
-  line-height: 1.3;
+  line-height: 1.1;
 }
 .checkbox-label input[type="checkbox"] {
-  margin-top: 2px;
+  margin-top: 0;
   cursor: pointer;
+  flex-shrink: 0;
+}
+.filter-count {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  color: #393939;
+  font-size: 11px;
+  font-weight: 500;
+  flex-shrink: 0;
 }
 
 /* Info icon & tooltip */
@@ -173,8 +189,8 @@ details[open] .accordion-header::after {
 .site-layout-wrapper {
   display: flex;
   max-width: 100%;
-  margin: 0 auto;
-  gap: 48px; /* Standard spacing gap between sidebar and main window column */
+  margin-top: 10px;
+  gap: 24px; /* Standard spacing gap between sidebar and main window column */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -187,13 +203,13 @@ details[open] .accordion-header::after {
   height: calc(100vh - 80px);
   overflow-y: auto; /* Adds scrollbar inside sidebar only if menu items overflow screen */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  padding: 25px;
+  margin-left: 25px;
 }
 
 
 /* Right Main Content Window Area Flex Allocation */
 .main-content-window {
-  padding: 24px 24px 24px 0px;
+  padding: 0px 24px 24px 0px;
   flex-grow: 1;
   min-width: 0; /* Prevents long titles from overflowing flex boundaries */
 }
@@ -218,24 +234,15 @@ details[open] .accordion-header::after {
   color: #525252;
 }
 
-.cta-link {
-  margin: 6px;
-  color: #0f62fe;
-  text-decoration: none;
-  font-weight: 500;
-}
-.cta-link:hover {
-  text-decoration: underline;
-}
-
 /* Bob Framework Partner Card Component */
 .info-card {
   display: flex;
   align-items: flex-start;
   gap: 20px;
-  padding: 12px;
+  padding: 6px;
   margin-top: 12px;
   border: 2px solid #e0e0e0;
+  border-radius: 8px;
 }
 
 .info-card-tagline {
@@ -255,19 +262,26 @@ details[open] .accordion-header::after {
   flex-direction: column;
   justify-content: center;
   line-height: 1.3;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .info-card-tagline-text > span {
-  font-size: 16px;
-  color: #525252;
-}
-
-.info-card-text p {
+  font-weight: 500;
+  font-size: 14px;
   color: #525252;
   line-height: 1.4;
   margin-bottom: 6px;
+}
+
+.cta-link {
+  color: #0f62fe;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 14px;
+}
+.cta-link:hover {
+  text-decoration: underline;
 }
 
 /* Content Grid Layout Arrangement */
@@ -284,9 +298,9 @@ details[open] .accordion-header::after {
 /* Filter toolbar above accordion list */
 /* Asset type filter box */
 .demo-filter {
-  margin-top: 12px;
   padding: 12px 12px 0px 12px;
   border: 2px solid #e0e0e0;
+  border-radius: 8px;
 }
 
 .asset-type-filter-header {
@@ -311,9 +325,8 @@ details[open] .accordion-header::after {
 }
 
 .cards-empty-state {
-  font-size: 14px;
+  font-size: 16px;
   color: #525252;
-  margin-top: 24px;
 }
 
 .demo-cards-wrapper {
@@ -322,51 +335,41 @@ details[open] .accordion-header::after {
   gap: 20px;
 }
 
-
 /* Individual Block Content Tiles */
 .card-item {
   background-color: #ffffff;
-  border: 1px solid #e0e0e0;
+  border: 2px solid #e0e0e0;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .card-item:hover {
   border-color: #0f62fe;
+  background-color: #F9FCFF;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.card-item-image-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-
-.card-item-image-title img {
-  border: 1px solid lightgray;
-  display: inline;
-  width: 60%;
-  margin-left: 10px;
-}
-
-.card-item-image-title h4 {
-  margin-top: 0px;
-  margin-bottom: 8px;
+.card-item-description {
+  margin: 10px 0px;
   font-size: 18px;
-  font-weight: 500;
+  color: black;
+  font-weight: 700;
   color: #161616;
 }
 
-.card-item p {
-  margin: 0;
+.card-item-description p {
+  font-weight: normal;
   font-size: 14px;
-  color: #525252;
-  line-height: 1.4;
+  color: #161616;
+  margin: 4px;
+}
+
+.card-item img {
+  border: 1px solid lightgray;
+  width: 100%;
 }
 
 /* Floating Visual Tag Pills Container Layout */
@@ -374,10 +377,12 @@ details[open] .accordion-header::after {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 10px;
 }
 
-.pill-tag {
+.pill-tag-building-blocks {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   background-color: #e0f0ff;
   color: #0043ce;
   font-size: 12px;
@@ -386,6 +391,72 @@ details[open] .accordion-header::after {
   border-radius: 12px;
 /*  text-transform: capitalize; */
   white-space: nowrap;
+  margin-top: 6px;
+}
+
+.pill-tag-specifications {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #FFF2B2;
+  color: #5A4800;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.pill-tag-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #FFD9A8;
+  color: #5A2E00;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.pill-tag-conceptual {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #FFB3B3;
+  color: #510904;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.pill-tag-building-blocks img {
+  width: 16px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.pill-tag-specifications img {
+  width: 16px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.pill-tag-code img {
+  height: 16px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.explore-demo {
+  margin-top: 8px;
+  color: #0f62fe;
 }
 
 /* ==================== GLOBAL HEADER ==================== */
@@ -398,7 +469,7 @@ details[open] .accordion-header::after {
   padding: 0 24px;
   height: 48px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -649,7 +720,7 @@ a.card-item {
 }
 
 .demo-detail-content .pill-container {
-  margin-bottom: 20px;
+  margin-top: 6px;
 }
 
 .demo-detail-content {
@@ -905,10 +976,6 @@ a.card-item {
   margin-top: 10px;
 }
 
-.demo-detail-specifications {
-  margin-bottom: 10px;
-}
-
 .demo-detail-specifications-title {
   font-weight: 600;
   color: black;
@@ -929,7 +996,7 @@ a.card-item {
 
 /* Back link in header */
 .global-header-back {
-  color: #ffffff;
+  color: black;
   text-decoration: none;
   font-size: 14px;
   font-family: inherit;

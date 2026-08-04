@@ -3,68 +3,78 @@
   {{ $demo := index (where hugo.Data.demos.demos "slug" $slug) 0 }}
   {{ if $demo }}
     {{ $images := $demo.landingPage.images }}
-    {{ $hasSpec := and $demo.specificationRepo (gt (len $demo.specificationRepo) 0) }}
+    {{ $hasWorkingDemo := and $demo.workingDemoURL (gt (len $demo.workingDemoURL) 0) }}
     {{ $hasCode := and $demo.codeRepo (gt (len $demo.codeRepo) 0) }}
-    {{ $isConceptual := not (or $hasSpec $hasCode) }}
+    {{ $hasSpec := and $demo.specificationRepo (gt (len $demo.specificationRepo) 0) }}            
     {{ $assetTypes := slice }}
-    {{ if $hasSpec }}{{ $assetTypes = $assetTypes | append "specifications" }}{{ end }}
     {{ if $hasCode }}{{ $assetTypes = $assetTypes | append "code" }}{{ end }}
     {{ if not (or $hasSpec $hasCode) }}{{ $assetTypes = $assetTypes | append "conceptual" }}{{ end }}
     <main class="demo-detail-page">
       <div class="demo-detail-content">
 
         <div class="demo-detail-column-left">
-          <div class="pill-container">
-              {{ if $hasSpec }}{{ $spec := resources.Get "images/paper_stack.svg" | fingerprint }}<span class="pill-tag-specifications"><img src="{{ $spec.RelPermalink }}"> specifications</span>{{ end }}
-              {{ if $hasCode }}{{ $spec := resources.Get "images/code_file.svg" | fingerprint }}<span class="pill-tag-code"><img src="{{ $spec.RelPermalink }}"> source code</span>{{ end }}
-              {{ if $isConceptual }}<span class="pill-tag-conceptual">&#x26A0; conceptual</span>{{ end }}
-          </div>
           <h1 class="demo-detail-title">{{ $demo.name }}</h1>
-          <p class="demo-detail-summary">{{ $demo.landingPage.description }}</p>
+          {{ range split $demo.landingPage.description "\n\n" }}
+            <p class="demo-detail-summary">{{ . }}</p>
+          {{ end }}
           <div class="pill-container">
-            {{ partial "building-blocks-pill.html" $demo.buildingBlocks }}
+            {{ partial "building-blocks-pill.html" (dict "blocks" $demo.buildingBlocks "linked" true) }}
           </div>
           <div class="demo-action-buttons">
-            {{ $dlIcon := resources.Get "images/download.png" | fingerprint }}
-            {{ $ghIcon := resources.Get "images/github.png" | fingerprint }}
-            <a href="https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/" target="_blank" rel="noopener" class="demo-btn demo-btn--primary">
-              <img src="{{ $dlIcon.RelPermalink }}" alt="" class="demo-btn-icon" />
-              Download Building Blocks Skills
-            </a>
-            {{ if and $demo.codeRepo (gt (len $demo.codeRepo) 0) }}
-              <a href="{{ $demo.codeRepo }}" target="_blank" rel="noopener" class="demo-btn demo-btn--outline">
+            {{ $ghIcon := resources.Get "images/github.svg" | fingerprint }}
+            {{ $specsIcon := resources.Get "images/pages_icon.svg" | fingerprint }}
+            {{ if $hasWorkingDemo }}
+              <a href="{{ $demo.workingDemoURL }}" target="_blank" rel="noopener" class="demo-btn demo-btn-github">
+                <img src="{{ $specsIcon.RelPermalink }}" alt="" class="demo-btn-icon" />
+                Working Demo Site
+              </a>
+            {{ end }}
+            {{ if $hasCode }}
+              <a href="{{ $demo.codeRepo }}" target="_blank" rel="noopener" class="demo-btn demo-btn-github">
                 <img src="{{ $ghIcon.RelPermalink }}" alt="" class="demo-btn-icon" />
-                Access GitHub Repo
+                Source Code
               </a>
             {{ end }}
           </div>
+          <div class="demo-video--specs">
+            {{ if and $demo.video.cosFileName (gt (len $demo.video.cosFileName) 0) }}
+              {{ $videoURL := printf "https://s3.us-south.cloud-object-storage.appdomain.cloud/dsce2-demo-images/%s" $demo.video.cosFileName }}
+              {{ $thumbPath := printf "images/demos/%s/%s" $demo.slug $demo.video.thumbnail }}
+              {{ $thumbRes := resources.Get $thumbPath }}
+              <div class="demo-detail-video">
+                <video width="100%" controls{{ if $thumbRes }} poster="{{ ($thumbRes | fingerprint).RelPermalink }}"{{ end }}>
+                  <source src="{{ $videoURL }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            {{ end }}
 
-          <div class="demo-meta-card">
-            <p class="demo-meta-card-title">Solution Components</p>
-            <div class="demo-meta-columns">
-              {{ if $demo.skills }}
-                <div class="demo-meta-section">
-                  <h2 class="demo-meta-heading">Building Blocks Skills</h2>
-                  <ul class="demo-meta-list">
-                    {{ range $demo.skills }}<li>{{ . }}</li>{{ end }}
-                  </ul>
+            {{ if and $demo.specificationsFlow (gt (len $demo.specificationsFlow) 0) }}
+              {{ $specImgPath := printf "images/demos/%s/%s" $demo.slug $demo.specificationsFlow }}
+              {{ $specImg := resources.Get $specImgPath }}
+              {{ if $hasSpec }}
+                <div class="demo-detail-specifications">
+                  {{ $bob := resources.Get "images/bob.png" | fingerprint }}
+                  <div class="demo-detail-specifications-title">
+                    <img src="{{ $bob.RelPermalink }}">
+                    Specifications Worklow
+                  </div>
+                  <div class="demo-detail-specifications-description">IBM Bob execute these Specifications when building this demo.</div>
+                  <a href="{{ $demo.codeRepo }}" target="_blank" rel="noopener" class="demo-btn demo-btn-github">
+                    <img src="{{ $specsIcon.RelPermalink }}" alt="" class="demo-btn-icon" />
+                    Specifications
+                  </a>
+                  <a href="{{ $specImg.RelPermalink }}" target="_blank" rel="noopener">
+                    <img src="{{ $specImg.RelPermalink }}" />
+                  </a>
                 </div>
               {{ end }}
-              {{ if $demo.products }}
-                <div class="demo-meta-section">
-                  <h2 class="demo-meta-heading">Products</h2>
-                  <ul class="demo-meta-list">
-                    {{ range $demo.products }}<li>{{ . }}</li>{{ end }}
-                  </ul>
-                </div>
-              {{ end }}
-            </div>
+            {{ end }}
           </div>
         </div>
 
         {{/* ── Slideshow ── */}}
         <div class="demo-detail-column-right">
-          <div class="demo-slideshow-title">Screenshots</div>
           <div class="demo-slideshow">
             <div class="demo-slides">
               {{ range $i, $filename := $images }}
@@ -92,17 +102,60 @@
               {{ end }}
             </div>
           {{ end }}
-          {{ if and $demo.specificationsFlow (gt (len $demo.specificationsFlow) 0) }}
-            {{ $specImgPath := printf "images/demos/%s/%s" $demo.slug $demo.specificationsFlow }}
-            {{ $specImg := resources.Get $specImgPath }}
-            {{ if $specImg }}
-              <div class="demo-detail-specifications">
-                <div class="demo-detail-specifications-title">Specifications Worklow</div>
-                <div class="demo-detail-specifications-description">IBM Bob execute these Specifications when building this demo.</div>
-                <img src="{{ $specImg.RelPermalink }}" />
-              </div>
-            {{ end }}
-          {{ end }}
+
+          <div class="demo-contact-card">
+            <div class="demo-contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2850B8">
+                <path d="M16 4a6 6 0 1 1 0 12A6 6 0 0 1 16 4zm0 14c6.627 0 12 2.686 12 6v2H4v-2c0-3.314 5.373-6 12-6z"/>
+              </svg>
+            </div>
+            <div class="demo-contact-card-body">
+              <p class="demo-contact-card-title">Have questions or want a walkthrough?</p>
+              <p class="demo-contact-card-sub">Contact the demo owner to schedule a demo or learn more.</p>
+              <a href="mailto:{{$demo.contactEmail}}" class="demo-contact-card-link">Send a message &rarr;</a>
+            </div>
+          </div>
+
+          <div class="demo-meta-card">
+            {{ $cubeComponentsIcon := resources.Get "images/cube-components.svg" | fingerprint }}
+            <p class="demo-meta-card-title">
+              <img src="{{ $cubeComponentsIcon.RelPermalink }}" alt="" class="solution-btn-icon"/>
+              Solution Components
+            </p>
+            <div class="demo-meta-columns">
+              {{ if $demo.skills }}
+                <div class="demo-meta-section">
+                  <h2 class="demo-meta-heading">Building Block Skills</h2>
+                  <ul class="demo-meta-list">
+                    {{ range $demo.skills }}<li>{{ . }}</li>{{ end }}
+                  </ul>
+                </div>
+              {{ end }}
+              {{ if $demo.products }}
+                <div class="demo-meta-section">
+                  <h2 class="demo-meta-heading">Products</h2>
+                  <ul class="demo-meta-list">
+                    {{ range sort $demo.products }}
+                      {{ $name := . }}
+                      {{ $url := index hugo.Data.products $name }}
+                      <li>
+                        {{ if $url }}
+                          <a href="{{ $url }}" target="_blank" rel="noopener">{{ $name }}</a>
+                        {{ else }}
+                          <span class="demo-meta-no-link">{{ $name }}</span>
+                        {{ end }}
+                      </li>
+                    {{ end }}
+                  </ul>
+                </div>
+              {{ end }}
+            </div>
+            {{ $downloadIcon := resources.Get "images/download.svg" | fingerprint }}
+            <a href="https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/" target="_blank" rel="noopener" class="demo-btn demo-btn-download">
+              <img src="{{ $downloadIcon.RelPermalink }}" alt="" class="demo-btn-icon" />
+              Download Skills for the IBM Building Blocks
+            </a>
+          </div>
         </div>
       </div>
     </main>

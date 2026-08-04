@@ -1,0 +1,16 @@
+{
+    "HashiCorp Terraform" : "https://developer.hashicorp.com/terraform",
+    "IBM Apptio" : "https://www.ibm.com/products/apptio",
+    "IBM Bob" : "https://bob.ibm.com/",
+    "IBM Cloud" : "http://cloud.ibm.com/",
+    "IBM Confluent" : "https://www.ibm.com/products/confluent",
+    "IBM Instana" : "https://www.ibm.com/products/instana",
+    "IBM QRadar" : "https://www.ibm.com/products/qradar-siem",
+    "IBM Turbonomic" : "https://www.ibm.com/products/turbonomic",
+    "IBM watsonx.ai" : "https://www.ibm.com/products/watsonx-ai",
+    "IBM watsonX.data" : "https://www.ibm.com/products/watsonx-data",
+    "IBM watsonX Orchestrate" : "https://www.ibm.com/products/watsonx-orchestrate",
+    "OpenSearch" : "https://opensearch.org/",
+    "Red Hat Ansible Automation Platform" : "https://www.redhat.com/en/technologies/management/ansible",
+    "Red Hat OpenShift" : "https://www.ibm.com/products/openshift"
+}

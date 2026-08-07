@@ -100,7 +100,8 @@
           {{ if not $cardImgRaw }}
             {{ warnf "demos/list.html: card image not found for demo %q — expected asset at %q" $demo.slug $cardImgPath }}
           {{ end }}
-          {{ $cardImg := cond (ne $cardImgRaw nil) ($cardImgRaw | fingerprint) nil }}
+          {{ $cardImg := $cardImgRaw }}
+          {{ if $cardImgRaw }}{{ $cardImg = $cardImgRaw | fingerprint }}{{ end }}
           {{ $hasSpec := and $demo.specificationRepo (gt (len $demo.specificationRepo) 0) }}
           {{ $hasCode := and $demo.codeRepo (gt (len $demo.codeRepo) 0) }}
           {{ $isConceptual := not (or $hasSpec $hasCode) }}
@@ -112,7 +113,7 @@
              href="{{ printf "demos/%s/" $demo.slug | relURL }}"
              data-tags="{{ delimit $demo.buildingBlocks " " | lower }}"
              data-asset-types="{{ delimit $assetTypes " " }}">
-            <img src="{{ $cardImg.RelPermalink }}" alt="{{ $demo.name }}" />
+            {{ if $cardImg }}<img src="{{ $cardImg.RelPermalink }}" alt="{{ $demo.name }}" />{{ end }}
             <div class="card-item-description">
               <div>{{ $demo.name }}</div>
               <p>{{ $demo.card.description }}</p>

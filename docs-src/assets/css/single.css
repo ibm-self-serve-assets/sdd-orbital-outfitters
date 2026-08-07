@@ -1,0 +1,68 @@
+/* =============================================================================
+   DEMO DETAIL PAGE  (docs-src/layouts/demos/single.html)
+   ============================================================================= */
+
+/* =============================================================================
+   Layout — two-column hero + sidebar
+   ============================================================================= */
+
+.demo-intro-description {
+  font-size: 16px;
+  width: 65%;
+  font-weight: normal;
+  margin: 0 0 12px 0;
+  line-height: 1.1;
+}
+
+/* =============================================================================
+   Step wrappers
+   ============================================================================= */
+
+.demo-step-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-step {
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+  border: 1px solid #c1c7cd;
+  border-radius: 8px;
+  padding: 8px 8px 0 8px;
+  background: white;
+}
+
+.demo-step-title {
+  font-size: 20px;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: #2850B8;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* =============================================================================
+   info-box > a > img  (architecture / spec flow images)
+   ============================================================================= */
+
+.info-box > a > img {
+  width: 100%;
+  border: 2px solid #c1c7cd;
+}

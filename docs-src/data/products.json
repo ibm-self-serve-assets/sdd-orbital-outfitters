@@ -1,16 +1,56 @@
 {
-    "HashiCorp Terraform" : "https://developer.hashicorp.com/terraform",
-    "IBM Apptio" : "https://www.ibm.com/products/apptio",
-    "IBM Bob" : "https://bob.ibm.com/",
-    "IBM Cloud" : "http://cloud.ibm.com/",
-    "IBM Confluent" : "https://www.ibm.com/products/confluent",
-    "IBM Instana" : "https://www.ibm.com/products/instana",
-    "IBM QRadar" : "https://www.ibm.com/products/qradar-siem",
-    "IBM Turbonomic" : "https://www.ibm.com/products/turbonomic",
-    "IBM watsonx.ai" : "https://www.ibm.com/products/watsonx-ai",
-    "IBM watsonX.data" : "https://www.ibm.com/products/watsonx-data",
-    "IBM watsonX Orchestrate" : "https://www.ibm.com/products/watsonx-orchestrate",
-    "OpenSearch" : "https://opensearch.org/",
-    "Red Hat Ansible Automation Platform" : "https://www.redhat.com/en/technologies/management/ansible",
-    "Red Hat OpenShift" : "https://www.ibm.com/products/openshift"
+    "HashiCorp Terraform" : {
+        "url" : "https://developer.hashicorp.com/terraform",
+        "image" : "hashicorp-terraform.svg"
+    },
+    "IBM Apptio" : {
+        "url" : "https://www.ibm.com/products/apptio",
+        "image" : "apptio_logo.svg",
+        "is_name_image" : true
+    },
+    "IBM Cloud" : {
+        "url" : "http://cloud.ibm.com/",
+        "image" : "ibm-cloud.svg"
+    },
+    "IBM Confluent" : {
+        "url" : "https://www.ibm.com/products/confluent",
+        "image" : "ibm-confluent.svg"
+    },
+    "IBM Instana" : {
+        "url" : "https://www.ibm.com/products/instana",
+        "image" : "ibm-instana.svg"
+    },
+    "IBM QRadar" : {
+        "url" : "https://www.ibm.com/products/qradar-siem",
+        "image" : "ibm-qradar.svg",
+        "isNameImage" : true
+    },
+    "IBM Turbonomic" : {
+        "url" : "https://www.ibm.com/products/turbonomic",
+        "image" : "ibm-turbonomic.svg"
+    },
+    "IBM watsonx.ai" : {
+        "url" : "https://www.ibm.com/products/watsonx-ai",
+        "image" : "ibm-watsonx-ai.svg"
+    },
+    "IBM watsonX.data" : {
+        "url" : "https://www.ibm.com/products/watsonx-data",
+        "image" : "ibm-watsonx-data.svg"
+    },
+    "IBM watsonX Orchestrate" : {
+        "url" : "https://www.ibm.com/products/watsonx-orchestrate",
+        "image" : "ibm-watsonx-orchestrate.svg"
+    },
+    "OpenSearch" : {
+        "url" : "https://opensearch.org/",
+        "image" : "opensearch.svg"
+    },
+    "Red Hat Ansible Automation Platform" : {
+        "url" : "https://www.redhat.com/en/technologies/management/ansible",
+        "image" : "red-hat-ansible-automation-platform.svg"
+    },
+    "Red Hat OpenShift" : {
+        "url" : "https://www.ibm.com/products/openshift",
+        "image" : "openshift-2.svg"
+    }
 }

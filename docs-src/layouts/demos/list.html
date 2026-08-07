@@ -111,9 +111,18 @@
             {{ if $hasSpec }}{{ $assetTypes = $assetTypes | append "specifications" }}{{ end }}
             {{ if $hasCode }}{{ $assetTypes = $assetTypes | append "code" }}{{ end }}
             {{ if $isConceptual }}{{ $assetTypes = $assetTypes | append "conceptual" }}{{ end }}
+            {{ $bbSlugs := slice }}
+            {{ range $demo.buildingBlocks }}
+              {{ $parts := split . "." }}
+              {{ if eq (len $parts) 2 }}
+                {{ $bbSlugs = $bbSlugs | append (index $parts 1) }}
+              {{ else }}
+                {{ $bbSlugs = $bbSlugs | append (. | lower) }}
+              {{ end }}
+            {{ end }}
             <a class="card-item"
               href="{{ printf "demos/%s/" $demo.slug | relURL }}"
-              data-tags="{{ delimit $demo.buildingBlocks " " | lower }}"
+              data-building-blocks="{{ delimit $bbSlugs " " | lower }}"
               data-asset-types="{{ delimit $assetTypes " " }}">
               <img src="{{ $cardImg.RelPermalink }}" alt="{{ $demo.name }}" />
               <div class="card-item-description">

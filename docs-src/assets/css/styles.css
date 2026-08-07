@@ -7,6 +7,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: linear-gradient(225deg, #E0F0FF 0%, #E0F0FF 25%, #ffffff 90%);
+  background: #f1f7fc;
   background-attachment: fixed;
 }
 
@@ -631,7 +632,6 @@ a.card-item {
   margin: 0;
   padding: 24px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: linear-gradient(225deg, #E0F0FF 0%, #E0F0FF 10%, #ffffff 70%);
 }
 
 .demo-detail-content {
@@ -655,6 +655,7 @@ a.card-item {
 .pill-demo {
   font-size: 18px;
   padding: 4px 10px;
+  margin-bottom: 6px;
   border-radius: 6px;
   background: black;
   color: white;
@@ -1035,7 +1036,7 @@ a.card-item {
   line-height: 1.2;
   border: 1px solid #c1c7cd;
   border-radius: 8px;
-  padding: 8px 8px 0 8px;
+  padding: 16px 8px 0 12px;
   background: white;
 }
 
@@ -1070,14 +1071,6 @@ a.card-item {
 .info-box > a > img {
   width: 100%;
   border: 2px solid #c1c7cd;
-}
-
-/* =============================================================================
-   DEMOS LIST PAGE  (docs-src/layouts/demos/list.html)
-   ============================================================================= */
-
-.homepage-wrapper {
-  background: linear-gradient(225deg, #E0F0FF 0%, #E0F0FF 10%, #ffffff 70%);
 }
 
 /* =============================================================================

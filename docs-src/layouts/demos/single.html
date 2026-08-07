@@ -1,4 +1,6 @@
 {{ define "main" }}
+  {{ $singleStyles := resources.Get "css/single.css" | fingerprint }}
+  <link rel="stylesheet" href="{{ $singleStyles.RelPermalink }}" integrity="{{ $singleStyles.Data.Integrity }}" crossorigin="anonymous">
   {{ $slug := .Params.slug }}
   {{ $demo := index (where hugo.Data.demos.demos "slug" $slug) 0 }}
   {{ $hasSpec := and $demo.specificationsRepo (gt (len $demo.specificationsRepo) 0) }}            
@@ -6,7 +8,7 @@
     {{ $images := $demo.landingPage.slideshowImages }}
     {{ $assetTypes := slice }}
     <main class="demo-detail-page">
-      <div class="pill-container pill-tag-bb demo-pill">DEMO</div>
+      <div class="pill-container pill-tag-bb pill-demo">DEMO</div>
       <div class="demo-name">{{ $demo.name }}</div>
       <div class="demo-intro-description">
         {{ range split $demo.landingPage.introDescription "\n\n" }}
@@ -20,67 +22,70 @@
         <div class="demo-detail-column-left">
           <div class="demo-step-wrapper">
             <div class="demo-step">
-              <div class="demo-step-title"><span class="step-circle">1</span> Review use case</div>
-                {{ range split $demo.landingPage.useCaseDescription "\n\n" }}
-                  <p class="demo-detail-summary">{{ . }}</p>
-                {{ end }}
-                <div class="info-box-wrapper">
-                  <div class="info-box">
-                    {{ $videoURL := printf "https://s3.us-south.cloud-object-storage.appdomain.cloud/dsce2-demo-images/%s" $demo.video.cosFileName }}
-                    {{ $thumbPath := printf "images/demos/%s/%s" $demo.slug $demo.video.thumbnail }}
-                    {{ $thumbRes := resources.Get $thumbPath }}
-                    {{ $videoIcon := resources.Get "images/video.svg" | fingerprint }}
-                    <div class="info-box-header">
-                      <img src="{{ $videoIcon.RelPermalink }}">
-                      <div class="info-box-title">
-                        Start Here
-                      </div>
+              <div class="demo-step-title">
+                <span class="step-circle">1</span> Review use case
+              </div>
+              {{ range split $demo.landingPage.useCaseDescription "\n\n" }}
+                <p class="demo-detail-summary">{{ . }}</p>
+              {{ end }}
+              <div class="info-box-wrapper">
+                <div class="info-box">
+                  {{ $videoURL := printf "https://s3.us-south.cloud-object-storage.appdomain.cloud/dsce2-demo-images/%s" $demo.video.cosFileName }}
+                  {{ $thumbPath := printf "images/demos/%s/%s" $demo.slug $demo.video.thumbnail }}
+                  {{ $thumbRes := resources.Get $thumbPath }}
+                  {{ $videoIcon := resources.Get "images/video.svg" | fingerprint }}
+                  <div class="info-box-header">
+                    <img src="{{ $videoIcon.RelPermalink }}">
+                    <div class="info-box-title">
+                      Start Here
                     </div>
-                    <div class="info-box-subtitle">Watch this short overview</div>
-                    <video width="100%" controls{{ if $thumbRes }} poster="{{ ($thumbRes | fingerprint).RelPermalink }}"{{ end }}>
-                      <source src="{{ $videoURL }}" type="video/mp4">
-                      Your browser does not support the video tag
-                    </video>
                   </div>
-                  <div class="info-box">
-                    {{ $applicationIcon := resources.Get "images/application.svg" | fingerprint }}
-                    <div class="info-box-header">
-                      <img src="{{ $applicationIcon.RelPermalink }}">
-                      <div class="info-box-title">
-                        Preview the application
-                      </div>
+                  <div class="info-box-subtitle">Watch this short overview</div>
+                  <video width="100%" controls{{ if $thumbRes }} poster="{{ ($thumbRes | fingerprint).RelPermalink }}"{{ end }}>
+                    <source src="{{ $videoURL }}" type="video/mp4">
+                    Your browser does not support the video tag
+                  </video>
+                </div>
+                <div class="info-box">
+                  {{ $applicationIcon := resources.Get "images/application.svg" | fingerprint }}
+                  <div class="info-box-header">
+                    <img src="{{ $applicationIcon.RelPermalink }}">
+                    <div class="info-box-title">
+                      Preview the application
                     </div>
-                    <div class="info-box-subtitle">Explore key screens from the demo</div>
-                    <div class="demo-slideshow">
-                      {{ range $i, $filename := $images }}
-                        {{ $imgPath := printf "images/demos/%s/%s" $demo.slug $filename }}
-                        {{ $img := resources.Get $imgPath }}
-                        {{ if $img }}
-                          {{ $img = $img | fingerprint }}
-                          <div class="demo-slide{{ if eq $i 0 }} is-active{{ end }}">
-                            <img src="{{ $img.RelPermalink }}" alt="{{ $demo.name }} screenshot {{ add $i 1 }}" />
-                          </div>
-                        {{ end }}
-                      {{ end }}
-                      {{ if gt (len $images) 1 }}
-                        <button class="demo-slide-prev" aria-label="Previous image">&#8592;</button>
-                        <button class="demo-slide-next" aria-label="Next image">&#8594;</button>
-                      {{ end }}
-                      {{ if gt (len $images) 1 }}
-                        <div class="demo-slide-dots">
-                          {{ range $i, $filename := $images }}
-                            <button class="demo-slide-dot{{ if eq $i 0 }} is-active{{ end }}" aria-label="Go to image {{ add $i 1 }}"></button>
-                          {{ end }}
+                  </div>
+                  <div class="info-box-subtitle">Explore key screens from the demo</div>
+                  <div class="demo-slideshow">
+                    {{ range $i, $filename := $images }}
+                      {{ $imgPath := printf "images/demos/%s/%s" $demo.slug $filename }}
+                      {{ $img := resources.Get $imgPath }}
+                      {{ if $img }}
+                        {{ $img = $img | fingerprint }}
+                        <div class="demo-slide{{ if eq $i 0 }} is-active{{ end }}">
+                          <img src="{{ $img.RelPermalink }}" alt="{{ $demo.name }} screenshot {{ add $i 1 }}" />
                         </div>
                       {{ end }}
-                    </div>
+                    {{ end }}
+                    {{ if gt (len $images) 1 }}
+                      <button class="demo-slide-prev" aria-label="Previous image">&#8592;</button>
+                      <button class="demo-slide-next" aria-label="Next image">&#8594;</button>
+                    {{ end }}
+                    {{ if gt (len $images) 1 }}
+                      <div class="demo-slide-dots">
+                        {{ range $i, $filename := $images }}
+                          <button class="demo-slide-dot{{ if eq $i 0 }} is-active{{ end }}" aria-label="Go to image {{ add $i 1 }}"></button>
+                        {{ end }}
+                      </div>
+                    {{ end }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="demo-step">
-              <div class="demo-step-title"><span class="step-circle">2</span> Try the interactive application</div>
-                Experience the interactive demo and explore its features.
+              <div class="demo-step-title">
+                <span class="step-circle">2</span> Try the interactive application
+              </div>
+              Experience the interactive demo and explore its features.
               <div class="demo-action-buttons">
                 {{ $hasWorkingDemo := and $demo.workingDemoURL (gt (len $demo.workingDemoURL) 0) }}
                 {{ if $hasWorkingDemo }}
@@ -100,9 +105,10 @@
               </div>
             </div>
 
-            <hr>
             <div class="demo-step">
-              <div class="demo-step-title"><span class="step-circle">3</span> Explore how the application was built</div>
+              <div class="demo-step-title">
+                <span class="step-circle">3</span> Explore how the application was built
+              </div>
               {{ range split $demo.landingPage.demoExplainer "\n\n" }}
                 <p class="demo-detail-summary">{{ . }}</p>
               {{ end }}
@@ -149,18 +155,19 @@
               </div>
             </div>
 
-            <hr>
             <div class="demo-step">
-              <div class="demo-step-title"><span class="step-circle">4</span> Get the application and modify with IBM Bob</div>
-                Download the source code and specifications for this application to set up and run it locally.
-                Once downloaded, open the code in <a href="https://bob.ibm.com" target="_blank" rel="noopener">IBM Bob</a> to modify and adapt it to your own use case.
+              <div class="demo-step-title">
+                <span class="step-circle">4</span> Get the application and modify with IBM Bob
+              </div>
+              Download the source code and specifications for this application to set up and run it locally.
+              Once downloaded, open the code in <a href="https://bob.ibm.com" target="_blank" rel="noopener">IBM Bob</a> to modify and adapt it to your own use case.
               <div class="demo-action-buttons">
                 {{ if $hasSpec }}
                   {{ $specsIcon := resources.Get "images/papers.svg" | fingerprint }}
-                    <a href="{{ $demo.specificationsRepo }}" target="_blank" rel="noopener" class="demo-btn">
-                      <img src="{{ $specsIcon.RelPermalink }}" alt="" class="specs-btn-icon" />
-                      Specifications
-                    </a>
+                  <a href="{{ $demo.specificationsRepo }}" target="_blank" rel="noopener" class="demo-btn">
+                    <img src="{{ $specsIcon.RelPermalink }}" alt="" class="specs-btn-icon" />
+                    Specifications
+                  </a>
                 {{ end }}
                 {{ $hasCode := and $demo.codeRepo (gt (len $demo.codeRepo) 0) }}
                 {{ if $hasCode }}
@@ -183,7 +190,6 @@
                   <a href="mailto:{{$demo.contactEmail}}" class="demo-contact-card-link">Send a message &rarr;</a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

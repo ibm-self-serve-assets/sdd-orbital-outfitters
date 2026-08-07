@@ -780,7 +780,7 @@ a.card-item {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  margin-top: 28px;
+  margin: 8px 0;
 }
 
 .demo-btn {
@@ -788,7 +788,7 @@ a.card-item {
   align-items: center;
   gap: 8px;
   padding: 12px 12px;
-  border-radius: 999px;
+  border-radius: 12px;
   font-size: 15px;
   font-weight: 400;
   text-decoration: none;
@@ -805,45 +805,24 @@ a.card-item {
   display: inline !important;
 }
 
-.demo-btn-download {
-  background: #ffffff;
-  color: #161616;
-  border: 2px solid #161616;
-}
-
-.demo-btn-download:hover {
-  background: #f0f0f0;
-  border-color: #161616;
-  color: #161616;
-}
-
-.demo-btn-github {
+.demo-btn-simple {
   background: white;
   color: #161616;
   border: 2px solid #161616;
 }
 
-.demo-btn-github:hover {
+.demo-btn-simple:hover {
   background: #f0f0f0;
   border-color: #161616;
   color: #161616;
-}
-
-.solution-btn-icon {
-  width: 25px !important;
-  object-fit: contain;
-  flex-shrink: 0;
-  display: inline !important;
-  margin-right: 10px;
 }
 
 .demo-contact-card {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 16px;
-  margin-top: 16px;
-  padding: 16px;
+  margin: 8px 0;
+  padding: 8px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   background: #ffffff;
@@ -1396,6 +1375,35 @@ a.card-item {
   border-bottom: none;
 }
 
+.demo-metadata-list-bullets {
+  padding-left: 0;
+}
+
+.demo-metadata-list-bullets li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 0;
+}
+
+.demo-metadata-list-bullets li::before {
+  content: "\2022";
+  font-size: 18px;
+  line-height: 1;
+  color: #1f2328;
+  flex-shrink: 0;
+}
+
+.demo-metadata-list-bullets li a {
+  flex: 1;
+  display: block;
+  padding: 6px 0;
+}
+
+.demo-metadata-list-bullets li:last-child a {
+  border-bottom: none;
+}
+
 .demo-metadata-list a {
   color: #1f2328;
   text-decoration: none;
@@ -1419,7 +1427,7 @@ a.card-item {
   flex-direction: row;
   gap: 16px;
   align-items: stretch;
-  margin: 24px 0;
+  margin-top: 8px;
 }
 
 .info-box {
@@ -1525,10 +1533,6 @@ a.card-item {
   height: 18px;
   object-fit: contain;
   flex-shrink: 0;
-}
-
-.demo-explainer-btn {
-  gap: 8px;
 }
 
 .demo-explainer-btn-icon {

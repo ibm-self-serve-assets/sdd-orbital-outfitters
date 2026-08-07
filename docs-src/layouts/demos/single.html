@@ -1,6 +1,4 @@
 {{ define "main" }}
-  {{ $singleStyles := resources.Get "css/single.css" | fingerprint }}
-  <link rel="stylesheet" href="{{ $singleStyles.RelPermalink }}" integrity="{{ $singleStyles.Data.Integrity }}" crossorigin="anonymous">
   {{ $slug := .Params.slug }}
   {{ $demo := index (where hugo.Data.demos.demos "slug" $slug) 0 }}
   {{ $hasSpec := and $demo.specificationsRepo (gt (len $demo.specificationsRepo) 0) }}            
@@ -95,7 +93,7 @@
                     Working Demo Site
                   </a>
                 {{ end }}
-                {{ if and $demo.demoExplainer (gt (len $demo.demoExplainer) 0) }}
+                {{ if and $demo.landingPage.demoExplainer (gt (len $demo.landingPage.demoExplainer) 0) }}
                   {{ $speechBubbleIcon := resources.Get "images/speech-bubble.svg" | fingerprint }}
                   <button type="button" class="demo-btn demo-explainer-btn" id="demoExplainerBtn" aria-controls="demoExplainerDrawer" aria-expanded="false">
                     <img src="{{ $speechBubbleIcon.RelPermalink }}" alt="" class="demo-explainer-btn-icon" />
@@ -164,7 +162,7 @@
               <div class="demo-action-buttons">
                 {{ if $hasSpec }}
                   {{ $specsIcon := resources.Get "images/papers.svg" | fingerprint }}
-                  <a href="{{ $demo.specificationsRepo }}" target="_blank" rel="noopener" class="demo-btn">
+                  <a href="{{ $demo.specificationsRepo }}" target="_blank" rel="noopener" class="demo-btn demo-btn-simple">
                     <img src="{{ $specsIcon.RelPermalink }}" alt="" class="specs-btn-icon" />
                     Specifications
                   </a>
@@ -172,7 +170,7 @@
                 {{ $hasCode := and $demo.codeRepo (gt (len $demo.codeRepo) 0) }}
                 {{ if $hasCode }}
                   {{ $ghIcon := resources.Get "images/github.svg" | fingerprint }}
-                  <a href="{{ $demo.codeRepo }}" target="_blank" rel="noopener" class="demo-btn">
+                  <a href="{{ $demo.codeRepo }}" target="_blank" rel="noopener" class="demo-btn demo-btn-simple">
                     <img src="{{ $ghIcon.RelPermalink }}" alt="" class="githhub-btn-icon" />
                     Source Code
                   </a>
@@ -208,8 +206,8 @@
                 Skills provide best practices for IBM technologies
               </div>
               <a href="https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/" class="skill-download-link">Download skills for IBM Bob &rarr;</a>
-              <div class="demo-metadata">                          
-                <ul class="demo-metadata-list">
+              <div class="demo-metadata">
+                <ul class="demo-metadata-list demo-metadata-list-bullets">
                   {{ range $demo.skills }}
                     {{ $skillName := . }}
                     <li><a href="https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/" target="_blank" rel="noopener">{{ $skillName }}</a></li>
@@ -278,7 +276,7 @@
           </div>
         </div>
       </div>
-      {{ if and $demo.demoExplainer (gt (len $demo.demoExplainer) 0) }}
+      {{ if and $demo.landingPage.demoExplainer (gt (len $demo.landingPage.demoExplainer) 0) }}
         <div class="drawer-overlay demo-explainer-overlay" id="demoExplainerOverlay"></div>
         <aside class="contact-drawer demo-explainer-drawer" id="demoExplainerDrawer" aria-hidden="true">
           <div class="drawer-header demo-explainer-header">

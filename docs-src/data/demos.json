@@ -11,7 +11,6 @@
       "architecture": "architecture-placeholder.png",
       "specificationsRepo": "https://github.com/",
       "specificationsFlow": "specs-flow-placeholder.png",
-      "demoExplainer": "1. Download the natural language specifications for this demo.\n\n 2. Read the specs to learn how to write instructions plus design UI images to accurately build applications from scratch.\n\n3. Rebuild this full-featured website w/agentic product search. Empower IBM Partner engineering teams to build polished customer demos faster, reduce rework, and reliably integrate IBM technologies using the Building Block Skills.",
       "infoCard": {
         "description": "Automated agentic operations and predictive IOT analytics ensure refrigerated transport (cold-chain) operators can solve the increasing pressure to reduce spoilage, improve real-time visibility, ensure compliance, respond faster, and build customer trust.",
         "image": "home_page.png"
@@ -42,7 +41,7 @@
       },
       "landingPage": {
         "introDescription": "Observe how natural language specifications are converted into a production-ready application - built by AI agents and deployed to Red Hat OpenShift in 30 minutes. Starting with zero code, IBM Bob uses knowledge from the IBM Building Block skills to spawn a team of subagents that build, containerize then deploy this application on IBM Cloud for ~100 IBM Bob coins.",
-        "useCaseDescription": "This demo is a use case wrapped within a use case.  The application itself is a retail website for space explorers needing supplies that can survive the rigors of space.  Agentic search powered by OpenSearch supports detailed queries about available products plus full shopping cart functionality is provided, minus checkout.\n\nHowever the primary use case is to demonstrates the power of Spec-Driven Development, which allowed IBM Bob to build the Orbital Suppliers using only natural language documents, UI design images, dataset requirements and backend endpoint APIs.",
+        "useCaseDescription": "This demo is a use case wrapped within a use case.  The application use case is a product ordering website for travelers needing supplies that can survive the rigors of space.  Agentic search powered by OpenSearch supports detailed queries about available products plus full shopping cart functionality.\n\nHowever the primary use case demonstrates the power of Spec-Driven Development, which allowed IBM Bob to build the Orbital Suppliers using only natural language documents, UI design images, dataset requirements and backend endpoint APIs. This highlights how enterprise development teams build production quality solutions.  More up-front documentation and less interactive vibe coding.",
         "demoExplainer": "1. Start by reviewing the provided Specifications workflow diagram which shows each step followed by IBM Bob to build the demo application.\n\n 2. Download the natural language specifications for this demo and skim through the specs to view the natural language instructions provided to IBM Bob, which includes UI design images to accurately build applications from scratch.\n\n3. You can rebuild this full-featured website w/agentic product search by simply asking Bob to 'Follow the instructions in `0-team-manager-ibm-building-blocks.md`.'",
         "slideshowImages": ["home_page.png", "agentic_search.png", "product_page.png", "cart_logged_in_full.png", "my_orders.png"]
       }
@@ -58,7 +57,6 @@
       "architecture": "architecture-placeholder.png",
       "specificationsRepo": "https://github.com/",
       "specificationsFlow": "specs-flow-placeholder.png",
-      "demoExplainer": "1. Download the natural language specifications for this demo.\n\n 2. Read the specs to learn how to write instructions plus design UI images to accurately build applications from scratch.\n\n3. Rebuild this full-featured website w/agentic product search. Empower IBM Partner engineering teams to build polished customer demos faster, reduce rework, and reliably integrate IBM technologies using the Building Block Skills.",
       "infoCard": {
         "description": "Security Operations Centers (SOCs) are under constant pressure to manage increasing cyber threats while operating with limited analyst capacity. The growing volume of alerts and manual triage processes slow incident response and increase operational risk.",
         "image": "home_page.png"
@@ -81,7 +79,6 @@
       "architecture": "architecture-placeholder.png",
       "specificationsRepo": "https://github.com/",
       "specificationsFlow": "specs-flow-placeholder.png",
-      "demoExplainer": "1. Download the natural language specifications for this demo.\n\n 2. Read the specs to learn how to write instructions plus design UI images to accurately build applications from scratch.\n\n3. Rebuild this full-featured website w/agentic product search. Empower IBM Partner engineering teams to build polished customer demos faster, reduce rework, and reliably integrate IBM technologies using the Building Block Skills.",
       "infoCard": {
         "description": "Defence operations are intrinsically information-centric and become quickly data saturated Operators often have only few seconds to Interpret complex sensor feeds to construct situational awareness then coordinate a response.",
         "image": "home_page.png"

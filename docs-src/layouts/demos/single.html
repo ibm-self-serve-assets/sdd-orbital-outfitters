@@ -8,9 +8,9 @@
     <main class="demo-detail-page">
       <div class="pill-container pill-tag-bb pill-demo">DEMO</div>
       <div class="demo-name">{{ $demo.name }}</div>
-      <div class="demo-intro-description">
+      <div class="demo-intro-summary">
         {{ range split $demo.landingPage.introDescription "\n\n" }}
-          <p class="demo-detail-summary">{{ . }}</p>
+          <p>{{ . }}</p>
         {{ end }}
       </div>
       <div class="pill-container">
@@ -24,11 +24,11 @@
                 <span class="step-circle">1</span> Review use case
               </div>
               {{ range split $demo.landingPage.useCaseDescription "\n\n" }}
-                <p class="demo-detail-summary">{{ . }}</p>
+                <p class="demo-detail-description">{{ . }}</p>
               {{ end }}
               <div class="info-box-wrapper">
                 <div class="info-box">
-                  {{ $videoURL := printf "https://s3.us-south.cloud-object-storage.appdomain.cloud/dsce2-demo-images/%s" $demo.video.cosFileName }}
+                  {{ $videoURL := printf "https://s3.us-south.cloud-object-storage.appdomain.cloud/dsce2-demo-videos/%s" $demo.video.cosFileName }}
                   {{ $thumbPath := printf "images/demos/%s/%s" $demo.slug $demo.video.thumbnail }}
                   {{ $thumbRes := resources.Get $thumbPath }}
                   {{ $videoIcon := resources.Get "images/video.svg" | fingerprint }}
@@ -83,7 +83,7 @@
               <div class="demo-step-title">
                 <span class="step-circle">2</span> Try the interactive application
               </div>
-              Experience the interactive demo and explore its features.
+              Experience the interactive demo and explore its features. A demo explainer is provided to help when presenting the application to partners.
               <div class="demo-action-buttons">
                 {{ $hasWorkingDemo := and $demo.workingDemoURL (gt (len $demo.workingDemoURL) 0) }}
                 {{ if $hasWorkingDemo }}
@@ -108,7 +108,7 @@
                 <span class="step-circle">3</span> Explore how the application was built
               </div>
               {{ range split $demo.landingPage.demoExplainer "\n\n" }}
-                <p class="demo-detail-summary">{{ . }}</p>
+                <p class="demo-detail-description">{{ . }}</p>
               {{ end }}
               <div class="info-box-wrapper">
                 <div class="info-box">
@@ -128,28 +128,26 @@
                     <img src="{{ $architectureImg.RelPermalink }}" />
                   </a>
                 </div>
-                <div class="info-box">
-                  {{ if and $demo.specificationsFlow (gt (len $demo.specificationsFlow) 0) }}
+                {{ if and $demo.specificationsFlow (gt (len $demo.specificationsFlow) 0) }}
+                  <div class="info-box">
                     {{ $specImgPath := printf "images/demos/%s/%s" $demo.slug $demo.specificationsFlow }}
                     {{ $specImg := resources.Get $specImgPath }}
-                    {{ if $specImg }}
-                      {{ $specImg = $specImg | fingerprint }}
-                      {{ $bobIcon := resources.Get "images/bob.png" | fingerprint }}
-                      <div class="info-box-header">
-                        <img src="{{ $bobIcon.RelPermalink }}">
-                        <div class="info-box-title">
-                          Specifications Workflow
-                        </div>
+                    {{ $specImg = $specImg | fingerprint }}
+                    {{ $bobIcon := resources.Get "images/bob.png" | fingerprint }}
+                    <div class="info-box-header">
+                      <img src="{{ $bobIcon.RelPermalink }}">
+                      <div class="info-box-title">
+                        Specifications Workflow
                       </div>
-                      <div class="info-box-subtitle">
-                        IBM Bob executes these Specifications to build this demo.
-                      </div>
-                      <a href="{{ $specImg.RelPermalink }}" target="_blank" rel="noopener">
-                        <img src="{{ $specImg.RelPermalink }}" />
-                      </a>
-                    {{ end }}
-                  {{ end }}
-                </div>
+                    </div>
+                    <div class="info-box-subtitle">
+                      IBM Bob executes these Specifications to build this demo.
+                    </div>
+                    <a href="{{ $specImg.RelPermalink }}" target="_blank" rel="noopener">
+                      <img src="{{ $specImg.RelPermalink }}" />
+                    </a>
+                  </div>
+                {{ end }}
               </div>
             </div>
 
@@ -281,10 +279,21 @@
         <aside class="contact-drawer demo-explainer-drawer" id="demoExplainerDrawer" aria-hidden="true">
           <div class="drawer-header demo-explainer-header">
             <span class="drawer-title">Demo explainer</span>
-            <button class="drawer-close" id="demoExplainerClose" aria-label="Close">&#x2715;</button>
+            <div class="demo-explainer-header-actions">
+              <button type="button" class="demo-explainer-copy-btn" id="demoExplainerCopyBtn" aria-label="Copy text">
+                <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor">
+                  <path d="M28 10H14a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V12a2 2 0 0 0-2-2zm0 18H14V12h14zM4 20V4h14v4h2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4v-2H4z"/>
+                </svg>
+                <svg class="copy-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor" style="display:none">
+                  <path d="M13 24L4 15l1.4-1.4 7.6 7.6L26.6 8 28 9.4z"/>
+                </svg>
+                <span class="demo-explainer-copy-label">Copy</span>
+              </button>
+              <button class="drawer-close" id="demoExplainerClose" aria-label="Close">&#x2715;</button>
+            </div>
           </div>
-          <div class="drawer-body demo-explainer-body">
-            {{ range split $demo.demoExplainer "\n\n" }}
+          <div class="drawer-body demo-explainer-body" id="demoExplainerBody">
+            {{ range split $demo.landingPage.demoExplainer "\n\n" }}
               <p class="demo-explainer-paragraph">{{ . }}</p>
             {{ end }}
           </div>

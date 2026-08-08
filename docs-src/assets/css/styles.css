@@ -11,51 +11,20 @@ body {
   background-attachment: fixed;
 }
 
-/* AI, DATA, AUTOMATION Header Elements */
-.section-title {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #000000;
-  margin: 4px 0;
-  text-transform: uppercase;
-}
-
-/* Master Nav Sections (Building Blocks / Skills) */
-.master-nav-section {
-  border-bottom: 2px solid #e0e0e0;
-  margin-bottom: 4px;
-}
-
-.master-nav-section:last-of-type {
-  border-bottom: 0px;
-}
-
-.master-nav-header {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 0px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: #161616;
-  cursor: pointer;
-}
-
 .site-header-content {
   padding: 10px 25px;
 }
 .site-header {
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 500;
   margin-bottom: 6px;
 }
+
 .site-subheader {
   font-size: 16px;
   font-weight: 300;
 }
+
 
 /* Individual Accordion Compartments */
 .accordion-group {
@@ -65,7 +34,6 @@ body {
   border-bottom: 1px solid #e0e0e0;
 }
 
-/* Accordion Header & Interactive Controls */
 .accordion-header {
   list-style: none;
   display: flex;
@@ -129,24 +97,11 @@ details[open] .accordion-header::after {
   font-weight: 500;
   flex-shrink: 0;
 }
-/* ==================== GLOBAL TWO-COLUMN FLEXBOX LAYOUT ==================== */
-.site-layout-wrapper {
-  display: flex;
-  max-width: 100%;
-  margin-top: 10px;
-  gap: 24px; /* Standard spacing gap between sidebar and main window column */
-}
 
-/* Make Left Sidebar stay fixed on screen while right main contents scroll */
-.sidebar-nav {
-  min-width: 300px;
-  width: 15%;
-  flex-shrink: 0;
-  position: sticky;
-  height: calc(100vh - 80px);
-  overflow-y: auto; /* Adds scrollbar inside sidebar only if menu items overflow screen */
-  margin-left: 25px;
-}
+/* ==================== GLOBAL TWO-COLUMN FLEXBOX LAYOUT ==================== */
+/* =============================================================================
+   SITE LAYOUT  (two-column sidebar + main)
+   ============================================================================= */
 
 .site-filter-wrapper {
   display: flex;
@@ -155,11 +110,72 @@ details[open] .accordion-header::after {
   gap: 24px;
 }
 
+/* Make Left Sidebar stay fixed on screen while right main contents scroll */
+.sidebar-nav {
+  min-width: 275px;
+  width: 10%;
+  flex-shrink: 0;
+  position: sticky;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  margin-left: 25px;
+}
+
 /* Right Main Content Window Area Flex Allocation */
 .main-content-window {
   padding: 0px 24px 24px 0px;
   flex-grow: 1;
   min-width: 0; /* Prevents long titles from overflowing flex boundaries */
+}
+
+/* =============================================================================
+   SIDEBAR NAVIGATION
+   ============================================================================= */
+/* Master Nav Sections (Building Blocks / Skills) */
+.master-nav-header {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #161616;
+  cursor: pointer;
+}
+
+.master-nav-section {
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 4px;
+}
+
+.master-nav-section:last-of-type {
+  border-bottom: none;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #393939;
+  cursor: pointer;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-top: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.site-layout-wrapper {
+  display: flex;
+  max-width: 100%;
+  margin-top: 10px;
+  gap: 24px; /* Standard spacing gap between sidebar and main window column */
 }
 
 /* ==================== CONTENT ELEMENT DECORATIONS ==================== */
@@ -252,7 +268,7 @@ details[open] .accordion-header::after {
 /* Filter toolbar above accordion list */
 /* Asset type filter box */
 .demo-filter {
-  padding: 12px 12px 0px 12px;
+  padding: 12px 12px 0px 12px;  
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   background: white;
@@ -260,13 +276,33 @@ details[open] .accordion-header::after {
 
 .asset-type-filter-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.asset-type-filter {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .asset-type-filter-header h3 {
   margin: 5px 0 0 0;
 }
+
+.clear-all-btn {
+  font-size: 13px;
+  color: #0f62fe;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.clear-all-btn:hover {
+  color: #0043ce;
+}
+
 .clear-all-btn {
   font-size: 13px;
   color: #0f62fe;
@@ -424,6 +460,10 @@ a.pill-tag-bb:hover {
 }
 
 /* ==================== CONTACT DRAWER ==================== */
+body.drawer-open {
+  overflow: hidden;
+}
+
 .drawer-overlay {
   display: none;
   position: fixed;
@@ -649,12 +689,12 @@ a.card-item {
 }
 
 .demo-detail-column-left {
-  flex: 0 0 65%;
+  flex: 0 0 70%;
 }
 
 .demo-detail-column-right {
   flex: 1 1 0;
-  min-width: 475px;
+  min-width: 300px;
 }
 
 .pill-demo {
@@ -777,6 +817,13 @@ a.card-item {
 
 .demo-detail-summary {
   font-size: 16px;
+  color: black;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.demo-detail-description {
+  font-size: 14px;
   color: black;
   line-height: 1.6;
   margin: 0;
@@ -1013,9 +1060,8 @@ a.card-item {
 .global-header-back {
   color: black;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   font-family: inherit;
-  opacity: 0.8;
   white-space: nowrap;
   margin-right: 30px;
 }
@@ -1078,39 +1124,6 @@ a.card-item {
   border: 2px solid #c1c7cd;
 }
 
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  color: #393939;
-  cursor: pointer;
-  line-height: 1.1;
-  margin-bottom: 4px;
-}
-
-.checkbox-label input[type="checkbox"] {
-  margin-top: 0;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.filter-count {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #e0e0e0;
-  color: #393939;
-  font-size: 11px;
-  font-weight: 500;
-  flex-shrink: 0;
-}
-
-
 /* =============================================================================
    DEMO CARD LIST PAGE
    ============================================================================= */
@@ -1125,42 +1138,6 @@ a.card-item {
 .cards-empty-state {
   font-size: 16px;
   color: #525252;
-}
-
-/* Asset-type filter toolbar */
-.demo-filter {
-  padding-top: 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-}
-
-.asset-type-filter-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-}
-
-.asset-type-filter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.asset-type-filter-header h3 {
-  margin: 5px 0 0 0;
-}
-
-.clear-all-btn {
-  font-size: 13px;
-  color: #0f62fe;
-  cursor: pointer;
-  text-decoration: underline;
-  margin-bottom: 5px;
-}
-
-.clear-all-btn:hover {
-  color: #0043ce;
 }
 
 /* Individual demo card tile */
@@ -1349,7 +1326,7 @@ a.card-item {
 }
 
 .info-box {
-  flex: 1 1 0;
+  flex: 0 0 calc(50% - 32px);
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -1479,6 +1456,36 @@ a.card-item {
 
 .demo-explainer-paragraph:last-child {
   margin-bottom: 0;
+}
+
+.demo-explainer-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.demo-explainer-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid #c1c7cd;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #525252;
+  cursor: pointer;
+  padding: 4px 10px;
+  line-height: 1;
+}
+
+.demo-explainer-copy-btn:hover {
+  color: #161616;
+  border-color: #8d8d8d;
+}
+
+.demo-explainer-copy-btn.is-copied {
+  color: #198038;
+  border-color: #198038;
 }
 
 

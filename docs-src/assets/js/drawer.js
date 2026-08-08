@@ -16,6 +16,7 @@ function bindDrawer(options) {
     panelOverlay.classList.add('is-open');
     panel.setAttribute('aria-hidden', 'false');
     trigger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('drawer-open');
   }
 
   function closeDrawer() {
@@ -23,6 +24,7 @@ function bindDrawer(options) {
     panelOverlay.classList.remove('is-open');
     panel.setAttribute('aria-hidden', 'true');
     trigger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('drawer-open');
   }
 
   trigger.addEventListener('click', openDrawer);
@@ -48,3 +50,32 @@ bindDrawer({
   overlayId: 'demoExplainerOverlay',
   closeId: 'demoExplainerClose'
 });
+
+// ==================== DEMO EXPLAINER COPY BUTTON ====================
+const demoExplainerCopyBtn = document.getElementById('demoExplainerCopyBtn');
+if (demoExplainerCopyBtn) {
+  demoExplainerCopyBtn.addEventListener('click', function () {
+    const body = document.getElementById('demoExplainerBody');
+    const text = Array.from(body.querySelectorAll('.demo-explainer-paragraph'))
+      .map(p => p.textContent.trim())
+      .join('\n\n');
+
+    navigator.clipboard.writeText(text).then(function () {
+      const copyIcon = demoExplainerCopyBtn.querySelector('.copy-icon');
+      const checkIcon = demoExplainerCopyBtn.querySelector('.copy-check-icon');
+      const label = demoExplainerCopyBtn.querySelector('.demo-explainer-copy-label');
+
+      copyIcon.style.display = 'none';
+      checkIcon.style.display = '';
+      label.textContent = 'Copied!';
+      demoExplainerCopyBtn.classList.add('is-copied');
+
+      setTimeout(function () {
+        copyIcon.style.display = '';
+        checkIcon.style.display = 'none';
+        label.textContent = 'Copy';
+        demoExplainerCopyBtn.classList.remove('is-copied');
+      }, 2000);
+    });
+  });
+}

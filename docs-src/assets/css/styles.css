@@ -118,7 +118,9 @@ details[open] .accordion-header::after {
   width: 10%;
   flex-shrink: 0;
   position: sticky;
-  height: calc(100vh - 80px);
+  top: 112px;
+  align-self: flex-start;
+  height: calc(100vh - 112px);
   overflow-y: auto;
   margin-left: 25px;
 }

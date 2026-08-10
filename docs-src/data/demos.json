@@ -6,7 +6,7 @@
       "contactEmail": "shanmsel@in.ibm.com",
       "products": ["IBM watsonX Orchestrate", "Red Hat OpenShift", "IBM Turbonomic", "IBM Instana"],
       "buildingBlocks": ["ai.agents", "automation.optimize"],
-      "skills": ["agent", "application-performance-management-instana"],
+      "skills": ["agent", "apm-instana"],
       "codeRepo": "https://github.ibm.com/shanmsel/smart-cold-chain/tree/fleetops-phase1",
       "workingDemoURL": "https://orbital-suppliers-orbital-suppliers.orbital-suppliers-2bef1f4b4097001da9502000c44fc2b2-0000.us-south.containers.appdomain.cloud/",
       "architecture": "architecture.png",
@@ -76,11 +76,11 @@
       "contactEmail": "rahul.deb.das@ibm.com",
       "products": ["IBM watsonx Orchestrate", "IBM watsonx.ai", "IBM Confluent"],
       "buildingBlocks": ["ai.agents"],
-      "skills": ["agent-builder", "infrastructure-as-code", "data-streaming"],
+      "skills": [],
       "codeRepo": "https://github.com/ibm-self-serve-assets/sdd-orbital-outfitters",
       "architecture": "architecture-placeholder.png",
-      "specificationsRepo": "https://github.com/",
-      "specificationsFlow": "specs-flow-placeholder.png",
+      "specificationsRepo": "",
+      "specificationsFlow": "",
       "infoCard": {
         "description": "Defence operations are intrinsically information-centric and become quickly data saturated Operators often have only few seconds to Interpret complex sensor feeds to construct situational awareness then coordinate a response.",
         "image": "home_page.png"

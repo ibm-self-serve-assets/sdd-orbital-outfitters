@@ -9,9 +9,7 @@
       <div class="pill-container pill-tag-bb pill-demo">DEMO</div>
       <div class="demo-name">{{ $demo.name }}</div>
       <div class="demo-intro-summary">
-        {{ range split $demo.landingPage.introDescription "\n\n" }}
-          <p>{{ . }}</p>
-        {{ end }}
+        {{ $demo.landingPage.introDescription}}
       </div>
       <div class="pill-container">
         <B>Building Blocks used:</B> {{ partial "building-blocks-pill.html" (dict "blocks" $demo.buildingBlocks "linked" true) }}

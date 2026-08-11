@@ -43,7 +43,7 @@
       },
       "landingPage": {
         "introDescription": "Observe how natural language specifications are converted into a production-ready application - built by AI agents and deployed to Red Hat OpenShift in 30 minutes. Starting with zero code, IBM Bob uses knowledge from the IBM Building Block skills to spawn a team of subagents that build, containerize then deploy this application on IBM Cloud for ~100 IBM Bob coins.",
-        "useCaseDescription": "This demo is a use case wrapped within a use case.  The application use case is a product ordering website for travelers needing supplies that can survive the rigors of space.  Agentic search powered by OpenSearch supports detailed queries about available products plus full shopping cart functionality.\n\nHowever the primary use case demonstrates the power of Spec-Driven Development, which allowed IBM Bob to build the Orbital Suppliers using only natural language documents, UI design images, dataset requirements and backend endpoint APIs. This highlights how enterprise development teams build production quality solutions.  More up-front documentation and less interactive vibe coding.",
+        "useCaseDescription": "This demo is a use case wrapped within a use case.  The application's use case is a product ordering website for travelers needing supplies that can survive the rigors of space.  Travelers use agentic search (powered by OpenSearch) to research available products then use full shopping cart functionality.\n\nThis demo's primary use case is to educate partners on the power of Spec-Driven Development, which allowed IBM Bob to build the Orbital Suppliers using only natural language documents, UI design images, dataset requirements and backend endpoint APIs. This highlights how enterprise development teams build production quality solutions.  More up-front documentation and less interactive vibe coding.\n\nPartners can use the provided Specifications (in natural language not code) which IBM Bob can use to rebuild this entire demo.",
         "demoExplainer": "1. Start by reviewing the provided Specifications workflow diagram which shows each step followed by IBM Bob to build the demo application.\n\n 2. Download the natural language specifications for this demo and skim through the specs to view the natural language instructions provided to IBM Bob, which includes UI design images to accurately build applications from scratch.\n\n3. You can rebuild this full-featured website w/agentic product search by simply asking Bob to 'Follow the instructions in `0-team-manager-ibm-building-blocks.md`.'",
         "slideshowImages": ["home_page.png", "agentic_search.png", "product_page.png", "cart_logged_in_full.png", "my_orders.png"]
       }
@@ -68,6 +68,28 @@
         "useCaseDescription": "Automated agentic operations and predictive IOT analytics ensure refrigerated transport (cold-chain) operators can solve the increasing pressure to reduce spoilage, improve real-time visibility, ensure compliance, respond faster, and build customer trust.",
         "demoExplainer": "Not-yet-provided",
         "slideshowImages": ["home_page.png"]
+      }
+    },
+    {
+      "name": "NexusIQ - Intelligent Operations Platform",
+      "slug": "nexusiq-intelligent-operations-platform",
+      "contactEmail": "bhargav.mankad@ibm.com",
+      "products": ["IBM watsonX.data", "IBM DataStax", "IBM Confluent"],
+      "buildingBlocks": ["ai.agents"],
+      "skills": [],
+      "codeRepo": "https://github.com/BhargavDMankad/Unified_AI_Driven_Analytics_Platform",
+      "architecture": "architecture.png",
+      "specificationsRepo": "",
+      "specificationsFlow": "",
+      "infoCard": {
+        "description": "Answer complex questions about supply-chain operations in seconds by federating structured data with unstructured runbooks and incident notes",
+        "image": "screenshot-1.jpg"
+      },
+      "landingPage": {
+        "introDescription": "An agentic demo that shows how IBM Bob AI answers complex supply-chain questions in seconds by federating structured Iceberg data (queried via watsonx.data Presto) with unstructured runbooks and incident notes (retrieved via vector search from Astra DB / HCD) ;  all through a single natural-language interface powered by MCP.",
+        "useCaseDescription": "Modern enterprises hold their most valuable operational knowledge in two completely disconnected worlds: structured records locked in databases and data warehouses, and unstructured institutional knowledge buried in runbooks, incident reports, and policy PDFs. Today, answering a single operational question — 'Why is this order delayed, and what should we do?' — requires an analyst to manually query multiple systems, search through documents, and correlate results before anyone can act. That process takes hours.\n\nThis demo collapses that time to under two seconds. It showcases a fully agentic architecture built on IBM watsonx.data as the unified query layer, with Apache Iceberg hosting all structured operational, analytics, and lakehouse data (covering orders, customers, warehouses, inventory, shipment events, and compensation policies). Unstructured content — four operational runbooks and two historical incident reports — is stored as vector embeddings in DataStax Astra DB or HCD, enabling semantic retrieval.\n\nA lightweight Python MCP (Model Context Protocol) server bridges the AI agent to both data worlds, exposing seven tools: SQL execution, vector search, and five schema-exploration helpers. An optional Confluent Kafka pipeline streams live orders into Iceberg with sub-500 ms end-to-end latency.\n\nThe entire system is orchestrated through IBM Bob — a VS Code AI assistant — using a custom 'AI Driven Analyst' mode that understands the demo schema, enforces correct tool selection, and formats answers for a live audience. The result is a demo that illustrates, in plain English, how structured facts and unstructured guidance combine into a single actionable insight: root cause, inventory reroute option, compensation amount, and runbook citation — all in one response.",
+        "demoExplainer": "Not-yet-provided",
+        "slideshowImages": ["screenshot-1.jpg", "architecture.png"]
       }
     },
     {

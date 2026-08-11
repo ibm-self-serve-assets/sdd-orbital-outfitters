@@ -76,7 +76,7 @@
       "contactEmail": "bhargav.mankad@ibm.com",
       "products": ["IBM watsonX.data", "IBM DataStax", "IBM Confluent"],
       "buildingBlocks": ["ai.agents"],
-      "skills": [],
+      "skills": ["agent", "data-streaming-confluent"],
       "codeRepo": "https://github.com/BhargavDMankad/Unified_AI_Driven_Analytics_Platform",
       "architecture": "architecture.png",
       "specificationsRepo": "",

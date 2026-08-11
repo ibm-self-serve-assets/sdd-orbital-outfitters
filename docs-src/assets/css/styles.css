@@ -473,8 +473,14 @@ a.pill-tag-bb:hover {
 
 .global-header-use-cases {
   color: #2f66d0;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1;
+  text-decoration: none;
+}
+
+.global-header-use-cases:hover {
+  text-decoration: underline;
 }
 
 .global-header-current {
@@ -1524,4 +1530,101 @@ a.card-item {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #161616;
+}
+
+/* ==================== LANDING PAGE ==================== */
+
+.landing-wrapper {
+  display: flex;
+  min-height: calc(100vh - 80px);
+}
+
+.landing-hero-panel {
+  flex: 0 0 30%;
+  box-sizing: border-box;
+  background: #f1f7fc;
+  display: flex;
+  padding: 40px 60px;
+}
+
+.landing-hero-headline {
+  font-size: 76px;
+  font-weight: 200;
+  line-height: 1.15;
+  color: #161616;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.landing-content-panel {
+  flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 60px;
+  background: #ffffff;
+}
+
+.landing-intro-text {
+  font-size: 22px;
+  line-height: 1.5;
+  color: #161616;
+  margin: 0 0 18px;
+}
+
+.landing-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 12px 24px;
+  background: #4a3cf7;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.15s ease;
+}
+
+.landing-cta-btn:hover {
+  background: #3828e0;
+}
+
+/* ==================== LANDING FOOTER ==================== */
+
+.landing-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #161616;
+  color: #c6c6c6;
+  font-size: 13px;
+  padding: 18px 40px;
+}
+
+.landing-footer-left {
+  color: #c6c6c6;
+}
+
+.landing-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.landing-footer-links a {
+  color: #c6c6c6;
+  text-decoration: none;
+}
+
+.landing-footer-links a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.landing-footer-sep {
+  color: #6f6f6f;
 }

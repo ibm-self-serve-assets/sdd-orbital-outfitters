@@ -15,9 +15,13 @@
       </svg>
       <span>Home</span>
     </a>
+    {{ if .showUseCases }}
+      <span class="global-header-breadcrumb-separator" aria-hidden="true">&#8250;</span>
+      <span class="global-header-current">Use cases</span>
+    {{ end }}
     {{ if .showBack }}
       <span class="global-header-breadcrumb-separator" aria-hidden="true">&#8250;</span>
-      <span class="global-header-use-cases">use cases</span>
+      <a class="global-header-use-cases" href="{{ "demos/" | absURL }}">Use cases</a>
       <span class="global-header-breadcrumb-separator" aria-hidden="true">&#8250;</span>
       <span class="global-header-current">{{ .title }}</span>
     {{ end }}

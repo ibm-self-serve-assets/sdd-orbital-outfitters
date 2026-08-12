@@ -207,15 +207,6 @@
               <div class="demo-step-title">
                 <span class="step-circle">3</span> Explore how it was built
               </div>
-              {{ $descPath := printf "assets/demos/%s/description.html" $demo.slug }}
-              {{ $descFile := readFile $descPath }}
-              {{ if $descFile }}
-                {{ $descFile | safeHTML }}
-              {{ else }}
-                {{ range split $demo.landingPage.demoExplainer "\n\n" }}
-                  <p class="demo-detail-description">{{ . }}</p>
-                {{ end }}
-              {{ end }}
               <div class="info-boxes-wrapper">
                 <div class="info-box">
                   {{ $cubeComponentsIcon := resources.Get "images/cube-components.svg" | fingerprint }}

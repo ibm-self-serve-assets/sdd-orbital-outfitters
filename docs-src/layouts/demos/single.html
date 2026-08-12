@@ -67,7 +67,7 @@
               <div class="info-box-subtitle">
                 Skills provide best practices for IBM technologies
               </div>
-                  <a href="https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/" class="demo-contact-card-link">Download skills &rarr;</a>
+                  <a href="https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/" class="download-skills-link">Download skills &rarr;</a>
               </div>
           {{ end }}
       
@@ -119,7 +119,7 @@
               <div class="info-boxes-wrapper">
                 <div class="info-box">
                   {{ $videoURL := printf "https://s3.us-south.cloud-object-storage.appdomain.cloud/dsce2-demo-videos/%s" $demo.video.cosFileName }}
-                  {{ $thumbPath := printf "images/demos/%s/%s" $demo.slug $demo.video.thumbnail }}
+                  {{ $thumbPath := printf "demos/%s/%s" $demo.slug $demo.video.thumbnail }}
                   {{ $thumbRes := resources.Get $thumbPath }}
                   {{ $videoIcon := resources.Get "images/video.svg" | fingerprint }}
                   <div class="info-box-header">
@@ -145,7 +145,7 @@
                   <div class="info-box-subtitle">Explore key screens from the demo</div>
                   <div class="demo-slideshow">
                     {{ range $i, $filename := $images }}
-                      {{ $imgPath := printf "images/demos/%s/%s" $demo.slug $filename }}
+                      {{ $imgPath := printf "demos/%s/%s" $demo.slug $filename }}
                       {{ $img := resources.Get $imgPath }}
                       {{ if $img }}
                         {{ $img = $img | fingerprint }}
@@ -183,13 +183,11 @@
                     Try the demo
                   </a>
                 {{ end }}
-                {{ if and $demo.landingPage.demoExplainer (gt (len $demo.landingPage.demoExplainer) 0) }}
-                  {{ $speechBubbleIcon := resources.Get "images/speech-bubble.svg" | fingerprint }}
-                  <button type="button" class="demo-btn demo-script-btn" id="demoExplainerBtn" aria-controls="demoExplainerDrawer" aria-expanded="false">
-                    <img src="{{ $speechBubbleIcon.RelPermalink }}" alt="" class="demo-script-btn-icon" />
-                    Demo script
-                  </button>
-                {{ end }}
+                {{ $speechBubbleIcon := resources.Get "images/speech-bubble.svg" | fingerprint }}
+                <button type="button" class="demo-btn demo-script-btn" id="demoExplainerBtn" aria-controls="demoExplainerDrawer" aria-expanded="false">
+                  <img src="{{ $speechBubbleIcon.RelPermalink }}" alt="" class="demo-script-btn-icon" />
+                  Demo script
+                </button>
               </div>
               <div class="demo-contact-card">
                 <div class="demo-card-contact-icon">
@@ -209,8 +207,14 @@
               <div class="demo-step-title">
                 <span class="step-circle">3</span> Explore how it was built
               </div>
-              {{ range split $demo.landingPage.demoExplainer "\n\n" }}
-                <p class="demo-detail-description">{{ . }}</p>
+              {{ $descPath := printf "assets/demos/%s/description.html" $demo.slug }}
+              {{ $descFile := readFile $descPath }}
+              {{ if $descFile }}
+                {{ $descFile | safeHTML }}
+              {{ else }}
+                {{ range split $demo.landingPage.demoExplainer "\n\n" }}
+                  <p class="demo-detail-description">{{ . }}</p>
+                {{ end }}
               {{ end }}
               <div class="info-boxes-wrapper">
                 <div class="info-box">
@@ -224,7 +228,7 @@
                   <div class="info-box-subtitle">
                     High level overview of major demo components
                   </div>
-                  {{ $architectureImgPath := printf "images/demos/%s/%s" $demo.slug $demo.architecture }}
+                  {{ $architectureImgPath := printf "demos/%s/%s" $demo.slug $demo.architecture }}
                   {{ $architectureImg := resources.Get $architectureImgPath }}
                   <a href="{{ $architectureImg.RelPermalink }}" target="_blank" rel="noopener">
                     <img src="{{ $architectureImg.RelPermalink }}" />
@@ -232,7 +236,7 @@
                 </div>
                 {{ if and $demo.specificationsFlow (gt (len $demo.specificationsFlow) 0) }}
                   <div class="info-box">
-                    {{ $specImgPath := printf "images/demos/%s/%s" $demo.slug $demo.specificationsFlow }}
+                    {{ $specImgPath := printf "demos/%s/%s" $demo.slug $demo.specificationsFlow }}
                     {{ $specImg := resources.Get $specImgPath }}
                     {{ $specImg = $specImg | fingerprint }}
                     {{ $bobIcon := resources.Get "images/bob.png" | fingerprint }}
@@ -280,31 +284,29 @@
           </div>
         </div>
       </div>
-      {{ if and $demo.landingPage.demoExplainer (gt (len $demo.landingPage.demoExplainer) 0) }}
-        <div class="drawer-overlay demo-script-overlay" id="demoExplainerOverlay"></div>
-        <aside class="contact-drawer demo-script-drawer" id="demoExplainerDrawer" aria-hidden="true">
-          <div class="drawer-header demo-script-header">
-            <span class="drawer-title">Demo script</span>
-            <div class="demo-script-header-actions">
-              <button type="button" class="demo-script-copy-btn" id="demoExplainerCopyBtn" aria-label="Copy text">
-                <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor">
-                  <path d="M28 10H14a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V12a2 2 0 0 0-2-2zm0 18H14V12h14zM4 20V4h14v4h2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4v-2H4z"/>
-                </svg>
-                <svg class="copy-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor" style="display:none">
-                  <path d="M13 24L4 15l1.4-1.4 7.6 7.6L26.6 8 28 9.4z"/>
-                </svg>
-                <span class="demo-script-copy-label">Copy</span>
-              </button>
-              <button class="drawer-close" id="demoExplainerClose" aria-label="Close">&#x2715;</button>
-            </div>
+      <div class="drawer-overlay demo-script-overlay" id="demoExplainerOverlay"></div>
+      <aside class="contact-drawer demo-script-drawer" id="demoExplainerDrawer" aria-hidden="true">
+        <div class="drawer-header demo-script-header">
+          <span class="drawer-title">Demo script</span>
+          <div class="demo-script-header-actions">
+            <button type="button" class="demo-script-copy-btn" id="demoExplainerCopyBtn" aria-label="Copy text">
+              <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor">
+                <path d="M28 10H14a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V12a2 2 0 0 0-2-2zm0 18H14V12h14zM4 20V4h14v4h2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4v-2H4z"/>
+              </svg>
+              <svg class="copy-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor" style="display:none">
+                <path d="M13 24L4 15l1.4-1.4 7.6 7.6L26.6 8 28 9.4z"/>
+              </svg>
+              <span class="demo-script-copy-label">Copy</span>
+            </button>
+            <button class="drawer-close" id="demoExplainerClose" aria-label="Close">&#x2715;</button>
           </div>
-          <div class="drawer-body demo-script-body" id="demoExplainerBody">
-            {{ range split $demo.landingPage.demoExplainer "\n\n" }}
-              <p class="demo-script-paragraph">{{ . }}</p>
-            {{ end }}
-          </div>
-        </aside>
-      {{ end }}
+        </div>
+        <div class="drawer-body demo-script-body" id="demoExplainerBody">
+          {{ $scriptPath := printf "assets/demos/%s/description.html" $demo.slug }}
+          {{ $scriptFile := readFile $scriptPath }}
+          {{ $scriptFile | safeHTML }}
+        </div>
+      </aside>
     </main>
   {{ else }}
     <main class="demo-detail-page">

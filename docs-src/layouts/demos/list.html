@@ -98,7 +98,7 @@
         <div id="demo-cards-wrapper" class="demo-cards-wrapper">
           {{ range hugo.Data.demos.demos }}
             {{ $demo := . }}
-            {{ $cardImgPath := printf "images/demos/%s/%s" $demo.slug $demo.infoCard.image }}
+            {{ $cardImgPath := printf "demos/%s/%s" $demo.slug $demo.infoCard.image }}
             {{ $cardImgRaw := resources.Get $cardImgPath }}
             {{ if not $cardImgRaw }}
               {{ warnf "demos/list.html: card image not found for demo %q — expected asset at %q" $demo.slug $cardImgPath }}

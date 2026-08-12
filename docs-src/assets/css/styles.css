@@ -919,11 +919,11 @@ a.card-item {
   flex-direction: row;
   align-items: flex-start;
   gap: 16px;
-  margin-top: 16px;
+  margin: 16px 0 8px 0;
   padding: 16px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  background: #ffffff;
+  background: #f8f8f8;
 }
 
 .demo-contact-card-link {
@@ -935,6 +935,13 @@ a.card-item {
 
 .demo-contact-card-link:hover {
   text-decoration: underline;
+}
+
+.download-skills-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2850B8;
+  text-decoration: none;
 }
 
 .demo-meta-card {
@@ -1578,7 +1585,7 @@ a.card-item {
   gap: 8px;
   margin-top: 12px;
   padding: 12px 24px;
-  background: #4a3cf7;
+  background: #2f66d0;
   color: #ffffff;
   font-size: 15px;
   font-weight: 500;
@@ -1590,7 +1597,7 @@ a.card-item {
 }
 
 .landing-cta-btn:hover {
-  background: #3828e0;
+  background: #2f66d0;
 }
 
 /* ==================== LANDING FOOTER ==================== */

@@ -1,2 +1,94 @@
-<div><B>PLACEHOLDER</B></div>
-<div>Waiting for content from demo team</div>
+<div style="font-size: 18px;margin-bottom: 6px;"><B>INTERACTIVE DEMO GUIDE: IBM FLEETOPTX COLDPULSE</B></div>
+
+<div style="font-size: 16px;margin-bottom: 6px;"><B>PART 1: OPERATIONS MANAGER PERSONA</B></div>
+
+<div style="font-size: 12px;margin-bottom: 6px;">
+<div style="font-size: 14px;margin-bottom: 6px;">Overview:</div>
+This demo demonstrates how IBM FleetOptx ColdPulse uses AI forecasting models and multi-agent systems to detect, analyze, and resolve critical fleet disruptions automatically.
+
+<div style="font-size: 14px;margin-bottom: 6px;">Step 1: Switch User Persona</div>
+1. Locate the persona dropdown menu in the top-right corner of the interface.
+2. Select Operations Manager - Sarah Chen to access full operational management controls.
+
+<div style="font-size: 14px;margin-bottom: 6px;">Step 2: Monitor Fleet Operations</div>
+1. Navigate to the main Operations dashboard.
+2. Review the live fleet metrics and active alerts:
+   - Identify the vehicles flagged with critical cooling system threshold breaches.
+3. Click on any vehicle displaying a Critical alert under the Alerts sidebar to view its alert history and specific cargo breach parameters.
+
+<div style="font-size: 14px;margin-bottom: 6px;">Step 3: Evaluate Predictive Risk (Forecasting Tower)</div>
+1. Click the Forecasting tab in the top navigation bar.
+2. Review the AI-Powered Forecasting summary page:
+   - View high-risk trucks flagged by the IBM Granite Time Series forecasting model.
+   - Note the confidence score and projected time-to-spoilage.
+3. Click View Forecast for any truck showing an active breach to analyze detailed predictions:
+   - Temperature Breach Prediction: Review historical temperature trends vs. AI future predictions (e.g., 80% risk of continued breach in next 8 hours).
+   - Weather Impact Forecast: Check route conditions and severity levels.
+   - Station Availability Forecast: Check available service bays along the route.
+
+<div style="font-size: 14px;margin-bottom: 6px;">Step 4: Trigger Multi-Agent AI Analysis</div>
+1. Click the blue Analyze button next to an active critical alert.
+2. You will automatically be routed to the Agents tab.
+3. Observe the four specialized AI agents executing in parallel:
+   - Weather Agent: Evaluates radar, temperatures, and severe weather delays along route segments. Click "Click for full details" to view segment data.
+   - Station Agent: Searches nearby emergency cooling and repair facilities. Click "Click for full details" to see available bays and wait times.
+   - Route Agent: Evaluates alternative rerouting options based on fuel usage, cost, and arrival times. Click "Click for full details" to compare routes.
+   - Decision Agent: Aggregates findings from all three agents to generate a unified recommendation, risk score, financial analysis, and post-recovery plan.
+
+<div style="font-size: 14px;margin-bottom: 6px;">Step 5: Check Autonomous Resolution</div>
+1. In the Decision Agent detail window, review the recommended action: EMERGENCY_REROUTE.
+2. Click Close on the Decision Agent detail window.
+3. Observe the Notification Agent trigger automatically:
+   - The system reserves an emergency cooling bay at the selected service station.
+   - An automated WhatsApp notification with updated navigation details is sent directly to the driver's device (Loco Pilot).
+
+Note: For DSCE, the notification option is kept disabled during this demo workflow. Please check the video for full functionality
+
+
+================================================================================
+
+
+<div style="font-size: 14px;margin-bottom: 6px;">PART 2: DRIVER PERSONA</div>
+
+<div style="font-size: 14px;margin-bottom: 6px;">Overview:</div>
+This demo shows how IBM FleetOptx ColdPulse supports the Driver Persona by automatically processing critical telemetry alerts, rerouting drivers to emergency cooling hubs, and presenting clear actionable instructions without requiring manual intervention.
+
+Step 1: Switch User Persona
+1. Locate the persona dropdown menu in the top-right corner of the interface.
+2. Select Driver Persona to open the dedicated Driver View portal.
+
+Step 2: Select Driver Profile
+1. Locate the Select Driver Profile dropdown menu in the top-left section of the dashboard.
+2. Select the driver/truck profile displaying a Critical alert status to view its active telemetry.
+
+Step 3: Review Vehicle & Cargo Telemetry
+1. Navigate to the My Truck section in the central panel.
+2. Monitor real-time vehicle and cargo status:
+   - Cargo Temp: Observe active temperature alerts (e.g., highlighted warning levels).
+   - Vehicle Status: Check assigned vehicle metrics, fuel levels, route progress percentage, remaining distance, ETA, speed, and overall cargo status.
+
+Step 4: Access Reroute Notifications
+1. Locate the Notifications panel on the right side of the screen.
+2. Review the automated EMERGENCY_REROUTE notification generated by the system:
+   - View the updated destination details (e.g., assigned emergency service plaza).
+   - Read the automated operational context, including facility proximity, estimated arrival window, cargo temperature recovery buffer, weather clearance along the route, and available docking status.
+
+Step 5: Verify Rerouted Destination & Navigation
+1. Check the Destination Station panel below the truck metrics to confirm assigned facility details:
+   - Route & Station Type: Review station location, service type, and exact coordinates.
+   - Status & Bay Availability: Confirm that an active service bay is reserved for emergency cooling.
+2. Reference the My Current Route map panel on the left to trace the live GPS trajectory updated with the new service plaza destination.
+
+Step 6: Review Delivery History
+1. Scroll to the My Recent Deliveries panel at the bottom of the interface.
+2. Review past completed routes, cargo categories, total distances, and duration logs to verify historical operational compliance.
+
+
+================================================================================
+
+Part3: SRE PERSONA
+
+Note: For DSCE, the application observability is kept disabled during this demo workflow. Please check the video for full functionality
+
+
+</div>

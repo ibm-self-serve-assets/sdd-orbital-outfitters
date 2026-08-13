@@ -220,13 +220,6 @@
                     High level overview of major demo components
                   </div>
                   {{ $hasWorkingDemo := and $demo.workingDemoURL (gt (len $demo.workingDemoURL) 0) }}
-                  {{ if $hasWorkingDemo }}
-                    {{ $workingDemoIcon := resources.Get "images/monitor-white.svg" | fingerprint }}
-                    <a href="{{ $demo.workingDemoURL }}" target="_blank" rel="noopener" class="working-demo-btn">
-                      <img src="{{ $workingDemoIcon.RelPermalink }}" alt="" class="working-demo-btn-icon" />
-                      Try the demo
-                    </a>
-                  {{ end }}
                   {{ $architectureImgPath := printf "demos/%s/%s" $demo.slug $demo.architecture }}
                   {{ $architectureImg := resources.Get $architectureImgPath }}
                   <a href="{{ $architectureImg.RelPermalink }}" target="_blank" rel="noopener">

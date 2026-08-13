@@ -28,7 +28,7 @@ body:
     attributes:
       label: What would you like to discuss?
       description: Provide as much detail as possible (max 500 characters).
-      placeholder: ""
+      placeholder: Describe your question or feedback…
     validations:
       required: true
 

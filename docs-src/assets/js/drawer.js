@@ -1,7 +1,4 @@
-// ==================== CONTACT DRAWER ====================
-const drawer = document.getElementById('contactDrawer');
-const overlay = document.getElementById('drawerOverlay');
-
+// ==================== DRAWERS ====================
 function bindDrawer(options) {
   const trigger = document.getElementById(options.triggerId);
   const panel = document.getElementById(options.drawerId);
@@ -35,14 +32,6 @@ function bindDrawer(options) {
     cancelButton.addEventListener('click', closeDrawer);
   }
 }
-
-bindDrawer({
-  triggerId: 'contactBtn',
-  drawerId: 'contactDrawer',
-  overlayId: 'drawerOverlay',
-  closeId: 'drawerClose',
-  cancelId: 'drawerCancel'
-});
 
 bindDrawer({
   triggerId: 'demoExplainerBtn',

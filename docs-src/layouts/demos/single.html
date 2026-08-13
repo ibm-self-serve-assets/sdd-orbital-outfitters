@@ -150,7 +150,9 @@
                       {{ if $img }}
                         {{ $img = $img | fingerprint }}
                         <div class="demo-slide{{ if eq $i 0 }} is-active{{ end }}">
-                          <img src="{{ $img.RelPermalink }}" alt="{{ $demo.name }} screenshot {{ add $i 1 }}" />
+                          <button class="demo-slide-zoom" aria-label="View full size" data-src="{{ $img.RelPermalink }}" data-alt="{{ $demo.name }} screenshot {{ add $i 1 }}">
+                            <img src="{{ $img.RelPermalink }}" alt="{{ $demo.name }} screenshot {{ add $i 1 }}" />
+                          </button>
                         </div>
                       {{ end }}
                     {{ end }}
@@ -300,6 +302,11 @@
         </div>
       </aside>
     </main>
+    <!-- Lightbox -->
+    <div class="demo-lightbox" id="demoLightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+      <button class="demo-lightbox-close" id="demoLightboxClose" aria-label="Close">&#x2715;</button>
+      <img class="demo-lightbox-img" id="demoLightboxImg" src="" alt="" />
+    </div>
   {{ else }}
     <main class="demo-detail-page">
       <p class="demo-detail-missing">Demo not found.</p>

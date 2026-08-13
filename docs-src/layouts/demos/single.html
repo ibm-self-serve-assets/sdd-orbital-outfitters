@@ -157,8 +157,12 @@
                       {{ end }}
                     {{ end }}
                     {{ if gt (len $images) 1 }}
-                      <button class="demo-slide-prev" aria-label="Previous image">&#8592;</button>
-                      <button class="demo-slide-next" aria-label="Next image">&#8594;</button>
+                      <button class="demo-slide-prev" aria-label="Previous image">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="16,4 6,12 16,20"/></svg>
+                      </button>
+                      <button class="demo-slide-next" aria-label="Next image">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="8,4 18,12 8,20"/></svg>
+                      </button>
                     {{ end }}
                     {{ if gt (len $images) 1 }}
                       <div class="demo-slide-dots">
@@ -224,9 +228,9 @@
                   {{ $hasWorkingDemo := and $demo.workingDemoURL (gt (len $demo.workingDemoURL) 0) }}
                   {{ $architectureImgPath := printf "demos/%s/%s" $demo.slug $demo.architecture }}
                   {{ $architectureImg := resources.Get $architectureImgPath }}
-                  <a href="{{ $architectureImg.RelPermalink }}" target="_blank" rel="noopener">
+                  <button class="demo-slide-zoom" aria-label="View full size" data-src="{{ $architectureImg.RelPermalink }}" data-alt="{{ $demo.name }} architecture diagram">
                     <img src="{{ $architectureImg.RelPermalink }}" />
-                  </a>
+                  </button>
                 </div>
                 {{ if and $demo.specificationsFlow (gt (len $demo.specificationsFlow) 0) }}
                   <div class="info-box">
@@ -243,9 +247,9 @@
                     <div class="info-box-subtitle">
                       IBM Bob executes these Specifications to build this demo.
                     </div>
-                    <a href="{{ $specImg.RelPermalink }}" target="_blank" rel="noopener">
+                    <button class="demo-slide-zoom" aria-label="View full size" data-src="{{ $specImg.RelPermalink }}" data-alt="{{ $demo.name }} specifications workflow">
                       <img src="{{ $specImg.RelPermalink }}" />
-                    </a>
+                    </button>
                   </div>
                 {{ end }}
               </div>

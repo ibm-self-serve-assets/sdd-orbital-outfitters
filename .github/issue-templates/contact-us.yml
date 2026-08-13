@@ -1,25 +1,24 @@
 name: Contact Us
-description: Share feedback, request assistance, or get in touch with the team.
-title: "[Contact] "
-labels: ["contact"]
+description: Share feedback, request assistance or get in touch with the team.
+title: "[Contact Us] "
+labels: ["contact Us"]
 body:
   - type: markdown
     attributes:
       value: |
-        Use this form to reach out to the Orbital Outfitters team. Fields marked **required** must be completed before submitting.
+        Use this form to reach out to the DSCE team. Fields marked **required** must be completed before submitting.
 
   # ── Topic ──────────────────────────────────────────────────
   - type: dropdown
     id: category
     attributes:
       label: Category
-      description: Select the topic that best describes your enquiry.
+      description: Select the topic that best describes your inquiry.
       options:
         - Share feedback
         - Technical assistance
         - Learn more about a use case
         - Get in touch with Sales team
-        - Request container customization
         - Other
     validations:
       required: true
@@ -35,16 +34,10 @@ body:
 
   # ── Contact Details ────────────────────────────────────────
   - type: input
-    id: first_name
+    id: name
     attributes:
-      label: First name
-      placeholder: Jane
-
-  - type: input
-    id: last_name
-    attributes:
-      label: Last name
-      placeholder: Smith
+      label: Name
+      placeholder: Jane Smith
 
   - type: input
     id: email
@@ -53,12 +46,6 @@ body:
       placeholder: jane.smith@example.com
     validations:
       required: true
-
-  - type: input
-    id: phone
-    attributes:
-      label: Phone number
-      placeholder: "+1 555 000 0000"
 
   - type: input
     id: company

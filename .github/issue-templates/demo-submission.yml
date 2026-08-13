@@ -23,8 +23,7 @@ body:
     id: short_description
     attributes:
       label: Short description
-      description: "1–2 sentences. Used on the catalog card. Keep it punchy and outcome-focused."
-      placeholder: "An enterprise fleet management demo that autonomously detects temperature breaches and reroutes trucks using AI agents."
+      description: "1–2 sentences (<= 30 words). Used on the catalog card and top of demo detail page. Keep it punchy and outcome-focused."
     validations:
       required: true
 
@@ -32,7 +31,7 @@ body:
     id: long_description
     attributes:
       label: Long description
-      description: "1–2 paragraphs (7–10 sentences). Used on the demo detail page. Describe the problem, solution, key capabilities, and personas involved."
+      description: "2-3 paragraphs (3-5 sentences each sentences). Used on the demo detail page. Describe the problem, solution, key capabilities, and personas involved."
       placeholder: |
         Paragraph 1 — the business problem and context...
 
@@ -44,9 +43,9 @@ body:
   - type: input
     id: video_url
     attributes:
-      label: Demo overview video URL
-      description: "Link to a short walkthrough video (2–5 minutes). Upload to IBM COS or provide a public URL."
-      placeholder: "https://..."
+      label: Demo overview video
+      description: "Short walkthrough video (2–5 minutes)."
+      placeholder: "Link to video on Box or OneDrive."
     validations:
       required: true
 
@@ -69,18 +68,9 @@ body:
   - type: input
     id: primary_contact
     attributes:
-      label: Primary contact name
-      description: Full name of the person responsible for this demo.
-      placeholder: "Jane Smith"
-    validations:
-      required: true
-
-  - type: input
-    id: contact_email
-    attributes:
-      label: Primary contact email
-      description: IBM email address for the demo owner. Displayed on the demo detail page for partner inquiries.
-      placeholder: "jane.smith@ibm.com"
+      label: Primary contact
+      description: Full name and email of the person responsible for this demo.
+      placeholder: "Jane Smith / jane@company.com"
     validations:
       required: true
 
@@ -90,7 +80,7 @@ body:
       label: How to use the demo (seller / demo script)
       description: |
         Step-by-step explanation of how a seller should present this demo.
-        Number each step. This becomes the "Demo script" drawer content on the detail page.
+        Number each step. This becomes the "Demo script" drawer content on the demo detail page.
       placeholder: |
         1. Start by ...
         2. Navigate to ...
@@ -105,7 +95,7 @@ body:
       label: Architecture diagram
       description: |
         Attach your architecture diagram image file here (drag and drop or paste a URL).
-        Accepted formats: PNG, SVG. Recommended: wide aspect ratio (e.g. 1600 × 900 px).
+        Accepted formats: PNG, JPEG. Recommended: wide aspect ratio (e.g. 1600 × 900 px).
       placeholder: "architecture.png"
     validations:
       required: true
@@ -171,18 +161,3 @@ body:
       label: Link to specifications repository (if available)
       description: GitHub repo containing the natural language specifications used by IBM Bob to build this demo. Leave blank if not applicable.
       placeholder: "https://github.com/..."
-
-  # ── Acknowledgement ────────────────────────────────────────
-  - type: checkboxes
-    id: readiness
-    attributes:
-      label: Submission checklist
-      options:
-        - label: The functional demo URL is live and accessible.
-          required: true
-        - label: All required screenshots have been attached.
-          required: true
-        - label: The architecture diagram has been attached.
-          required: true
-        - label: I am the primary contact and will respond to follow-up questions.
-          required: true

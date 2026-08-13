@@ -1503,26 +1503,26 @@ a.card-item {
   gap: 4px;
 }
 
-.demo-script-copy-btn {
+.demo-script-save-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   background: none;
   border: 1px solid #c1c7cd;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 13px;
   color: #525252;
   cursor: pointer;
-  padding: 4px 10px;
+  padding: 4px 9px;
   line-height: 1;
 }
 
-.demo-script-copy-btn:hover {
+.demo-script-save-btn:hover {
   color: #161616;
   border-color: #8d8d8d;
 }
 
-.demo-script-copy-btn.is-copied {
+.demo-script-save-btn.is-saved {
   color: #198038;
   border-color: #198038;
 }

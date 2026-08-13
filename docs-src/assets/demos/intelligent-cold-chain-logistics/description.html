@@ -1,94 +1,156 @@
-<div style="font-size: 18px;margin-bottom: 6px;"><B>INTERACTIVE DEMO GUIDE: IBM FLEETOPTX COLDPULSE</B></div>
+<div style="font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.01em;">Interactive Demo Guide: IBM FleetOptx ColdPulse</div>
 
-<div style="font-size: 16px;margin-bottom: 6px;"><B>PART 1: OPERATIONS MANAGER PERSONA</B></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
+  <a href="#ccl-part1" style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: #f0f4ff; color: #2850B8; border: 1px solid #c7d5f5; text-decoration: none;">1 · Operations Manager</a>
+  <a href="#ccl-part2" style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: #f0f4ff; color: #2850B8; border: 1px solid #c7d5f5; text-decoration: none;">2 · Driver</a>
+  <a href="#ccl-part3" style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: #f0f4ff; color: #2850B8; border: 1px solid #c7d5f5; text-decoration: none;">3 · SRE</a>
+</div>
 
-<div style="font-size: 12px;margin-bottom: 6px;">
-<div style="font-size: 14px;margin-bottom: 6px;">Overview:</div>
-This demo demonstrates how IBM FleetOptx ColdPulse uses AI forecasting models and multi-agent systems to detect, analyze, and resolve critical fleet disruptions automatically.
+<!-- ── PART 1 ── -->
+<div id="ccl-part1" style="background: #2850B8; color: #fff; border-radius: 6px; padding: 8px 12px; margin-bottom: 8px;">
+  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; margin-bottom: 2px;">Part 1</div>
+  <div style="font-size: 15px; font-weight: 700;">Operations Manager Persona</div>
+</div>
+<div style="font-size: 13px; color: #57606a; margin-bottom: 10px;">
+  Demonstrates how IBM FleetOptx ColdPulse uses AI forecasting models and multi-agent systems to detect, analyze, and resolve critical fleet disruptions automatically.
+</div>
 
-<div style="font-size: 14px;margin-bottom: 6px;">Step 1: Switch User Persona</div>
-1. Locate the persona dropdown menu in the top-right corner of the interface.
-2. Select Operations Manager - Sarah Chen to access full operational management controls.
+<div style="font-weight: 600; margin-bottom: 4px;">Step 1 — Switch User Persona</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Locate the persona dropdown menu in the top-right corner of the interface.</li>
+  <li style="margin-bottom: 4px;">Select <b>Operations Manager – Sarah Chen</b> to access full operational management controls.</li>
+</ol>
 
-<div style="font-size: 14px;margin-bottom: 6px;">Step 2: Monitor Fleet Operations</div>
-1. Navigate to the main Operations dashboard.
-2. Review the live fleet metrics and active alerts:
-   - Identify the vehicles flagged with critical cooling system threshold breaches.
-3. Click on any vehicle displaying a Critical alert under the Alerts sidebar to view its alert history and specific cargo breach parameters.
+<div style="font-weight: 600; margin-bottom: 4px;">Step 2 — Monitor Fleet Operations</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Navigate to the main <b>Operations</b> dashboard.</li>
+  <li style="margin-bottom: 4px;">Review the live fleet metrics and active alerts:
+    <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+      <li>Identify vehicles flagged with <b>critical cooling system threshold breaches</b>.</li>
+    </ul>
+  </li>
+  <li style="margin-bottom: 4px;">Click any vehicle displaying a <b>Critical</b> alert in the Alerts sidebar to view its alert history and cargo breach parameters.</li>
+</ol>
 
-<div style="font-size: 14px;margin-bottom: 6px;">Step 3: Evaluate Predictive Risk (Forecasting Tower)</div>
-1. Click the Forecasting tab in the top navigation bar.
-2. Review the AI-Powered Forecasting summary page:
-   - View high-risk trucks flagged by the IBM Granite Time Series forecasting model.
-   - Note the confidence score and projected time-to-spoilage.
-3. Click View Forecast for any truck showing an active breach to analyze detailed predictions:
-   - Temperature Breach Prediction: Review historical temperature trends vs. AI future predictions (e.g., 80% risk of continued breach in next 8 hours).
-   - Weather Impact Forecast: Check route conditions and severity levels.
-   - Station Availability Forecast: Check available service bays along the route.
+<div style="font-weight: 600; margin-bottom: 4px;">Step 3 — Evaluate Predictive Risk (Forecasting Tower)</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Click the <b>Forecasting</b> tab in the top navigation bar.</li>
+  <li style="margin-bottom: 4px;">Review the AI-Powered Forecasting summary page:
+    <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+      <li>View high-risk trucks flagged by the <b>IBM Granite Time Series</b> forecasting model.</li>
+      <li>Note the <b>confidence score</b> and projected <b>time-to-spoilage</b>.</li>
+    </ul>
+  </li>
+  <li style="margin-bottom: 4px;">Click <b>View Forecast</b> for any truck showing an active breach to analyze detailed predictions:
+    <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+      <li><b>Temperature Breach Prediction</b> — historical trends vs. AI future predictions (e.g., 80% risk in next 8 hours).</li>
+      <li><b>Weather Impact Forecast</b> — route conditions and severity levels.</li>
+      <li><b>Station Availability Forecast</b> — available service bays along the route.</li>
+    </ul>
+  </li>
+</ol>
 
-<div style="font-size: 14px;margin-bottom: 6px;">Step 4: Trigger Multi-Agent AI Analysis</div>
-1. Click the blue Analyze button next to an active critical alert.
-2. You will automatically be routed to the Agents tab.
-3. Observe the four specialized AI agents executing in parallel:
-   - Weather Agent: Evaluates radar, temperatures, and severe weather delays along route segments. Click "Click for full details" to view segment data.
-   - Station Agent: Searches nearby emergency cooling and repair facilities. Click "Click for full details" to see available bays and wait times.
-   - Route Agent: Evaluates alternative rerouting options based on fuel usage, cost, and arrival times. Click "Click for full details" to compare routes.
-   - Decision Agent: Aggregates findings from all three agents to generate a unified recommendation, risk score, financial analysis, and post-recovery plan.
+<div style="font-weight: 600; margin-bottom: 4px;">Step 4 — Trigger Multi-Agent AI Analysis</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Click the blue <b>Analyze</b> button next to an active critical alert.</li>
+  <li style="margin-bottom: 4px;">You will be automatically routed to the <b>Agents</b> tab.</li>
+  <li style="margin-bottom: 4px;">Observe four specialized AI agents executing in parallel:
+    <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+      <li><b>Weather Agent</b> — evaluates radar, temperatures, and severe weather delays along route segments.</li>
+      <li><b>Station Agent</b> — searches nearby emergency cooling and repair facilities, available bays, and wait times.</li>
+      <li><b>Route Agent</b> — evaluates alternative rerouting options based on fuel usage, cost, and arrival times.</li>
+      <li><b>Decision Agent</b> — aggregates all findings to generate a unified recommendation, risk score, financial analysis, and post-recovery plan.</li>
+    </ul>
+  </li>
+  <li style="margin-bottom: 4px;">Click <b>"Click for full details"</b> on any agent card to drill into its segment data.</li>
+</ol>
 
-<div style="font-size: 14px;margin-bottom: 6px;">Step 5: Check Autonomous Resolution</div>
-1. In the Decision Agent detail window, review the recommended action: EMERGENCY_REROUTE.
-2. Click Close on the Decision Agent detail window.
-3. Observe the Notification Agent trigger automatically:
-   - The system reserves an emergency cooling bay at the selected service station.
-   - An automated WhatsApp notification with updated navigation details is sent directly to the driver's device (Loco Pilot).
+<div style="font-weight: 600; margin-bottom: 4px;">Step 5 — Check Autonomous Resolution</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">In the Decision Agent detail window, review the recommended action: <b>EMERGENCY_REROUTE</b>.</li>
+  <li style="margin-bottom: 4px;">Click <b>Close</b> on the Decision Agent detail window.</li>
+  <li style="margin-bottom: 4px;">Observe the <b>Notification Agent</b> trigger automatically:
+    <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+      <li>The system reserves an emergency cooling bay at the selected service station.</li>
+      <li>An automated WhatsApp notification with updated navigation details is sent to the driver's device.</li>
+    </ul>
+  </li>
+</ol>
 
-Note: For DSCE, the notification option is kept disabled during this demo workflow. Please check the video for full functionality
+<div style="font-size: 12px; color: #57606a; background: #f7f8fa; border-left: 3px solid #c1c7cd; padding: 6px 10px; margin-bottom: 14px;">
+  <b>Note:</b> For DSCE, the notification option is kept disabled during this demo workflow. Please check the video for full functionality.
+</div>
 
+<hr style="border: none; border-top: 1px solid #e5e7eb; margin: 12px 0;" />
 
-================================================================================
+<!-- ── PART 2 ── -->
+<div id="ccl-part2" style="background: #2850B8; color: #fff; border-radius: 6px; padding: 8px 12px; margin-bottom: 8px;">
+  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; margin-bottom: 2px;">Part 2</div>
+  <div style="font-size: 15px; font-weight: 700;">Driver Persona</div>
+</div>
+<div style="font-size: 13px; color: #57606a; margin-bottom: 10px;">
+  Shows how IBM FleetOptx ColdPulse supports the Driver Persona — automatically processing critical telemetry alerts, rerouting drivers to emergency cooling hubs, and presenting clear actionable instructions without manual intervention.
+</div>
 
+<div style="font-weight: 600; margin-bottom: 4px;">Step 1 — Switch User Persona</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Locate the persona dropdown menu in the top-right corner of the interface.</li>
+  <li style="margin-bottom: 4px;">Select <b>Driver Persona</b> to open the dedicated Driver View portal.</li>
+</ol>
 
-<div style="font-size: 14px;margin-bottom: 6px;">PART 2: DRIVER PERSONA</div>
+<div style="font-weight: 600; margin-bottom: 4px;">Step 2 — Select Driver Profile</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Locate the <b>Select Driver Profile</b> dropdown in the top-left section of the dashboard.</li>
+  <li style="margin-bottom: 4px;">Select the driver/truck profile displaying a <b>Critical</b> alert status to view its active telemetry.</li>
+</ol>
 
-<div style="font-size: 14px;margin-bottom: 6px;">Overview:</div>
-This demo shows how IBM FleetOptx ColdPulse supports the Driver Persona by automatically processing critical telemetry alerts, rerouting drivers to emergency cooling hubs, and presenting clear actionable instructions without requiring manual intervention.
+<div style="font-weight: 600; margin-bottom: 4px;">Step 3 — Review Vehicle &amp; Cargo Telemetry</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Navigate to the <b>My Truck</b> section in the central panel.</li>
+  <li style="margin-bottom: 4px;">Monitor real-time status:
+    <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+      <li><b>Cargo Temp</b> — observe active temperature alerts (highlighted warning levels).</li>
+      <li><b>Vehicle Status</b> — check fuel levels, route progress, remaining distance, ETA, speed, and overall cargo status.</li>
+    </ul>
+  </li>
+</ol>
 
-Step 1: Switch User Persona
-1. Locate the persona dropdown menu in the top-right corner of the interface.
-2. Select Driver Persona to open the dedicated Driver View portal.
+<div style="font-weight: 600; margin-bottom: 4px;">Step 4 — Access Reroute Notifications</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Locate the <b>Notifications</b> panel on the right side of the screen.</li>
+  <li style="margin-bottom: 4px;">Review the automated <b>EMERGENCY_REROUTE</b> notification:
+    <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+      <li>Updated destination details (e.g., assigned emergency service plaza).</li>
+      <li>Facility proximity, estimated arrival window, cargo temperature recovery buffer, weather clearance, and available docking status.</li>
+    </ul>
+  </li>
+</ol>
 
-Step 2: Select Driver Profile
-1. Locate the Select Driver Profile dropdown menu in the top-left section of the dashboard.
-2. Select the driver/truck profile displaying a Critical alert status to view its active telemetry.
+<div style="font-weight: 600; margin-bottom: 4px;">Step 5 — Verify Rerouted Destination &amp; Navigation</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Check the <b>Destination Station</b> panel to confirm assigned facility details:
+    <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+      <li><b>Route &amp; Station Type</b> — station location, service type, and coordinates.</li>
+      <li><b>Status &amp; Bay Availability</b> — confirm an active service bay is reserved for emergency cooling.</li>
+    </ul>
+  </li>
+  <li style="margin-bottom: 4px;">Reference the <b>My Current Route</b> map panel on the left to trace the live GPS trajectory updated with the new service plaza destination.</li>
+</ol>
 
-Step 3: Review Vehicle & Cargo Telemetry
-1. Navigate to the My Truck section in the central panel.
-2. Monitor real-time vehicle and cargo status:
-   - Cargo Temp: Observe active temperature alerts (e.g., highlighted warning levels).
-   - Vehicle Status: Check assigned vehicle metrics, fuel levels, route progress percentage, remaining distance, ETA, speed, and overall cargo status.
+<div style="font-weight: 600; margin-bottom: 4px;">Step 6 — Review Delivery History</div>
+<ol style="margin: 0 0 10px 0; padding-left: 20px; font-size: 13px;">
+  <li style="margin-bottom: 4px;">Scroll to the <b>My Recent Deliveries</b> panel at the bottom of the interface.</li>
+  <li style="margin-bottom: 4px;">Review past completed routes, cargo categories, total distances, and duration logs to verify historical operational compliance.</li>
+</ol>
 
-Step 4: Access Reroute Notifications
-1. Locate the Notifications panel on the right side of the screen.
-2. Review the automated EMERGENCY_REROUTE notification generated by the system:
-   - View the updated destination details (e.g., assigned emergency service plaza).
-   - Read the automated operational context, including facility proximity, estimated arrival window, cargo temperature recovery buffer, weather clearance along the route, and available docking status.
+<hr style="border: none; border-top: 1px solid #e5e7eb; margin: 12px 0;" />
 
-Step 5: Verify Rerouted Destination & Navigation
-1. Check the Destination Station panel below the truck metrics to confirm assigned facility details:
-   - Route & Station Type: Review station location, service type, and exact coordinates.
-   - Status & Bay Availability: Confirm that an active service bay is reserved for emergency cooling.
-2. Reference the My Current Route map panel on the left to trace the live GPS trajectory updated with the new service plaza destination.
+<!-- ── PART 3 ── -->
+<div id="ccl-part3" style="background: #2850B8; color: #fff; border-radius: 6px; padding: 8px 12px; margin-bottom: 8px;">
+  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; margin-bottom: 2px;">Part 3</div>
+  <div style="font-size: 15px; font-weight: 700;">SRE Persona</div>
+</div>
 
-Step 6: Review Delivery History
-1. Scroll to the My Recent Deliveries panel at the bottom of the interface.
-2. Review past completed routes, cargo categories, total distances, and duration logs to verify historical operational compliance.
-
-
-================================================================================
-
-Part3: SRE PERSONA
-
-Note: For DSCE, the application observability is kept disabled during this demo workflow. Please check the video for full functionality
-
-
+<div style="font-size: 12px; color: #57606a; background: #f7f8fa; border-left: 3px solid #c1c7cd; padding: 6px 10px; margin-bottom: 6px;">
+  <b>Note:</b> For DSCE, application observability is kept disabled during this demo workflow. Please check the video for full functionality.
 </div>

@@ -98,7 +98,7 @@
         <div id="demo-cards-wrapper" class="demo-cards-wrapper">
           {{ range hugo.Data.demos.demos }}
             {{ $demo := . }}
-            {{ $cardImgPath := printf "demos/%s/%s" $demo.slug $demo.infoCard.image }}
+            {{ $cardImgPath := printf "demos/%s/%s" $demo.slug (index $demo.screenshots 0) }}
             {{ $cardImgRaw := resources.Get $cardImgPath }}
             {{ if not $cardImgRaw }}
               {{ warnf "demos/list.html: card image not found for demo %q — expected asset at %q" $demo.slug $cardImgPath }}
@@ -127,7 +127,7 @@
               <img src="{{ $cardImg.RelPermalink }}" alt="{{ $demo.name }}" />
               <div class="card-item-description">
                 <div>{{ $demo.name }}</div>
-                <p>{{ $demo.infoCard.description }}</p>
+                <p>{{ $demo.shortDescription }}</p>
               </div>
               <div class="pill-container">
                 {{ partial "building-blocks-pill.html" (dict "blocks" $demo.buildingBlocks "linked" false) }}

@@ -1,7 +1,7 @@
 name: Contact Us
 description: Share feedback, request assistance or get in touch with the team.
 title: "[Contact Us] "
-labels: ["contact Us"]
+labels: ["contact-us"]
 body:
   - type: markdown
     attributes:

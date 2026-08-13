@@ -1,6 +1,6 @@
 <header class="global-header-shell">
   <div class="global-header-brand-row">
-    <a class="global-header-brand" href="{{ "/" | absURL }}" aria-label="IBM Digital Self-Serve Co-Create Experience home">
+    <a class="global-header-brand" href="{{ "/" | relURL }}" aria-label="IBM Digital Self-Serve Co-Create Experience home">
       {{ $ibmLogo := resources.Get "images/products/ibm-black.svg" | fingerprint }}
       <img src="{{ $ibmLogo.RelPermalink }}" alt="IBM" class="global-header-brand-logo" />
       <span class="global-header-brand-divider" aria-hidden="true"></span>
@@ -9,7 +9,7 @@
     <button class="contact-btn" id="contactBtn">Contact us</button>
   </div>
   <div class="global-header global-header-breadcrumbs" aria-label="Breadcrumb">
-    <a class="global-header-home" href="{{ "/" | absURL }}">
+    <a class="global-header-home" href="{{ "/" | relURL }}">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
         <path fill="currentColor" d="M12 3.3 4 9.5V21h5v-6h6v6h5V9.5z"/>
       </svg>
@@ -21,7 +21,7 @@
     {{ end }}
     {{ if .showBack }}
       <span class="global-header-breadcrumb-separator" aria-hidden="true">&#8250;</span>
-      <a class="global-header-use-cases" href="{{ "demos/" | absURL }}">Use cases</a>
+      <a class="global-header-use-cases" href="{{ "demos/" | relURL }}">Use cases</a>
       <span class="global-header-breadcrumb-separator" aria-hidden="true">&#8250;</span>
       <span class="global-header-current">{{ .title }}</span>
     {{ end }}

@@ -24,8 +24,9 @@ body {
 }
 
 .site-subheader {
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 4px 0;
 }
 
 /* ==================== GLOBAL TWO-COLUMN FLEXBOX LAYOUT ==================== */
@@ -643,16 +644,10 @@ a.card-item {
   line-height: 1.2;
 }
 
-.demo-intro-description {
-  font-size: 16px;
-  width: 65%;
-  font-weight: normal;
-  margin: 0 0 6px 0;
-  line-height: 1.0;
-}
 
 .demo-intro-summary {
   max-width: 1250px;
+  font-size: 18px;
   line-height: 1.4;
   margin: 8px 0;
 }

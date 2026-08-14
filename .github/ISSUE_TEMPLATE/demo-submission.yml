@@ -80,7 +80,8 @@ body:
       label: How to use the demo (seller / demo script)
       description: |
         Step-by-step explanation of how a seller should present this demo.
-        Number each step. This becomes the "Demo script" drawer content on the demo detail page.
+        You can write this as plain text or Markdown — [see an example in Markdown format](../../docs-src/assets/demos/intelligent-cold-chain-logistics/description.md).
+        You can also drag and drop a `.md` file directly into this field.
       placeholder: |
         1. Start by ...
         2. Navigate to ...

@@ -1,6 +1,8 @@
 {{ define "main" }}
   {{ $slug := .Params.slug }}
   {{ $demo := index (where hugo.Data.demos.demos "slug" $slug) 0 }}
+  {{ $mdSrc := printf "demos/%s/description.md" $demo.slug }}
+  {{ $mdRes := resources.Get $mdSrc | resources.Copy (printf "%s/description.md" $demo.slug) }}
   {{ $hasSpec := and $demo.specificationsRepo (gt (len $demo.specificationsRepo) 0) }}            
   {{ if $demo }}
     {{ $images := $demo.screenshots }}
@@ -287,25 +289,19 @@
         <div class="drawer-header demo-script-header">
           <span class="drawer-title">Demo script</span>
           <div class="demo-script-header-actions">
-            <button type="button" class="demo-script-save-btn" id="demoExplainerSaveTextBtn" aria-label="Save as text">
+                <a href="{{ $mdRes.RelPermalink }}" download="demo-script.md" class="demo-script-save-btn" aria-label="Download script">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="currentColor">
                     <path d="M26 24v4H6v-4H4v4a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-4zm-2-7-1.41-1.41L17 22.17V4h-2v18.17l-5.59-5.58L8 18l8 8 8-8z"/>
                   </svg>
-                  <span>Save .txt</span>
-                </button>
-                <button type="button" class="demo-script-save-btn" id="demoExplainerSaveHtmlBtn" aria-label="Save as HTML">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="currentColor">
-                    <path d="M26 24v4H6v-4H4v4a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-4zm-2-7-1.41-1.41L17 22.17V4h-2v18.17l-5.59-5.58L8 18l8 8 8-8z"/>
-                  </svg>
-                  <span>Save .html</span>
-                </button>
+                  <span>Download Script</span>
+                </a>
             <button class="drawer-close" id="demoExplainerClose" aria-label="Close">&#x2715;</button>
           </div>
         </div>
         <div class="drawer-body demo-script-body" id="demoExplainerBody">
-          {{ $scriptPath := printf "assets/demos/%s/description.html" $demo.slug }}
+          {{ $scriptPath := printf "assets/demos/%s/description.md" $demo.slug }}
           {{ $scriptFile := readFile $scriptPath }}
-          {{ $scriptFile | safeHTML }}
+          {{ $scriptFile | markdownify }}
         </div>
       </aside>
     </main>

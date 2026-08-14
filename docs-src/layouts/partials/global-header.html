@@ -7,9 +7,12 @@
       <span class="global-header-brand-title">Digital Self-Serve Co-Create Experience</span>
     </a>
     <nav class="header-actions" aria-label="Header actions">
-      <a class="contact-btn" href="https://github.com/ibm-self-serve-assets/sdd-orbital-outfitters/issues/new?template=demo-submission.yml" target="_blank" rel="noopener noreferrer">Submit your demo</a>
+      {{ $repo := .Site.Params.githubRepo }}
+      {{ $demoSubmissionURL := printf "https://github.com/ibm-self-serve-assets/%s/issues/new?template=demo-submission.yml" $repo }}
+      {{ $contactUsURL := printf "https://github.com/ibm-self-serve-assets/%s/issues/new?template=contact-us.yml" $repo }}
+      <a class="contact-btn" href="{{$demoSubmissionURL}}" target="_blank" rel="noopener noreferrer">Submit your demo</a>
       <span class="header-actions-divider" aria-hidden="true">|</span>
-      <a class="contact-btn" href="https://github.com/ibm-self-serve-assets/sdd-orbital-outfitters/issues/new?template=contact-us.yml" target="_blank" rel="noopener noreferrer">Contact us</a>
+      <a class="contact-btn" href="{{$contactUsURL}}" target="_blank" rel="noopener noreferrer">Contact us</a>
     </nav>
   </div>
   <div class="global-header global-header-breadcrumbs" aria-label="Breadcrumb">

@@ -647,7 +647,7 @@ a.card-item {
 
 .demo-intro-summary {
   max-width: 1250px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
   margin: 8px 0;
 }
@@ -830,6 +830,13 @@ a.card-item {
 
 .demo-btn-icon {
   width: 18px !important;
+  height: 18px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: inline !important;
+}
+
+.demo-btn-icon-height {
   height: 18px !important;
   object-fit: contain;
   flex-shrink: 0;
@@ -1296,51 +1303,17 @@ a.card-item {
   background: #f0f0f0;
 }
 
-.specs-btn-icon {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  flex-shrink: 0;
-  margin-right: 4px;
-}
-
-.githhub-btn-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  flex-shrink: 0;
-  margin-right: 8px;
-}
-
 /* Pill-style action button — working demo */
-.working-demo-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 400;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  line-height: 1;
+.try-demo-btn {
   background: #2850B8;
   color: white;
 }
 
-.working-demo-btn:hover {
+.try-demo-btn:hover {
   background: #5e83df;
 }
 
-.working-demo-btn-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.demo-script-btn-icon {
+.try-demo-btn-icon {
   width: 18px;
   height: 18px;
   object-fit: contain;

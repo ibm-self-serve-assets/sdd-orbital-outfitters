@@ -27,11 +27,13 @@ jobs:
 
       - name: Build Hugo Site
         working-directory: ./docs-src  # Runs Hugo inside your target subfolder
-        env:
-          HUGO_PARAMS_GITHUBREPO: ${{ github.repository }}
         run: |
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
-          hugo --gc --minify --baseURL "https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO_NAME}/"
+          # Write a production params overlay so githubRepoURL is always available.
+          mkdir -p config/production
+          echo "githubRepoURL = 'https://github.com/${GITHUB_REPOSITORY}'" > config/production/params.toml
+          hugo --gc --minify \
+            --baseURL "https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO_NAME}/"
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v5

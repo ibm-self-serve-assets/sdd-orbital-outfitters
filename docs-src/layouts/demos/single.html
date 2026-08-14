@@ -214,8 +214,8 @@
                 <div class="demo-card-details">
                   <p class="demo-card-details-title">Have questions, want a walkthrough or found a bug?</p>
                   <p class="demo-card-details-subtitle">Contact the demo owner for assistance.</p>
-                  {{ $repo := .Site.Params.githubRepo }}
-                  {{ $contactUsURL := printf "https://github.com/ibm-self-serve-assets/%s/issues/new?template=contact-us.yml" $repo }}
+                  {{ $repoURL := .Site.Params.githubRepoURL }}
+                  {{ $contactUsURL := printf "%s/issues/new?template=contact-us.yml" $repoURL }}
                   <a href="{{ $contactUsURL }}" target="_blank" rel="noopener" class="demo-contact-card-link">Submit a request &rarr;</a>
                 </div>
               </div>

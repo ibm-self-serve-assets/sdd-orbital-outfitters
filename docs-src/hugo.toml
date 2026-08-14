@@ -5,6 +5,6 @@ title = 'DSCE 2.0'
 [taxonomies]
 
 [params]
-  # Overridden at build time via --environment or HUGO_PARAMS_GITHUBREPO env var.
-  # Used to construct GitHub Issues URLs. Format: "owner/repo"
-  githubRepo = ''
+  # Overridden at build time via config/production/params.toml written in deploy.yml.
+  # Used to construct GitHub Issues URLs. Format: "https://github.com/owner/repo"
+  githubRepoURL = ''

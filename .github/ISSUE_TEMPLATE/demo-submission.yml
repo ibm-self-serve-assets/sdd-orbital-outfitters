@@ -39,74 +39,12 @@ body:
     validations:
       required: true
 
-  # ── Media ──────────────────────────────────────────────────
-  - type: input
-    id: video_url
-    attributes:
-      label: Demo overview video
-      description: "Short walkthrough video (2–5 minutes)."
-      placeholder: "Link to video on Box or OneDrive."
-    validations:
-      required: true
-
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: Screenshots (2–5 images)
-      description: |
-        Attach 2–5 screenshots that showcase key screens of your demo.
-        Drag and drop image files directly into this text box, or paste URLs — one per line.
-        Accepted formats: JPG, PNG. Recommended resolution: 1280 × 800 px or higher.
-      placeholder: |
-        screenshot-01.jpg
-        screenshot-02.jpg
-        screenshot-03.jpg
-    validations:
-      required: true
-
-  # ── Contact ────────────────────────────────────────────────
   - type: input
     id: primary_contact
     attributes:
       label: Primary contact
       description: Full name and email of the person responsible for this demo.
       placeholder: "Jane Smith / jane@company.com"
-    validations:
-      required: true
-
-  - type: textarea
-    id: demo_script
-    attributes:
-      label: How to use the demo (seller / demo script)
-      description: |
-        Step-by-step explanation of how a seller should present this demo.
-        You can write this as plain text or Markdown — [see an example in Markdown format](../../docs-src/assets/demos/intelligent-cold-chain-logistics/description.md).
-        You can also drag and drop a `.md` file directly into this field.
-      placeholder: |
-        1. Start by ...
-        2. Navigate to ...
-        3. Point out ...
-    validations:
-      required: true
-
-  # ── Architecture ───────────────────────────────────────────
-  - type: textarea
-    id: architecture_diagram
-    attributes:
-      label: Architecture diagram
-      description: |
-        Attach your architecture diagram image file here (drag and drop or paste a URL).
-        Accepted formats: PNG, JPEG. Recommended: wide aspect ratio (e.g. 1600 × 900 px).
-      placeholder: "architecture.png"
-    validations:
-      required: true
-
-  - type: textarea
-    id: architecture_description
-    attributes:
-      label: Architecture description
-      description: "A short paragraph describing the major components shown in the diagram and how they interact."
-      placeholder: "The demo uses IBM watsonx Orchestrate to orchestrate a 5-agent pipeline that ..."
     validations:
       required: true
 
@@ -162,3 +100,64 @@ body:
       label: Link to specifications repository (if available)
       description: GitHub repo containing the natural language specifications used by IBM Bob to build this demo. Leave blank if not applicable.
       placeholder: "https://github.com/..."
+
+  # ── Media ──────────────────────────────────────────────────
+  - type: input
+    id: video_url
+    attributes:
+      label: Demo overview video
+      description: "Short walkthrough video (2–5 minutes)."
+      placeholder: "Link to video on Box or OneDrive."
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots (2–5 images)
+      description: |
+        Attach 2–5 screenshots that showcase key screens of your demo.
+        Drag and drop image files directly into this text box, or paste URLs — one per line.
+        Accepted formats: JPG, PNG. Recommended resolution: 1280 × 800 px or higher.
+      placeholder: |
+        screenshot-01.jpg
+        screenshot-02.jpg
+        screenshot-03.jpg
+    validations:
+      required: true
+
+  - type: textarea
+    id: demo_script
+    attributes:
+      label: How to use the demo (seller / demo script)
+      description: |
+        Step-by-step explanation of how a seller should present this demo.
+        You can write this as plain text or Markdown — [see an example in Markdown format](https://github.com/ibm-self-serve-assets/sdd-orbital-outfitters/blob/main/docs-src/assets/demos/intelligent-cold-chain-logistics/description.md).
+        You can also drag and drop a `.md` file directly into this field.
+      placeholder: |
+        1. Start by ...
+        2. Navigate to ...
+        3. Point out ...
+    validations:
+      required: true
+
+  # ── Architecture ───────────────────────────────────────────
+  - type: textarea
+    id: architecture_diagram
+    attributes:
+      label: Architecture diagram
+      description: |
+        Attach your architecture diagram image file here (drag and drop or paste a URL).
+        Accepted formats: PNG, JPEG. Recommended: wide aspect ratio (e.g. 1600 × 900 px).
+      placeholder: "architecture.png"
+    validations:
+      required: true
+
+  - type: textarea
+    id: architecture_description
+    attributes:
+      label: Architecture description
+      description: "A short paragraph describing the major components shown in the diagram and how they interact."
+      placeholder: "The demo uses IBM watsonx Orchestrate to orchestrate a 5-agent pipeline that ..."
+    validations:
+      required: true

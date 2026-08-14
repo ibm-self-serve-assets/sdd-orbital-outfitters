@@ -3,3 +3,8 @@ locale = 'en-us'
 title = 'DSCE 2.0'
 
 [taxonomies]
+
+[params]
+  # Overridden at build time via --environment or HUGO_PARAMS_GITHUBREPO env var.
+  # Used to construct GitHub Issues URLs. Format: "owner/repo"
+  githubRepo = ''

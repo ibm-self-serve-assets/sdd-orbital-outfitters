@@ -206,7 +206,9 @@
                 <div class="demo-card-details">
                   <p class="demo-card-details-title">Have questions, want a walkthrough or found a bug?</p>
                   <p class="demo-card-details-subtitle">Contact the demo owner for assistance.</p>
-                  <a href="mailto:{{$demo.contactEmail}}" class="demo-contact-card-link">Submit a request &rarr;</a>
+                  {{ $repo := .Site.Params.githubRepo }}
+                  {{ $issueURL := printf "https://github.com/%s/issues/new?template=contact-us.yml" $repo }}
+                  <a href="{{ $issueURL }}" target="_blank" rel="noopener" class="demo-contact-card-link">Submit a request &rarr;</a>
                 </div>
               </div>
             </section>

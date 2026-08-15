@@ -216,7 +216,7 @@
                   <p class="demo-card-details-subtitle">Contact the demo owner for assistance.</p>
                   {{ $repoOwner := .Site.Params.githubRepoOwner }}
                   {{ $repoName := .Site.Params.githubRepoName }}
-                  {{ $contactUsURL := printf "https://github.com/%s/%s/issues/new?template=contact-us.yml" $repoOwner $repoOwner }}
+                  {{ $contactUsURL := printf "https://github.com/%s/%s/issues/new?template=contact-us.yml" $repoOwner $repoName }}
                   <a href="{{ $contactUsURL }}" target="_blank" rel="noopener" class="demo-contact-card-link">Submit a request &rarr;</a>
                 </div>
               </div>

@@ -29,12 +29,12 @@ jobs:
         working-directory: ./docs-src  # Runs Hugo inside your target subfolder
         run: |
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
-          # Write a production params overlay so githubRepoURL is always available.
+          # Write a production params overlay so githubRepo is always available.
           mkdir -p config/production
-          echo "githubRepoURL = 'https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO_NAME}'" > config/production/params.toml
-          echo "repoName = '${REPO_NAME}'" > config/production/params.toml
+          echo "githubRepoOwner = '${GITHUB_REPOSITORY_OWNER}'" > config/production/params.toml
+          echo "githubRepoName = '${REPO_NAME}'" > config/production/params.toml
           hugo --gc --minify \
-            --baseURL "https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO_NAME}"
+            --baseURL "https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO_NAME}/"
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v5

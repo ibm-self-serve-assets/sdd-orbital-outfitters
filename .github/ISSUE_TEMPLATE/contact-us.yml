@@ -32,35 +32,12 @@ body:
     validations:
       required: true
 
-  # ── Contact Details ────────────────────────────────────────
-  - type: input
-    id: name
-    attributes:
-      label: Name
-      placeholder: Jane Smith
-
-  - type: input
-    id: email
-    attributes:
-      label: Email address
-      placeholder: jane.smith@example.com
-    validations:
-      required: true
-
-  - type: input
-    id: company
-    attributes:
-      label: Company
-      placeholder: Acme Corp
-
   # ── Privacy ────────────────────────────────────────────────
   - type: checkboxes
-    id: privacy
+    id: response
     attributes:
-      label: Privacy Policy
+      label: Follow this issue and don't submit personal details
       options:
-        - label: >
-            I understand my personal data will be processed in accordance with
-            [IBM's Privacy Policy](https://www.ibm.com/privacy).
+        - label: I understand this GitHub issue and website are public and did not include any personal information.  I will listen for a response on this issue's thread.
     validations:
       required: true

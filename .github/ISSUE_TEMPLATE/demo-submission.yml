@@ -39,15 +39,6 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: primary_contact
-    attributes:
-      label: Primary contact
-      description: Full name and email of the person responsible for this demo.
-      placeholder: "Jane Smith / jane@company.com"
-    validations:
-      required: true
-
   # ── Skills & Products ─────────────────────────────────────
   - type: textarea
     id: skills

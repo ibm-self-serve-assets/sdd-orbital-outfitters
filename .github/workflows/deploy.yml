@@ -32,6 +32,7 @@ jobs:
           # Write a production params overlay so githubRepoURL is always available.
           mkdir -p config/production
           echo "githubRepoURL = 'https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO_NAME}'" > config/production/params.toml
+          echo "repoName = '${REPO_NAME}'" > config/production/params.toml
           hugo --gc --minify \
             --baseURL "https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO_NAME}"
 

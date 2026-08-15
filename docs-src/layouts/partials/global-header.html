@@ -8,7 +8,8 @@
     </a>
     <nav class="header-actions" aria-label="Header actions">
       {{ $repoURL := .Site.Params.githubRepoURL }}
-      {{ $demoSubmissionURL := printf "%s/issues/new?template=demo-submission.yml" $repoURL }}
+      {{ $repoName := .Site.Params.repoName }}
+      {{ $demoSubmissionURL := printf "%s" $repoName }}
       {{ $contactUsURL := printf "%s/issues/new?template=contact-us.yml" $repoURL }}
       <a class="contact-btn" href="{{$demoSubmissionURL}}" target="_blank" rel="noopener noreferrer">Submit your demo</a>
       <span class="header-actions-divider" aria-hidden="true">|</span>

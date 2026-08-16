@@ -122,7 +122,7 @@
               {{ $repoOwner := .Site.Params.githubRepoOwner }}
               {{ $repoName := .Site.Params.githubRepoName }}
               {{ $demoSubmissionURL := printf "https://github.com/%s/%s/issues/new?template=demo-submission.yml" $repoOwner $repoName }}
-              <a href="{{demoSubmissionURL}}" class="info-box-link">Submit demo &rarr;</a>
+              <a href="{{$demoSubmissionURL}}" class="info-box-link">Submit demo &rarr;</a>
             </div>
         </div>
         <div class="demo-detail-column-right">

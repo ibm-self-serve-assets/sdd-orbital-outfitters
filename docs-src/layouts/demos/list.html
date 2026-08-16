@@ -67,9 +67,8 @@
         <div class="info-card">
           <div>
             <div class="info-card-tagline">
-              {{ $bb := resources.Get "images/building_blocks.png" | fingerprint }}
-              <img src="{{ $bb.RelPermalink }}" width="50">
-              
+              {{ $bbIcon := resources.Get "images/building_blocks.png" | fingerprint }}
+              <img src="{{ $bbIcon.RelPermalink }}" width="50">
               <span class="info-card-tagline-text">
                 <strong>Building Blocks</strong>
                 <span>Pre-built capabilities spanning AI, Data, and Automation.</span>
@@ -81,13 +80,25 @@
         <div class="info-card">
           <div>
             <div class="info-card-tagline">
-              {{ $bob := resources.Get "images/bob.png" | fingerprint }}
-              <img src="{{ $bob.RelPermalink }}" width="50">
-
+              {{ $bobIcon := resources.Get "images/bob.png" | fingerprint }}
+              <img src="{{ $bobIcon.RelPermalink }}" width="50">
               <span class="info-card-tagline-text">
                 <strong>IBM Bob</strong>
                 <span>AI-first development partner for building enterprise solutions.</span>
                 <a href="https://bob.ibm.com/" class="cta-link">Try Bob →</a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div>
+            <div class="info-card-tagline">
+              {{ $applicationIcon := resources.Get "images/application_blue.svg" | fingerprint }}
+              <img src="{{ $applicationIcon.RelPermalink }}" width="50">
+              <span class="info-card-tagline-text">
+                <strong>Have a demo to share?</strong>
+                <span>We are accepting new applications to showcase</span>
+                <a href="https://bob.ibm.com/" class="cta-link">Submit your demo →</a>
               </span>
             </div>
           </div>

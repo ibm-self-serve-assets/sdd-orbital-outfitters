@@ -503,7 +503,7 @@ a.pill-tag-bb:hover {
   user-select: none;
 }
 
-.contact-btn {
+.header-btn {
   background: none;
   border: none;
   color: black;
@@ -515,7 +515,7 @@ a.pill-tag-bb:hover {
   text-decoration: none;
 }
 
-.contact-btn:hover {
+.header-btn:hover {
   text-decoration: underline;
 }
 
@@ -878,7 +878,7 @@ a.card-item {
   text-decoration: underline;
 }
 
-.download-skills-link {
+.info-box-link {
   font-size: 14px;
   font-weight: 500;
   color: #2850B8;

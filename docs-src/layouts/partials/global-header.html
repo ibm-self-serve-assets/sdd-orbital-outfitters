@@ -11,9 +11,9 @@
       {{ $repoName := .Site.Params.githubRepoName }}
       {{ $demoSubmissionURL := printf "https://github.com/%s/%s/issues/new?template=demo-submission.yml" $repoOwner $repoName }}
       {{ $contactUsURL := printf "https://github.com/%s/%s/issues/new?template=contact-us.yml" $repoOwner $repoName }}
-      <a class="contact-btn" href="https://github.com/ibm-self-serve-assets/sdd-orbital-outfitters/issues/new?template=demo-submission.yml" target="_blank" rel="noopener noreferrer">Submit your demo</a>
+      <a class="header-btn" href="{{demoSubmissionURL}}" target="_blank" rel="noopener noreferrer">Submit your demo</a>
       <span class="header-actions-divider" aria-hidden="true">|</span>
-      <a class="contact-btn" href="https://github.com/ibm-self-serve-assets/sdd-orbital-outfitters/issues/new?template=contact-us.yml" target="_blank" rel="noopener noreferrer">Contact us</a>
+      <a class="header-btn" href="{{contactUsURL}}" target="_blank" rel="noopener noreferrer">Contact us</a>
     </nav>
   </div>
   <div class="global-header global-header-breadcrumbs" aria-label="Breadcrumb">

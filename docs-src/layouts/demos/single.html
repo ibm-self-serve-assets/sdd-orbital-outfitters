@@ -69,7 +69,7 @@
               <div class="info-box-subtitle">
                 Skills provide best practices for IBM technologies
               </div>
-                  <a href="https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/" class="download-skills-link">Download skills &rarr;</a>
+                  <a href="https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/" class="info-box-link">Download skills &rarr;</a>
               </div>
           {{ end }}
       
@@ -108,6 +108,22 @@
               </div>
             </div>
           {{ end }}
+          <div class="info-box">
+              {{ $uploadIcon := resources.Get "images/upload.svg" | fingerprint }}
+            <div class="info-box-header">
+              <img src="{{ $uploadIcon.RelPermalink }}">
+              <div class="info-box-title">
+                Showcase your own demo
+              </div>
+            </div>
+            <div class="info-box-subtitle">
+              Upload your demo to share on DSCE
+            </div>
+              {{ $repoOwner := .Site.Params.githubRepoOwner }}
+              {{ $repoName := .Site.Params.githubRepoName }}
+              {{ $demoSubmissionURL := printf "https://github.com/%s/%s/issues/new?template=demo-submission.yml" $repoOwner $repoName }}
+              <a href="{{demoSubmissionURL}}" class="info-box-link">Submit demo &rarr;</a>
+            </div>
         </div>
         <div class="demo-detail-column-right">
           <div class="demo-step-wrapper">

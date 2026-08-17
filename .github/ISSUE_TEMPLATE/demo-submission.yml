@@ -27,6 +27,22 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: industry
+    attributes:
+      label: Industry / Use Case
+      description: Select the primary industry this demo targets.
+      options:
+        - Energy
+        - Finance
+        - Healthcare
+        - Life Sciences
+        - Manufacturing
+        - Retail
+        - Telecom
+    validations:
+      required: true
+
   - type: textarea
     id: long_description
     attributes:

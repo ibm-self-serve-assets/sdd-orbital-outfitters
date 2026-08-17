@@ -10,7 +10,7 @@
 
           <div class="asset-type-filter">
             <div class="asset-type-filter-header">
-              <div class="master-nav-header">Filter by Building Block</div>
+              <div class="master-nav-header" id="debug-trigger">Filter by Building Block</div>
               <span class="clear-all-btn" id="clearAllBtn">Clear all</span>
             </div>
           </div>
@@ -18,8 +18,9 @@
 
           <!-- ==================== MASTER SECTION: BUILDING BLOCKS ==================== -->
           {{ $allDemos := hugo.Data.demos.demos }}
+          {{ $liveDemos := where $allDemos "isLive" true }}
           {{ $bbCounts := dict }}
-          {{ range $allDemos }}
+          {{ range $liveDemos }}
             {{ range .buildingBlocks }}
               {{ $parts := split . "." }}
               {{ if eq (len $parts) 2 }}
@@ -114,9 +115,9 @@
         </div>
       </div>
       <main class="main-content-window">
-        <div id="demo-results-count" class="demo-results-count">{{ len hugo.Data.demos.demos }} use cases fund</div>
+        <div id="demo-results-count" class="demo-results-count"></div>
         <div id="demo-cards-wrapper" class="demo-cards-wrapper">
-          {{ range hugo.Data.demos.demos }}
+          {{ range $allDemos }}
             {{ $demo := . }}
             {{ $cardImgPath := printf "demos/%s/%s" $demo.slug (index $demo.screenshots 0) }}
             {{ $cardImgRaw := resources.Get $cardImgPath }}
@@ -143,7 +144,8 @@
             <a class="card-item"
               href="{{ printf "demos/%s/" $demo.slug | absURL }}"
               data-building-blocks="{{ delimit $bbSlugs " " | lower }}"
-              data-asset-types="{{ delimit $assetTypes " " }}">
+              data-asset-types="{{ delimit $assetTypes " " }}"
+              data-islive="{{ $demo.isLive }}">
               <img src="{{ $cardImg.RelPermalink }}" alt="{{ $demo.name }}" />
               <div class="card-item-description">
                 <div>{{ $demo.name }}</div>
@@ -160,5 +162,5 @@
     </main>
   </div>
   {{ $js := resources.Get "js/index.js" | fingerprint }}
-  <script src="{{ $js.RelPermalink }}" type="module" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+  <script src="{{ $js.RelPermalink }}" defer integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
 {{ end }}

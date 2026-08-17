@@ -76,6 +76,7 @@ body {
   letter-spacing: 0.5px;
   color: #161616;
   cursor: pointer;
+  user-select: none;
 }
 
 .master-nav-section {
@@ -415,7 +416,12 @@ a.pill-tag-bb:hover {
   gap: 20px;
   min-width: 0;
   color: #161616;
-  text-decoration: none;
+}
+
+.global-header-brand-logo-link {
+  display: block;
+  flex-shrink: 0;
+  line-height: 0;
 }
 
 .global-header-brand-logo {
@@ -517,6 +523,21 @@ a.pill-tag-bb:hover {
 
 .header-btn:hover {
   text-decoration: underline;
+}
+
+/* ==================== DEBUG MODE BADGE ==================== */
+.debug-mode-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #da1e28;
+  border-radius: 3px;
+  padding: 2px 7px;
+  line-height: 1.6;
+  user-select: none;
+  white-space: nowrap;
 }
 
 /* ==================== CONTACT DRAWER ==================== */

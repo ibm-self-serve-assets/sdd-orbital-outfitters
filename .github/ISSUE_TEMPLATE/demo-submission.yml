@@ -173,8 +173,8 @@ body:
   - type: checkboxes
     id: response
     attributes:
-      label: Don't submit personal information
+      label: Don't submit personal information or customer/partner IP
       options:
-        - label: I understand this GitHub issue and website are public, so I did not include any personal information.
+        - label: I understand this GitHub issue and website are public, so I did not include any personal information or anything else that should not be publicly visible..
     validations:
       required: true

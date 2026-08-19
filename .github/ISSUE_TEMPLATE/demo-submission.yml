@@ -62,7 +62,7 @@ body:
       label: IBM Bob Building Block skills used
       description: |
         List each Bob skill used to build this demo — one per line.
-        Browse available skills at https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/
+        Browse available [Building Block skills for IBM Bob.](https://ibm-self-serve-assets.github.io/building-blocks-docs/ibm-bob/skills/)
       placeholder: |
         agent-builder
         data-streaming-confluent
@@ -166,5 +166,15 @@ body:
       label: Architecture description
       description: "A short paragraph describing the major components shown in the diagram and how they interact."
       placeholder: "The demo uses IBM watsonx Orchestrate to orchestrate a 5-agent pipeline that ..."
+    validations:
+      required: true
+
+  # ── Privacy ────────────────────────────────────────────────
+  - type: checkboxes
+    id: response
+    attributes:
+      label: Don't submit personal information
+      options:
+        - label: I understand this GitHub issue and website are public, so I did not include any personal information.
     validations:
       required: true

@@ -27,6 +27,8 @@ jobs:
 
       - name: Build Hugo Site
         working-directory: ./docs-src  # Runs Hugo inside your target subfolder
+        env:
+          SEGMENT_API_KEY: ${{ secrets.SEGMENT_API_KEY }}
         run: |
           REPO_NAME="${GITHUB_REPOSITORY#*/}" 
           # Write a production params overlay so githubRepo is always available.

@@ -3,7 +3,6 @@
     {
       "name": "Intelligent Cold Chain Logistics",
       "slug": "intelligent-cold-chain-logistics",
-      "contactEmail": "shanmsel@in.ibm.com",
       "products": ["IBM watsonX Orchestrate", "Red Hat OpenShift", "IBM Turbonomic", "IBM Instana"],
       "buildingBlocks": ["ai.agents", "automation.optimize"],
       "skills": ["agent", "apm-instana"],
@@ -22,7 +21,6 @@
     {
       "name": "Spec-Driven Development With IBM Bob",
       "slug": "spec-driven-development-with-ibm-bob",
-      "contactEmail": "apsteven@us.ibm.com",
       "products": ["IBM watsonX Orchestrate", "IBM Confluent", "OpenSearch", "Red Hat OpenShift", "IBM Cloud", "HashiCorp Terraform"],
       "buildingBlocks": ["ai.agents", "automation.build", "data.retrieval", "data.integration"],
       "skills": ["agent", "data-streaming-confluent", "ibm-cloud", "infrastructure-as-code-terraform", "udi-opensearch"],
@@ -40,7 +38,6 @@
     {
       "name": "Agentic Security Operations Center",
       "slug": "agentic-security-operations-center",
-      "contactEmail": "Kaushikkumar.Patel1@ibm.com",
       "products": ["IBM watsonx Orchestrate", "IBM watsonx.ai", "IBM QRadar"],
       "buildingBlocks": ["ai.agent", "automation.secure"],
       "skills": ["agent-builder"],
@@ -56,7 +53,6 @@
     {
       "name": "NexusIQ - Intelligent Operations Platform",
       "slug": "nexusiq-intelligent-operations-platform",
-      "contactEmail": "bhargav.mankad@ibm.com",
       "products": ["IBM watsonX.data", "IBM DataStax", "IBM Confluent"],
       "buildingBlocks": ["ai.agents"],
       "skills": ["agent", "data-streaming-confluent"],
@@ -72,7 +68,6 @@
     {
       "name": "Counter-UAS in Modern Warfare",
       "slug": "counter-uas-in-modern-warfare",
-      "contactEmail": "rahul.deb.das@ibm.com",
       "products": ["IBM watsonx Orchestrate", "IBM watsonx.ai", "IBM Confluent"],
       "buildingBlocks": ["ai.agents"],
       "skills": [],

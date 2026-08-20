@@ -1,5 +1,5 @@
 ---
-title: "Use case: Spec-Driven Development With IBM Bob"
+title: "Use Case: Spec-Driven Development With IBM Bob"
 slug: "spec-driven-development-with-ibm-bob"
 showBack: true
 ---
